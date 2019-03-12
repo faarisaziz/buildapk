@@ -6,21 +6,87 @@
   <meta name="msapplication-tap-highlight" content="no" />
   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
 
-  <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" />
   <link rel="stylesheet" type="text/css" href="css/index.css" />
   <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
+  <link rel="stylesheet" type="text/css" href="css/slick.css">
+  <link rel="stylesheet" type="text/css" href="css/slick-theme.css">
 
   <title>Mobeng App</title>
 </head>
 
 <body>
   <div class="app">
-    <div data-role="page" id="page1" data-theme="a">
+
+    <div data-role="page" class="jqm-demos" id="panel-fixed-page1" data-title="Panel fixed positioning">
+      <div data-role="header" data-position="fixed">
+        <h1>MOBENG</h1>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+          <a href="#login" class="ui-btn ui-btn-icon-right ui-icon-mail ui-btn-icon-notext ui-shadow ui-corner-all">Notif</a>
+          <a href="#add-form" class="ui-btn ui-btn-icon-right ui-icon-bars ui-btn-icon-notext ui-shadow ui-corner-all">Option</a>
+        </div>
+      </div>
+    
+      <div role="main" class="ui-content jqm-content jqm-fullwidth">
+        <h2>Panel fixed positioning</h2>
+        <div class="banner-item">
+          <div class="banner-item-list">
+            <img src="img/banner.png" alt="Banner 1">
+          </div>
+          
+          <div class="banner-item-list">
+            <img src="img/banner.png" alt="Banner 2">
+          </div>
+          <div class="banner-item-list">
+            <img src="img/banner.png" alt="Banner 3">
+          </div>
+        </div>
+    
+        <div class="ui-grid-b">
+          <div class="ui-block-a"><a href="#" class="ui-btn ui-shadow ui-corner-all  ui-mini"><img src="img/contoh icon.png" height="80px"></a></div>
+          <div class="ui-block-b"><a href="#" class="ui-btn ui-shadow ui-corner-all  ui-mini"><img src="img/contoh icon.png" height="80px"></a></div>
+          <div class="ui-block-c"><a href="#" class="ui-btn ui-shadow ui-corner-all  ui-mini"><img src="img/contoh icon.png" height="80px"></a></div>
+        </div>
+        <div class="ui-grid-b">
+          <div class="ui-block-a"><label for="cabang">Cabang</label></div>
+          <div class="ui-block-b"><label for="produk">Produk</label></div>
+          <div class="ui-block-c"><label for="promosi">Promosi</label></div>
+        </div>
+        <div class="ui-grid-b">
+          <div class="ui-block-a"><a href="#" class="ui-btn ui-shadow ui-corner-all  ui-mini"><img src="img/contoh icon.png" height="80px"></a></div>
+          <div class="ui-block-b"><a href="#" class="ui-btn ui-shadow ui-corner-all  ui-mini"><img src="img/contoh icon.png" height="80px"></a></div>
+          <div class="ui-block-c"><a href="#" class="ui-btn ui-shadow ui-corner-all  ui-mini"><img src="img/contoh icon.png" height="80px"></a></div>
+        </div>
+        <div class="ui-grid-b">
+        <div class="ui-block-a"><label for="estimasiservis">Estimasi Servis</label></div>
+          <div class="ui-block-b"><label for="riwayat">Riwayat</label></div>
+          <div class="ui-block-c"><label for="reminder">Reminder</label></div>
+        </div>
+        <div class="ui-grid-b">
+          <div class="ui-block-a"><a href="#" class="ui-btn ui-shadow ui-corner-all  ui-mini"><img src="img/contoh icon.png" height="80px"></a></div>
+          <div class="ui-block-b"><a href="#" class="ui-btn ui-shadow ui-corner-all  ui-mini"><img src="img/contoh icon.png" height="80px"></a></div>
+        </div>
+        <div class="ui-grid-b">
+          <div class="ui-block-a"><label for="blog">Blog</label></div>
+          <div class="ui-block-b"><label for="hubungikami">Hubungi Kami</label></div>
+        </div>
+      </div>
+    
+      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
+        <div class="ui-panel-inner">
+          <h3>Right Panel: Reveal</h3>
+          <p>This panel is positioned on the right with the reveal display mode. The panel markup is <em>after</em> the header, content and footer in the source order.</p>
+          <p>To close, click off the panel, swipe left or right, hit the Esc key, or use the button below:</p>
+          <a href="#demo-links" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a>
+        </div>
+      </div>
+    </div>
+    
+    <div data-role="page" id="login" data-theme="a">
       <div data-role="header">
         <h1>MOBENG</h1>
         <div data-role="navbar" id="navh1">
           <ul>
-            <li><a href="#dashboard">dashboard</a></li>
+            <li><a href="#panel-fixed-page1">dashboard</a></li>
           </ul>
         </div>
       </div>
@@ -36,56 +102,13 @@
       </div>
     </div>
 
-    <div data-role="page" id="dashboard" data-theme="a">
-        <div data-role="header">
-          <h1>MOBENG</h1>
-          <div data-role="navbar" id="navh1">
-            <ul>
-              <li><a href="#page1">Halaman Login</a></li>
-            </ul>
-          </div>
-        </div>
-  
-        <div role="main" class="ui-content">
-          <p>Nama User</p>
-          <br>
-            <div class="slideshow-container">
-              <div class="mySlides fade">
-                <img src="img/engine1.jpg" class="center" style="width:70%">
-              </div>
-
-              <div class="mySlides fade">
-                <img src="img/engine1.jpg" class="center" style="width:70%">
-              </div>
-
-              <div class="mySlides fade">
-                <img src="img/engine1.jpg" class="center" style="width:70%">
-              </div>
-
-              <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-              <a class="next" onclick="plusSlides(1)">&#10095;</a>
-            </div>
-            <br>            
-            <div class="ui-grid-b">
-              <div class="ui-block-a"><div class="ui-bar ui-bar-c" style="height:90px"><a href="#"><img src="img/logo.png"></a></div></div>
-              <div class="ui-block-b"><div class="ui-bar ui-bar-c" style="height:90px"><a href="#"><img src="img/logo.png"></a></div></div>
-              <div class="ui-block-c"><div class="ui-bar ui-bar-c" style="height:90px"><a href="#"><img src="img/logo.png"></a></div></div>
-              <div class="ui-block-a"><div class="ui-bar ui-bar-c" style="height:90px"><a href="#"><img src="img/logo.png"></a></div></div>
-              <div class="ui-block-b"><div class="ui-bar ui-bar-c" style="height:90px"><a href="#"><img src="img/logo.png"></a></div></div>
-              <div class="ui-block-c"><div class="ui-bar ui-bar-c" style="height:90px"><a href="#"><img src="img/logo.png"></a></div></div>
-              <div class="ui-block-a"><div class="ui-bar ui-bar-c" style="height:90px"><a href="#"><img src="img/logo.png"></a></div></div>
-              <div class="ui-block-b"><div class="ui-bar ui-bar-c" style="height:90px"><a href="#"><img src="img/logo.png"></a></div></div>
-              <div class="ui-block-c"><div class="ui-bar ui-bar-c" style="height:90px"><a href="#"><img src="img/logo.png"></a></div></div>
-            </div>
-        </div>
-      </div>
-
   </div>
 
   <script type="text/javascript" src="cordova.js"></script>
   <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
+  <script type="text/javascript" src="js/slick.min.js"></script>
   <script type="text/javascript" src="js/initializers.js"></script>
   <script type="text/javascript" src="js/functions.js"></script>
   <script type="text/javascript" src="js/integrations.js"></script>
