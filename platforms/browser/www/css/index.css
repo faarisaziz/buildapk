@@ -9,8 +9,8 @@
 
 .ui-page .ui-header {
   background: #7dbf43 !important;
-  height: 50px;
-  padding-top: 10px;
+  height: 50px !important;
+  padding-top: 10px !important;
 }
 
 .fas {
@@ -23,7 +23,7 @@
   padding-right: 25px;
 }
 
-label {
+.text-menu {
   text-align: center;
 }
 
@@ -34,4 +34,47 @@ h1 {
 h2 {
   font-size: 15px;
   text-align: center;
+}
+
+.card {
+  border-radius: 20px !important;
+  color: #7dbf43;
+}
+
+.card-riwayat {
+  background-color: #0772B7;
+  padding: 20px 20px 10px;
+  border-radius: 20px;
+  color: #fff;
+  text-shadow: none;
+}
+
+.card-riwayat .item{
+  font-size: 12px;
+  font-weight: 50 !important;
+}
+
+.card-riwayat .price {
+  font-size: 13px;
+  font-weight: bold !important;
+}
+
+.card-riwayat .float-right {
+  margin-top: 18px;
+  float: right;
+}
+
+.btn-riwayat {
+  background-color: #7dbf43 !important;
+  color: #fff !important;
+  padding: 5px 25px !important;
+  font-size: 13px !important;
+  font-weight: 100 !important;
+  border-color: #7dbf43 !important;
+  margin-top: 10px !important;
+}
+
+.card-blog {
+  border: black;
+  border-radius: 20px;
 }

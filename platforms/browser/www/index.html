@@ -29,13 +29,15 @@
       </div>
     
       <div role="main" class="ui-content">
-        <form action="" method="">
-          <input type="number" name="" id="" placeholder="No Telp">
-          <input type="password" name="" id="" placeholder="Password">
-          <a href="#">Forgot password ?</a>
-          <input type="submit" value="Log In" />
-          <a href="#signup" data-role="button">Sign Up</a>
-        </form>
+        <div class="card">
+          <form action="" method="">
+            <input type="number" name="" id="" placeholder="No Telp">
+            <input type="password" name="" id="" placeholder="Password">
+            <a href="#">Forgot password ?</a>
+            <input type="submit" value="Log In" />
+            <a href="#signup" data-role="button">Sign Up</a>
+          </form>
+        </div>
       </div>
     </div>
 
@@ -85,30 +87,30 @@
         <div class="ui-grid-b">
           <div class="ui-block-a"><a href="#cabang" class="ui-btn ui-shadow ui-corner-all  ui-mini"><img src="img/contoh icon.png" height="80px"></a></div>
           <div class="ui-block-b"><a href="#produk" class="ui-btn ui-shadow ui-corner-all  ui-mini"><img src="img/contoh icon.png" height="80px"></a></div>
-          <div class="ui-block-c"><a href="#" class="ui-btn ui-shadow ui-corner-all  ui-mini"><img src="img/contoh icon.png" height="80px"></a></div>
+          <div class="ui-block-c"><a href="#promosi" class="ui-btn ui-shadow ui-corner-all  ui-mini"><img src="img/contoh icon.png" height="80px"></a></div>
         </div>
         <div class="ui-grid-b">
-          <div class="ui-block-a"><label for="cabang">Cabang</label></div>
-          <div class="ui-block-b"><label for="produk">Produk</label></div>
-          <div class="ui-block-c"><label for="promosi">Promosi</label></div>
+          <div class="ui-block-a text-menu">Cabang</div>
+          <div class="ui-block-b text-menu">Produk</div>
+          <div class="ui-block-c text-menu">Promosi</div>
         </div>
         <div class="ui-grid-b">
-          <div class="ui-block-a"><a href="#" class="ui-btn ui-shadow ui-corner-all  ui-mini"><img src="img/contoh icon.png" height="80px"></a></div>
-          <div class="ui-block-b"><a href="#" class="ui-btn ui-shadow ui-corner-all  ui-mini"><img src="img/contoh icon.png" height="80px"></a></div>
-          <div class="ui-block-c"><a href="#" class="ui-btn ui-shadow ui-corner-all  ui-mini"><img src="img/contoh icon.png" height="80px"></a></div>
+          <div class="ui-block-a"><a href="#popupEstimasiServis" data-rel="popup" data-position-to="window" class="ui-btn ui-shadow ui-corner-all  ui-mini" data-transition="pop"><img src="img/contoh icon.png" height="80px"></a></div>
+          <div class="ui-block-b"><a href="#riwayat" class="ui-btn ui-shadow ui-corner-all  ui-mini"><img src="img/contoh icon.png" height="80px"></a></div>
+          <div class="ui-block-c"><a href="#reminder" class="ui-btn ui-shadow ui-corner-all  ui-mini"><img src="img/contoh icon.png" height="80px"></a></div>
         </div>
         <div class="ui-grid-b">
-          <div class="ui-block-a"><label for="estimasiservis">Estimasi Servis</label></div>
-          <div class="ui-block-b"><label for="riwayat">Riwayat</label></div>
-          <div class="ui-block-c"><label for="reminder">Reminder</label></div>
+          <div class="ui-block-a text-menu">Estimasi Servis</div>
+          <div class="ui-block-b text-menu">Riwayat</div>
+          <div class="ui-block-c text-menu">Reminder</div>
         </div>
         <div class="ui-grid-b">
-          <div class="ui-block-a"><a href="#" class="ui-btn ui-shadow ui-corner-all  ui-mini"><img src="img/contoh icon.png" height="80px"></a></div>
-          <div class="ui-block-b"><a href="#" class="ui-btn ui-shadow ui-corner-all  ui-mini"><img src="img/contoh icon.png" height="80px"></a></div>
+          <div class="ui-block-a"><a href="#blog" class="ui-btn ui-shadow ui-corner-all  ui-mini"><img src="img/contoh icon.png" height="80px"></a></div>
+          <div class="ui-block-b"><a href="#hubungikami" class="ui-btn ui-shadow ui-corner-all  ui-mini"><img src="img/contoh icon.png" height="80px"></a></div>
         </div>
         <div class="ui-grid-b">
-          <div class="ui-block-a"><label for="blog">Blog</label></div>
-          <div class="ui-block-b"><label for="hubungikami">Hubungi Kami</label></div>
+          <div class="ui-block-a text-menu">Blog</div>
+          <div class="ui-block-b text-menu">Hubungi Kami</div>
         </div>
       </div>
     
@@ -120,6 +122,25 @@
           <a href="#demo-links" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a>
         </div>
       </div>
+
+      <div data-role="popup" id="popupEstimasiServis" data-theme="a" class="ui-corner-all" data-dismissible="false">
+        <form>
+          <div style="padding: 25px 25px;">
+            <h3>Estimasi Servis</h3>
+            <input type="text" name="" id="" value="" placeholder="Tipe Kendaraan">
+            <input type="text" name="" id="" value="" placeholder="Jenis Mesin">
+            <input type="text" name="" id="" value="" placeholder="Jenis Servis">
+            <input type="text" name="" id="" value="" placeholder="Tipe Produk Servis">
+            <h3>Harga : </h3>
+            <input type="text" disabled="disabled" name="" id="" value="" placeholder="Detail Produk">
+            <p>Alat bantu ini hanya sebagai perkiraan. Kami sangat menyarankan Anda mengunjungi cabang kami terdekat, untuk merekomendasikan produk terbaik untuk kendaraan anda</p>
+            <p>Terima Kasih</p>
+            <a href="#" data-rel="back" class="ui-btn ui-btn-inline ui-corner-all">Tutup</a>
+            <input type="reset" data-inline="true" value="Hapus">
+          </div>
+        </form>
+      </div>
+
     </div>
 
     <div data-role="page" id="cabang" data-theme="a">
@@ -136,11 +157,11 @@
 
       <h2>Cabang</h2>
 
-      <a href="#cabang-detail"><img src="img/banner.png" width="100%"></a>
-      <a href="#"><img src="img/banner.png" alt="" width="100%"></a>
-      <a href="#"><img src="img/banner.png" alt="" width="100%"></a>
-      <a href="#"><img src="img/banner.png" alt="" width="100%"></a>
-      <a href="#"><img src="img/banner.png" alt="" width="100%"></a>
+      <a href="#cabang-detail"><img src="img/banner.png" alt="" width="100%"></a>
+      <a href="#cabang-detail"><img src="img/banner.png" alt="" width="100%"></a>
+      <a href="#cabang-detail"><img src="img/banner.png" alt="" width="100%"></a>
+      <a href="#cabang-detail"><img src="img/banner.png" alt="" width="100%"></a>
+      <a href="#cabang-detail"><img src="img/banner.png" alt="" width="100%"></a>
     </div>
 
     <div data-role="page" id="cabang-detail" data-theme="a" data-url="map-page">
@@ -160,9 +181,8 @@
       <div role="main" class="ui-content" id="map-canvas">
         <!-- map loads here... -->
 
-        <p>Jl. Harapan Indah Raya, Rt 0003/007 Pejuang, Medan Satria,
-          Kota Bekasi, Jawa Barat 17132
-        </p>
+        <p>Jl. Harapan Indah Raya, Rt 0003/007 Pejuang, Medan Satria,</p>
+        <p>Kota Bekasi, Jawa Barat 17132</p>
 
       </div>
     </div>
@@ -181,9 +201,9 @@
 
       <h2>Produk</h2>
 
-      <form>
+      <div role="main" class="ui-content">
         <input type="search" data-mini="true" name="" id="" value="" placeholder="Cari di Mobeng">
-        <table data-role="table" id="">
+        <table data-role="table" id="" data-mode="reflow" class="ui-responsive">
           <tr>
             <td>Oli</td>
           </tr>
@@ -197,8 +217,189 @@
             <td>Other</td>
           </tr>
         </table>
-      </form>
+      </div> 
 
+    </div>
+
+    <div data-role="page" id="promosi" data-theme="a">
+      <div data-role="header" data-position="fixed">
+        <h1>MOBENG</h1>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
+          <a href="#dashboard"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
+        </div>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+          <a href="#"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
+        </div>
+      </div>
+
+      <h2>Promosi</h2>
+
+      <img src="img/banner.png" alt="promosi" width="100%">
+      <hr box-align="center" size="2px" width="90%" color="black" />
+
+      <div class="ui-field-contain">
+        <select name="" id="">
+          <option value="">Promosi Cabang Mobeng</option>
+          <option value="">Mobeng Harapan Indah</option>
+          <option value="">Mobeng BSD</option>
+          <option value="">Mobeng Serpong</option>
+          <option value="">Mobeng Jemursari</option>
+          <option value="">Mobeng Citraland</option>
+          <option value="">Mobeng Sawangan</option>
+          <option value="">Mobeng Jatibening</option>
+          <option value="">Mobeng Ciputat</option>
+          <option value="">Mobeng Cinere</option>
+          <option value="">Mobeng Karawaci</option>
+        </select>
+      </div>
+      
+    </div>
+
+    <div data-role="page" id="riwayat" data-theme="a">
+      <div data-role="header" data-position="fixed">
+        <h1>MOBENG</h1>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
+          <a href="#dashboard"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
+        </div>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+          <a href="#"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
+        </div>
+      </div>
+
+      <h2>Riwayat</h2>
+
+      <div role="main" class="ui-content">
+        <div class="card-riwayat">
+          <div class="item">No Invoice</div>
+          <div class="item">Tanggal</div>
+          <div class="item">Customer</div>
+          <div class="item">No Polis</div>
+          <div class="item">Km</div>
+          <div class="item">Type</div>
+          <a href="#" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>
+          <div class="item float-right">Total Transaksi : <span class="price">Rp. 2.000.000</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div data-role="page" id="reminder" data-theme="a">
+      <div data-role="header" data-position="fixed">
+        <h1>MOBENG</h1>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
+          <a href="#dashboard"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
+        </div>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+          <a href="#"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
+        </div>
+      </div>
+
+      <h2>Reminder</h2>
+
+      <div role="main" class="ui-content">
+        <div class="card-riwayat">
+          <div class="item">Servis</div>
+          <div class="item">Tanggal</div>
+          <div class="item">Kendaraan</div>
+          <div class="item">KM</div>
+          <div class="item">Oli</div>
+          <div class="item">Waktu</div>
+          <div class="item">Notes</div>
+          <a href="#" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>
+        </div>
+      </div>
+    </div>
+
+    <div data-role="page" id="reminder" data-theme="a">
+      <div data-role="header" data-position="fixed">
+        <h1>MOBENG</h1>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
+          <a href="#dashboard"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
+        </div>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+          <a href="#"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
+        </div>
+      </div>
+
+      <h2>Reminder</h2>
+
+      <div role="main" class="ui-content">
+        <div class="card-riwayat">
+          <div class="item">Servis</div>
+          <div class="item">Tanggal</div>
+          <div class="item">Kendaraan</div>
+          <div class="item">KM</div>
+          <div class="item">Oli</div>
+          <div class="item">Waktu</div>
+          <div class="item">Notes</div>
+          <a href="#" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>
+        </div>
+      </div>
+    </div>
+
+    <div data-role="page" id="blog" data-theme="a">
+      <div data-role="header" data-position="fixed">
+        <h1>MOBENG</h1>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
+          <a href="#dashboard"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
+        </div>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+          <a href="#"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
+        </div>
+      </div>
+
+      <h2>Blog</h2>
+
+      <img src="img/banner.png" alt="blog" width="100%">
+
+      <div role="main" class="ui-content">
+        <div class="card-blog">
+          <div class="item">Nyuci Mobil Minim Sentuhan Tangan</div>
+        </div>
+      </div>
+    </div>
+
+    <div data-role="page" id="hubungikami" data-theme="a">
+      <div data-role="header" data-position="fixed">
+        <h1>MOBENG</h1>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
+          <a href="#dashboard"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
+        </div>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+          <a href="#"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
+        </div>
+      </div>
+
+      <h2>Hubungi Kami</h2>
+
+      <div role="main" class="ui-content">
+        <form action="" method="">
+          <label for="fullname">
+            Full Name<i class="fas fa-user"></i>
+          </label>
+          <input type="text" name="" id="">
+          <label for="email">
+            E-mail<i class="fas fa-envelope"></i>
+          </label>
+          <input type="text" name="" id="">
+          <label for="subject">
+            Subject<i class="fas fa-flag"></i>
+          </label>
+          <input type="text" name="" id="">
+          <label for="message">
+            Message <i class="far fa-file-alt"></i>
+          </label>
+          <textarea cols="40" rows="20" name="" id=""></textarea>
+          <label>
+            <input type="checkbox" name="" data-mini="true">Send a copy to my e-mail address
+          </label>
+          <input type="submit" value="Send Message" />
+        </form>
       </div>
     </div>
 
