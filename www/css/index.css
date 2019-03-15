@@ -13,6 +13,11 @@
   padding-top: 10px !important;
 }
 
+img.menu {
+  display: flex;
+  padding: 20px 20px 20px 20px; 
+}
+
 .fas {
   padding-top: 13px;
   padding-right: 8px;
@@ -21,6 +26,16 @@
 
 .fa-bell {
   padding-right: 25px;
+}
+
+#bgLogin {
+  background-image: url("/img/login.jpg");
+  width: 100%;
+  height: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -1;
 }
 
 .text-menu {
