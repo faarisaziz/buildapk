@@ -18,46 +18,92 @@
 <body>
   <div class="app">
 
-    <div data-role="page" id="login" data-theme="a">
+    <div data-role="page" id="splash" data-theme="a">
+      <img src="img/loading.jpg" alt="loading" style="width:100%">
+    </div>
+
+    <div data-role="page" id="login" class="bgGreen" data-theme="a">
       <div role="main" class="ui-content">
+        <img class="logo" src="img/logo-mobeng.png" alt="logo">
         <div class="card">
-          <div data-role="navbar" id="navh1">
-            <ul>
-              <li><a href="#dashboard">dashboard</a></li>
-            </ul>
-          </div>
-          <form action="" method="">
-            <input type="number" name="" id="" placeholder="No Telp">
-            <input type="password" name="" id="" placeholder="Password">
-            <a href="#">Forgot password ?</a>
-            <input type="submit" value="Log In" />
-            <a href="#signup" data-role="button">Sign Up</a>
+          <form action="#dashboard" method="">
+            <input type="number" name="" id="" data-wrapper-class="ui-custom" placeholder="&#xf0e0; No Telp">
+            <input type="password" name="" id="" data-wrapper-class="ui-custom" placeholder="&#xf023; Password">
+            <a href="#dashboard" class="pull-right">Forgot password ?</a>
+            <button type="submit" class="ui-btn btn-blue">Log in</button>
+            <a href="#signup" class="ui-btn btn-green">Sign Up</a>
           </form>
         </div>
       </div>
     </div>
 
-    <div data-role="page" id="signup" data-theme="a">
-      <div data-role="header">
-        <h1>MOBENG</h1>
-      </div>
-      
+    <div data-role="page" id="signup" class="bgGreen" data-theme="a">
       <div role="main" class="ui-content">
-        <form action="" method="">
-          <input type="text" name="" id="" placeholder="Username">
-          <input type="number" name="" id="" placeholder="No Telephone">
-          <input type="text" name="" id="" placeholder="Email">
-          <input type="password" name="" id="" placeholder="Password">
-          <label>
-            <input type="checkbox" name="" data-mini="true">I'm not robot
-          </label>
-          <input type="submit" value="Verify" />
-        </form>
+        <img class="logo" src="img/logo-mobeng.png" alt="logo">
+        <div class="card">
+          <form action="" method="">
+            <input type="text" name="" id="" data-wrapper-class="ui-custom" placeholder="Username">
+            <input type="number" name="" id="" data-wrapper-class="ui-custom" placeholder="No Telephone">
+            <input type="text" name="" id="" data-wrapper-class="ui-custom" placeholder="Email">
+            <input type="password" name="" id="" data-wrapper-class="ui-custom" placeholder="Password">
+            <label>
+              <input type="checkbox" name="" data-mini="true">I'm not robot
+            </label>
+            <button type="submit" class="ui-btn btn-blue">Verify</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div data-role="page" id="verify" class="bgGreen" data-theme="a">
+      <div role="main" class="ui-content">
+        <img class="logo" src="img/logo-mobeng.png" alt="logo">
+        <div class="card">
+          <form action="" method="">
+            <div class="item">Verifikasi Nomor Ponsel</div>
+            <br>
+            <div class="item">Masukan kode verifikasi yang</div>
+            <div class="item">diterima pada nomor ponsel</div>
+            <div class="item">anda melalui SMS</div>
+            <div data-role="fieldcontain" data-type="horizontal" class="card-verifikasi">
+              <input type="text" name="" id="" data-wrapper-class="ui-custom ui-verifikasi" maxlength="1">
+              <input type="text" name="" id="" data-wrapper-class="ui-custom ui-verifikasi" maxlength="1">
+            </div>
+            <div class="item">Masukan 6 Digit</div>
+            <br>
+            <div class="item">Tidak menerima kode verifikasi ?</div>
+            <div class="item"><a href="#">tekan disini</a></div>
+            <div class="item">untuk mengirim ulang</div>
+            <br>
+            <button type="submit" class="ui-btn btn-blue">Next</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div data-role="page" id="profile" class="bgGreen" data-theme="a">
+      <div role="main" class="ui-content">
+        <img class="logo" src="img/logo-mobeng.png" alt="logo">
+        <div class="card">
+          <form action="" method="">
+            <input type="text" name="" id="" data-wrapper-class="ui-custom" placeholder="Username">
+            <input type="number" name="" id="" data-wrapper-class="ui-custom" placeholder="No Telephone">
+            <input type="text" name="" id="" data-wrapper-class="ui-custom" placeholder="Email">
+            <input type="text" data-role="date">
+            <div class="ui-grid-a">
+              <div class="ui-block-a"><input type="radio" name="" id="">Male</div>
+              <div class="ui-block-b"><input type="radio" name="" id="">Female</div>
+            </div>
+            <input type="text" name="" id="" placeholder="Your Vehicle">
+            <br>
+            <button type="submit" class="ui-btn btn-blue">Verify</button>
+          </form>
+        </div>
       </div>
     </div>
 
     <div data-role="page" class="jqm-demos" id="dashboard" data-title="MOBENG">
-      <div data-role="header" data-position="fixed">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
         <h1>MOBENG</h1>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
           <a href="#"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
@@ -131,7 +177,7 @@
             <input type="text" disabled="disabled" name="" id="" value="" placeholder="Detail Produk">
             <p>Alat bantu ini hanya sebagai perkiraan. Kami sangat menyarankan Anda mengunjungi cabang kami terdekat, untuk merekomendasikan produk terbaik untuk kendaraan anda</p>
             <p>Terima Kasih</p>
-            <a href="#" data-rel="back" class="ui-btn ui-btn-inline ui-corner-all">Tutup</a>
+            <a href="#" data-rel="back" class="ui-btn btn-red ui-btn-inline ui-corner-all">Tutup</a>
             <input type="reset" data-inline="true" value="Hapus">
           </div>
         </form>
@@ -140,7 +186,7 @@
     </div>
 
     <div data-role="page" id="cabang" data-theme="a">
-      <div data-role="header" data-position="fixed">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
         <h1>MOBENG</h1>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
           <a href="#dashboard"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
@@ -153,15 +199,26 @@
 
       <h2>Cabang</h2>
 
-      <a href="#cabang-detail"><img src="img/banner.png" alt="" width="100%"></a>
-      <a href="#cabang-detail"><img src="img/banner.png" alt="" width="100%"></a>
-      <a href="#cabang-detail"><img src="img/banner.png" alt="" width="100%"></a>
-      <a href="#cabang-detail"><img src="img/banner.png" alt="" width="100%"></a>
-      <a href="#cabang-detail"><img src="img/banner.png" alt="" width="100%"></a>
+      <div class="container-cabang">
+        <a href="#cabang-detail"><img src="img/banner.png" alt="" width="100%"></a>
+        <div class="text-cabang">Mobeng Harapan Indah</div>
+      </div>
+      <div class="container-cabang">
+        <a href="#cabang-detail"><img src="img/banner.png" alt="" width="100%"></a>
+        <div class="text-cabang">Mobeng Jatibening</div>
+      </div>
+      <div class="container-cabang">
+        <a href="#cabang-detail"><img src="img/banner.png" alt="" width="100%"></a>
+        <div class="text-cabang">Mobeng Serpong</div>
+      </div>
+      <div class="container-cabang">
+        <a href="#cabang-detail"><img src="img/banner.png" alt="" width="100%"></a>
+        <div class="text-cabang">Mobeng BSD</div>
+      </div>
     </div>
 
     <div data-role="page" id="cabang-detail" data-theme="a" data-url="map-page">
-      <div data-role="header" data-position="fixed">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
         <h1>MOBENG</h1>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
           <a href="#cabang"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
@@ -184,7 +241,7 @@
     </div>
 
     <div data-role="page" id="produk" data-theme="a">
-      <div data-role="header" data-position="fixed">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
         <h1>MOBENG</h1>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
           <a href="#dashboard"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
@@ -205,7 +262,7 @@
     </div>
 
     <div data-role="page" id="promosi" data-theme="a">
-      <div data-role="header" data-position="fixed">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
         <h1>MOBENG</h1>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
           <a href="#dashboard"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
@@ -240,7 +297,7 @@
     </div>
 
     <div data-role="page" id="riwayat" data-theme="a">
-      <div data-role="header" data-position="fixed">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
         <h1>MOBENG</h1>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
           <a href="#dashboard"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
@@ -268,7 +325,7 @@
     </div>
 
     <div data-role="page" id="reminder" data-theme="a">
-      <div data-role="header" data-position="fixed">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
         <h1>MOBENG</h1>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
           <a href="#dashboard"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
@@ -296,7 +353,7 @@
     </div>
 
     <div data-role="page" id="reminder" data-theme="a">
-      <div data-role="header" data-position="fixed">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
         <h1>MOBENG</h1>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
           <a href="#dashboard"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
@@ -324,7 +381,7 @@
     </div>
 
     <div data-role="page" id="blog" data-theme="a">
-      <div data-role="header" data-position="fixed">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
         <h1>MOBENG</h1>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
           <a href="#dashboard"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
@@ -347,7 +404,7 @@
     </div>
 
     <div data-role="page" id="hubungikami" data-theme="a">
-      <div data-role="header" data-position="fixed">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
         <h1>MOBENG</h1>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
           <a href="#dashboard"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
@@ -381,7 +438,7 @@
           <label>
             <input type="checkbox" name="" data-mini="true">Send a copy to my e-mail address
           </label>
-          <input type="submit" value="Send Message" />
+          <button type="submit" class="ui-btn btn-blue">Send Message</button>
         </form>
       </div>
     </div>

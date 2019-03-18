@@ -15,7 +15,33 @@
 
 img.menu {
   display: flex;
-  padding: 20px 20px 20px 20px; 
+  margin: 20px auto;
+}
+
+.container-cabang {
+  position: relative;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.btn-blue {
+  border-radius: 20px;
+  background-color: #0772B7 !important;
+  color: #fff !important;
+  font-weight: 100 !important;
+}
+
+.btn-green {
+  border-radius: 20px;
+  background-color: #7dbf43 !important;
+  color: #fff !important;
+  font-weight: 100 !important;
+}
+
+.btn-red {
+  background-color: #EB2026 !important;
+  color: #fff !important;
+  font-weight: 100 !important;
 }
 
 .fas {
@@ -28,19 +54,36 @@ img.menu {
   padding-right: 25px;
 }
 
-#bgLogin {
-  background-image: url("/img/login.jpg");
-  width: 100%;
-  height: auto;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: absolute;
-  z-index: -1;
+.bgGreen {
+  background-color: #7dbf43 !important;
+  padding-bottom: 20px;
+}
+
+img.logo {
+  display: block;
+  width: 45%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.pull-right {
+  float: right;
+  font-size: 12px;
 }
 
 .text-menu {
   font-size: 12px;
   text-align: center;
+}
+
+.text-cabang {
+  font-size: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 h1 {
@@ -53,8 +96,25 @@ h2 {
 }
 
 .card {
-  border-radius: 20px !important;
-  color: #7dbf43;
+  background-color: #fff;
+  border-radius: 25px;
+  padding: 30px 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.card .item {
+  text-align: center;
+}
+
+.card .card-verifikasi {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: 1px solid black !important;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .card-riwayat {
@@ -65,7 +125,7 @@ h2 {
   text-shadow: none;
 }
 
-.card-riwayat .item{
+.card-riwayat .item {
   font-size: 12px;
   font-weight: 50 !important;
 }
@@ -80,6 +140,11 @@ h2 {
   float: right;
 }
 
+.card-blog {
+  border: black;
+  border-radius: 20px;
+}
+
 .btn-riwayat {
   background-color: #7dbf43 !important;
   color: #fff !important;
@@ -90,7 +155,25 @@ h2 {
   margin-top: 10px !important;
 }
 
-.card-blog {
-  border: black;
-  border-radius: 20px;
+.ui-input-text.ui-custom {
+  border: none;
+  box-shadow: none;
+  border-bottom: 2px solid black;
+}
+
+.ui-input-text.ui-custom.ui-verifikasi {
+  width: 30px;
+  font-size: 20px;
+}
+
+textarea, input {
+  padding:10px;
+	font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+}
+
+.ui-mobile, .ui-mobile body {
+  height: 80% !important;
 }

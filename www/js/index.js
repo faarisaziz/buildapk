@@ -17,5 +17,13 @@ var app = {
       autoplay: true, autoplaySpeed: 5000,
       centerMode: true
     });
+    
+    $(function() {
+      setTimeout(hideSplash, 2000);
+    });
+    
+    function hideSplash() {
+      $.mobile.changePage("#login", "fade");
+    }
   }
 };
