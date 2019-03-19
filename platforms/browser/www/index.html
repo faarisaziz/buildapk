@@ -17,8 +17,6 @@
 
 <body>
   <div class="app">
-<<<<<<< Updated upstream
-
     <div data-role="page" id="splash" data-theme="a">
       <img src="img/loading.jpg" alt="loading" style="width:100%">
     </div>
@@ -28,21 +26,12 @@
         <img class="logo" src="img/logo-mobeng.png" alt="logo">
         <div class="card">
           <form action="#dashboard" method="">
-            <input type="number" name="" id="" data-wrapper-class="ui-custom" placeholder="&#xf0e0; No Telp">
-            <input type="password" name="" id="" data-wrapper-class="ui-custom" placeholder="&#xf023; Password">
+            <input type="number" name="" id="login-phone" data-wrapper-class="ui-custom" placeholder="&#xf0e0; No Telp">
+            <input type="password" name="" id="login-password" data-wrapper-class="ui-custom" placeholder="&#xf023; Password">
             <a href="#dashboard" class="pull-right">Forgot password ?</a>
             <button type="submit" class="ui-btn btn-blue">Log in</button>
             <a href="#signup" class="ui-btn btn-green">Sign Up</a>
           </form>
-=======
-    <div data-role="page" id="login" data-theme="a">
-      <div data-role="header">
-        <h1>MOBENG</h1>
-        <div data-role="navbar" id="navh1">
-          <ul>
-            <li><a href="#dashboard">dashboard</a></li>
-          </ul>
->>>>>>> Stashed changes
         </div>
       </div>
     </div>
@@ -52,10 +41,10 @@
         <img class="logo" src="img/logo-mobeng.png" alt="logo">
         <div class="card">
           <form action="" method="">
-            <input type="text" name="" id="" data-wrapper-class="ui-custom" placeholder="Username">
-            <input type="number" name="" id="" data-wrapper-class="ui-custom" placeholder="No Telephone">
-            <input type="text" name="" id="" data-wrapper-class="ui-custom" placeholder="Email">
-            <input type="password" name="" id="" data-wrapper-class="ui-custom" placeholder="Password">
+            <input type="text" name="" id="signup-username" data-wrapper-class="ui-custom" placeholder="Username">
+            <input type="number" name="" id="signup-phone" data-wrapper-class="ui-custom" placeholder="No Telephone">
+            <input type="text" name="" id="signup-email" data-wrapper-class="ui-custom" placeholder="Email">
+            <input type="password" name="" id="signup-password" data-wrapper-class="ui-custom" placeholder="Password">
             <label>
               <input type="checkbox" name="" data-mini="true">I'm not robot
             </label>
@@ -76,8 +65,8 @@
             <div class="item">diterima pada nomor ponsel</div>
             <div class="item">anda melalui SMS</div>
             <div data-role="fieldcontain" data-type="horizontal" class="card-verifikasi">
-              <input type="text" name="" id="" data-wrapper-class="ui-custom ui-verifikasi" maxlength="1">
-              <input type="text" name="" id="" data-wrapper-class="ui-custom ui-verifikasi" maxlength="1">
+              <input type="text" name="" id="verify-1" data-wrapper-class="ui-custom ui-verifikasi" maxlength="1">
+              <input type="text" name="" id="verify-2" data-wrapper-class="ui-custom ui-verifikasi" maxlength="1">
             </div>
             <div class="item">Masukan 6 Digit</div>
             <br>
@@ -96,15 +85,15 @@
         <img class="logo" src="img/logo-mobeng.png" alt="logo">
         <div class="card">
           <form action="" method="">
-            <input type="text" name="" id="" data-wrapper-class="ui-custom" placeholder="Username">
-            <input type="number" name="" id="" data-wrapper-class="ui-custom" placeholder="No Telephone">
-            <input type="text" name="" id="" data-wrapper-class="ui-custom" placeholder="Email">
+            <input type="text" name="" id="profile-username" data-wrapper-class="ui-custom" placeholder="Username">
+            <input type="number" name="" id="profile-phone" data-wrapper-class="ui-custom" placeholder="No Telephone">
+            <input type="text" name="" id="profile-email" data-wrapper-class="ui-custom" placeholder="Email">
             <input type="text" data-role="date">
             <div class="ui-grid-a">
-              <div class="ui-block-a"><input type="radio" name="" id="">Male</div>
-              <div class="ui-block-b"><input type="radio" name="" id="">Female</div>
+              <div class="ui-block-a"><input type="radio" name="" id="gender-male">Male</div>
+              <div class="ui-block-b"><input type="radio" name="" id="gender-female">Female</div>
             </div>
-            <input type="text" name="" id="" placeholder="Your Vehicle">
+            <input type="text" name="" id="profile-vehicle" placeholder="Your Vehicle">
             <br>
             <button type="submit" class="ui-btn btn-blue">Verify</button>
           </form>
@@ -179,12 +168,12 @@
         <form>
           <div style="padding: 25px 25px;">
             <h3>Estimasi Servis</h3>
-            <input type="text" name="" id="" value="" placeholder="Tipe Kendaraan">
-            <input type="text" name="" id="" value="" placeholder="Jenis Mesin">
-            <input type="text" name="" id="" value="" placeholder="Jenis Servis">
-            <input type="text" name="" id="" value="" placeholder="Tipe Produk Servis">
+            <input type="text" name="" id="profile-type" value="" placeholder="Tipe Kendaraan">
+            <input type="text" name="" id="profile-machine" value="" placeholder="Jenis Mesin">
+            <input type="text" name="" id="profile-service" value="" placeholder="Jenis Servis">
+            <input type="text" name="" id="profile-product" value="" placeholder="Tipe Produk Servis">
             <h3>Harga : </h3>
-            <input type="text" disabled="disabled" name="" id="" value="" placeholder="Detail Produk">
+            <input type="text" disabled="disabled" name="" id="profile-detail" value="" placeholder="Detail Produk">
             <p>Alat bantu ini hanya sebagai perkiraan. Kami sangat menyarankan Anda mengunjungi cabang kami terdekat, untuk merekomendasikan produk terbaik untuk kendaraan anda</p>
             <p>Terima Kasih</p>
             <a href="#" data-rel="back" class="ui-btn btn-red ui-btn-inline ui-corner-all">Tutup</a>
@@ -265,10 +254,8 @@
       <h2>Produk</h2>
 
       <div role="main" class="ui-content">
-        <input type="search" data-mini="true" name="" id="" value="" placeholder="Cari di Mobeng">
-        
+        <input type="search" data-mini="true" name="" id="search-content" value="" placeholder="Cari di Mobeng">
       </div> 
-
     </div>
 
     <div data-role="page" id="promosi" data-theme="a">
@@ -289,7 +276,7 @@
       <hr box-align="center" size="2px" width="90%" color="black" />
 
       <div class="ui-field-contain">
-        <select name="" id="">
+        <select name="" id="promotion-select">
           <option value="">Promosi Cabang Mobeng</option>
           <option value="">Mobeng Harapan Indah</option>
           <option value="">Mobeng BSD</option>
@@ -432,19 +419,19 @@
           <label for="fullname">
             Full Name<i class="fas fa-user"></i>
           </label>
-          <input type="text" name="" id="">
+          <input type="text" name="" id="contact-name">
           <label for="email">
             E-mail<i class="fas fa-envelope"></i>
           </label>
-          <input type="text" name="" id="">
+          <input type="text" name="" id="contact-email">
           <label for="subject">
             Subject<i class="fas fa-flag"></i>
           </label>
-          <input type="text" name="" id="">
+          <input type="text" name="" id="contact-subject">
           <label for="message">
             Message <i class="far fa-file-alt"></i>
           </label>
-          <textarea cols="40" rows="20" name="" id=""></textarea>
+          <textarea cols="40" rows="20" name="" id="contact-message"></textarea>
           <label>
             <input type="checkbox" name="" data-mini="true">Send a copy to my e-mail address
           </label>
