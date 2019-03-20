@@ -25,5 +25,12 @@ var app = {
     function hideSplash() {
       $.mobile.changePage("#login", "fade");
     }
+
+    moveOnMax =function (field, nextFieldID) {
+      if (field.value.length == 1) {
+          document.getElementById(nextFieldID).focus();
+      }
+    }
+    
   }
 };

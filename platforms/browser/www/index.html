@@ -65,9 +65,15 @@
             <div class="item">Masukan kode verifikasi yang</div>
             <div class="item">diterima pada nomor ponsel</div>
             <div class="item">anda melalui SMS</div>
-            <div data-role="fieldcontain" data-type="horizontal" class="card-verifikasi">
-              <input type="text" name="" id="" data-wrapper-class="ui-custom ui-verifikasi" maxlength="1">
-              <input type="text" name="" id="" data-wrapper-class="ui-custom ui-verifikasi" maxlength="1">
+            <div data-role="fieldcontain" class="card-verifikasi">
+              <fieldset data-role="controlgroup" data-type="horizontal" class="aside">
+                <input type="text" maxlength="1" id="1" data-wrapper-class="input-otp" onkeyup="moveOnMax(this,'a')" />
+                <input type="text" maxlength="1" id="a" data-wrapper-class="input-otp" onkeyup="moveOnMax(this,'b')" />
+                <input type="text" maxlength="1" id="b" data-wrapper-class="input-otp" onkeyup="moveOnMax(this,'c')" />
+                <input type="text" maxlength="1" id="c" data-wrapper-class="input-otp" onkeyup="moveOnMax(this,'d')" />
+                <input type="text" maxlength="1" id="d" data-wrapper-class="input-otp" onkeyup="moveOnMax(this,'e')" />
+                <input type="text" maxlength="1" id="e" data-wrapper-class="input-otp" />
+              </fieldset>
             </div>
             <div class="item">Masukan 6 Digit</div>
             <br>
@@ -234,8 +240,11 @@
       <div role="main" class="ui-content" id="map-canvas">
         <!-- map loads here... -->
 
-        <p>Jl. Harapan Indah Raya, Rt 0003/007 Pejuang, Medan Satria,</p>
-        <p>Kota Bekasi, Jawa Barat 17132</p>
+        <div class="text-cabang-normal">Jl. Harapan Indah Raya, Rt 0003/007 Pejuang, Medan Satria,</div>
+        <div class="text-cabang-normal">Kota Bekasi, Jawa Barat 17132</div>
+        <div class="text-cabang-bold">Email : mobeng.harpin@mobeng.co.id</div>
+        <div class="text-cabang-bold">Call : 021 8886 6370</div>
+        <div class="text-cabang-bold">Phone : 0815 8672 1386</div>
 
       </div>
     </div>
@@ -446,18 +455,53 @@
       <div role="main" class="ui-content">
         <div class="card-blog">
           <img src="img/logo.png" alt="" width="80px">
-          <span class="item-text-date">Selasa, 8 Januari 2019</span>
-          <div class="item-text-judul">Nyuci Mobil Minim Sentuhan Tangan, Bagaimana Caranya?</div>
-          <div class="item-text">"Tahapan cuci mobil konvensional biasanya mobil dibilas dengan air 
-            dulu. Setelah air, masuk ke tahap sampo. Habis itu mobil akan disabuni 
-            dengan digosok sama teknisi cuci untuk menghilangkan kotoran yang 
-            ada di permukaan cat. Keempat dibilas lagi, kelima baru dilap," buka
+          <div class="item">
+            <span class="item-text-date">Selasa, 8 Januari 2019</span>
+            <div class="item-text-judul">Nyuci Mobil Minim Sentuhan Tangan, Bagaimana Caranya?</div>
+            <div class="item-text">"Tahapan cuci mobil konvensional biasanya 
+            mobil dibilas dengan air dulu. Setelah 
+            air, masuk ke tahap sampo. Habis itu 
+            mobil akan disabuni dengan digosok sama 
+            teknisi cuci untuk menghilangkan kotoran 
+            yang ada di permukaan cat. Keempat dibilas 
+            lagi, kelima baru dilap," buka
+            </div>
+            <div class="item-text-link"><a href="#blog-detail">Baca Selengkapnya ...</a></div>
           </div>
         </div>
         <div class="card-blog">
           <img src="img/logo.png" alt="" width="80px">
           <div class="item-text-judul">Hati-hati! Ban Biasa Dipasang di Mobil Listrik Lebih Cepat Aus30%</div>
         </div>
+        <div class="coba-card">
+          <span>
+            <span>
+              <img src="img/logo.png" alt="" style="max-width: 130px">
+              "Tahapan cuci mobil konvensional biasanya mobil dibilas dengan air dulu. Setelah air, masuk ke tahap sampo. Habis itu mobil akan disabuni dengan digosok sama teknisi cuci untuk menghilangkan kotoran yang ada di permukaan cat. Keempat dibilas lagi, kelima baru dilap," buka
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div data-role="page" id="blog-detail" data-theme="a">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
+        <h1>MOBENG</h1>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
+          <a href="#blog"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
+        </div>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+          <a href="#"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
+        </div>
+      </div>
+
+      <h2>Blog - detail</h2>
+
+      <img src="img/engine1.jpg" alt="blog" width="100%" height="200px">
+
+      <div role="main" class="ui-content">
+        Jakarta - Kekhawatiran mobil akan terjatuh saat dicuci dengan sistem hidrolik terus membayangi pemilik mobil.
       </div>
     </div>
 
@@ -498,6 +542,11 @@
           </label>
           <button type="submit" class="ui-btn btn-blue">Send Message</button>
         </form>
+        <div class="text-hubungi-ho">Head Office</div>
+        <div class="text-hubungi-pt">PT. Surga Mobil Indonesia</div>
+        <div class="text-hubungi-alamat">Jl. Pulo Buaran Raya Block III EE Kav. 2 - 3 - 6</div>
+        <div class="text-hubungi-alamat">Cakung, Jakarta Timur, Jakarta 13930</div>
+        <div class="text-hubungi-alamat">Telp : 0888 777 8989</div>
       </div>
     </div>
 

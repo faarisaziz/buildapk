@@ -81,14 +81,42 @@ img.logo {
 .text-cabang {
   font-size: 20px;
   position: absolute;
-  top: 60px;
+  top: 50%;
   text-align: left;
   width: 100%;
   padding-left: 20px;
 }
 
+.text-cabang-normal {
+  font-size: 14px;
+  font-weight: 100;
+  margin-bottom: 10px;
+}
+
+.text-cabang-bold {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
 .text-riwayat {
   margin-left: 20px;
+}
+
+.text-hubungi-ho {
+  font-weight: 900;
+  font-size: 15px;
+  margin-top: 50px;
+}
+
+.text-hubungi-pt {
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.text-hubungi-alamat {
+  font-weight: 300;
+  font-size: 12px;
 }
 
 h1 {
@@ -149,6 +177,14 @@ h2 {
   border: 1px solid black;
   margin: 10px 15px 15px 15px;
   text-shadow: none;
+  height: 200px;
+}
+
+.card-blog .item {
+  /* border: 1px solid black; */
+  text-shadow: none;
+  float: right;
+  width: 220px;
 }
 
 .card-blog .item-text-judul {
@@ -158,7 +194,14 @@ h2 {
 }
 
 .card-blog .item-text-date {
-  float: right;
+  /* float: right; */
+  font-size: 8px;
+  color: black;
+}
+
+.card-blog .item-text-link {
+  margin-top: 5px;
+  margin-bottom: 5px;
   font-size: 8px;
   color: black;
 }
@@ -178,25 +221,32 @@ h2 {
   margin-top: 10px !important;
 }
 
-.ui-input-text.ui-custom {
-  border: none;
-  box-shadow: none;
-  border-bottom: 2px solid black;
+.aside .ui-input-text {
+  display:inline-block;
 }
 
-.ui-input-text.ui-custom.ui-verifikasi {
-  width: 30px;
-  font-size: 20px;
-}
-
-textarea, input {
-  padding:10px;
-	font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    text-decoration: inherit;
+.input-otp {
+  width: 25px !important;
 }
 
 .ui-mobile, .ui-mobile body {
   height: 80% !important;
+}
+
+/* coba-coba carding untuk blog */
+.coba-card {
+  position: static;
+  display: block;
+  max-width: 400px;
+  padding: 15px 15px 15px 160px;
+  margin: 2rem 0;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: left;
+  background-color: rgba(0,0,0, .05);
+}
+
+.coba-card img {
+  float: left;
 }
