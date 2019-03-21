@@ -29,7 +29,7 @@
           <form action="#dashboard" method="">
             <input type="number" name="" id="" data-wrapper-class="ui-custom" placeholder="&#xf0e0; No Telp">
             <input type="password" name="" id="" data-wrapper-class="ui-custom" placeholder="&#xf023; Password">
-            <a href="#dashboard" class="pull-right">Forgot password ?</a>
+            <a href="#dashboard" class="text-forgot">Forgot password ?</a>
             <button type="submit" class="ui-btn btn-blue">Log in</button>
             <a href="#signup" class="ui-btn btn-green">Sign Up</a>
           </form>
@@ -78,7 +78,7 @@
             <div class="item">Masukan 6 Digit</div>
             <br>
             <div class="item">Tidak menerima kode verifikasi ?</div>
-            <div class="item"><a href="#">tekan disini</a></div>
+            <div class="item"><a href="#" class="text-tekan-disini">tekan disini</a></div>
             <div class="item">untuk mengirim ulang</div>
             <br>
             <button type="submit" class="ui-btn btn-blue">Next</button>
@@ -95,14 +95,18 @@
             <input type="text" name="" id="" data-wrapper-class="ui-custom" placeholder="Username">
             <input type="number" name="" id="" data-wrapper-class="ui-custom" placeholder="No Telephone">
             <input type="text" name="" id="" data-wrapper-class="ui-custom" placeholder="Email">
-            <input type="text" data-role="date">
+            <input type="date" data-clear-btn="false" name="" id="" value="" placeholder="birth">
             <div class="ui-grid-a">
-              <div class="ui-block-a"><input type="radio" name="" id="">Male</div>
-              <div class="ui-block-b"><input type="radio" name="" id="">Female</div>
+              <div class="ui-block-a">
+                <input type="radio" name="gender" id="male"><label for="male">Male</label>
+              </div>
+              <div class="ui-block-b">
+                <input type="radio" name="gender" id="female"><label for="female">Female</label>
+              </div>
             </div>
             <input type="text" name="" id="" placeholder="Your Vehicle">
             <br>
-            <button type="submit" class="ui-btn btn-blue">Verify</button>
+            <button type="submit" class="ui-btn btn-blue">Next</button>
           </form>
         </div>
       </div>
@@ -118,7 +122,7 @@
       </div>
     
       <div role="main" class="ui-content jqm-content jqm-fullwidth">
-        <p>Nama User</p>
+        <div class="text-username">Nama User</div>
 
         <div class="banner-item">
           <div class="banner-item-list">
@@ -167,6 +171,8 @@
           <h3>Right Panel: Reveal</h3>
           <p>This panel is positioned on the right with the reveal display mode. The panel markup is <em>after</em> the header, content and footer in the source order.</p>
           <p>To close, click off the panel, swipe left or right, hit the Esc key, or use the button below:</p>
+          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
+          <a href="#verify" class="ui-btn ui-corner-all">Verifikasi</a>
           <a href="#demo-links" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a>
         </div>
       </div>
@@ -264,8 +270,15 @@
       <h2>Produk</h2>
 
       <div role="main" class="ui-content">
-        <input type="search" data-mini="true" name="" id="" value="" placeholder="Cari di Mobeng">
-        
+        <form class="ui-filterable">
+          <input id="cari-mobeng" data-type="search" placeholder="Cari di Mobeng">
+        </form>
+        <ul data-role="listview" data-filter="true" data-input="#cari-mobeng">
+          <li class="text-produk">Oli</li>
+          <li class="text-produk">Accu</li>
+          <li class="text-produk">Ban</li>
+          <li class="text-produk">Other</li>
+        </ul>
       </div> 
 
     </div>
@@ -357,14 +370,14 @@
         <hr box-align="center" size="2px" width="90%" color="black" />
       </div>
 
-      <table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive">
+      <table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive" style="width:100%">
         <thead>
           <tr>
-            <th data-priority="1">Item</th>
-            <th data-priority="2">QTY</th>
-            <th data-priority="2">Harga</th>
-            <th data-priority="3">Disc</th>
-            <th data-priority="4">Subtotal</th>
+            <th data-priority="1" style="width:200px">Item</th>
+            <th data-priority="2" style="width:20px">QTY</th>
+            <th data-priority="2" style="width:65px">Harga</th>
+            <th data-priority="3" style="width:65px">Disc</th>
+            <th data-priority="4" style="width:65px">Subtotal</th>
           </tr>
         </thead>
         <tbody>
@@ -384,6 +397,8 @@
           </tr>
         </tbody>
       </table>
+      Total Transaksi : Rp. 2.445.000
+      *Harga sudah termasuk PPN
 
     </div>
 
@@ -547,6 +562,17 @@
         <div class="text-hubungi-alamat">Jl. Pulo Buaran Raya Block III EE Kav. 2 - 3 - 6</div>
         <div class="text-hubungi-alamat">Cakung, Jakarta Timur, Jakarta 13930</div>
         <div class="text-hubungi-alamat">Telp : 0888 777 8989</div>
+        <div class="ui-grid-b">
+          <div class="ui-block-a">
+            <img class="sosial" src="img/icon-wa.png" alt="whatsapp"><span class="text-sosial">08887778989</span>
+          </div>
+          <div class="ui-block-b">
+            <img class="sosial" src="img/icon-ig.png" alt="instagram"><span class="text-sosial">@mobenginfo</span>
+          </div>
+          <div class="ui-block-c">
+            <img class="sosial" src="img/icon-fb.png" alt="facebook"><span class="text-sosial">mobeng</span>
+          </div>
+        </div>
       </div>
     </div>
 

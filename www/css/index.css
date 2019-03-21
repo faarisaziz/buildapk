@@ -68,9 +68,30 @@ img.logo {
   margin-bottom: 25px;
 }
 
-.pull-right {
+img.sosial {
+  width: 30px;
+  margin-top: 15px;
+}
+
+.text-forgot {
   float: right;
   font-size: 12px;
+  font-weight: 200 !important;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  color: gray !important;
+  text-decoration: none;
+}
+
+.text-username {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.text-tekan-disini {
+  text-decoration: none;
+  font-weight: 200;
+  color: #000 !important;
 }
 
 .text-menu {
@@ -99,6 +120,12 @@ img.logo {
   margin-bottom: 10px;
 }
 
+.text-produk {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center !important;
+}
+
 .text-riwayat {
   margin-left: 20px;
 }
@@ -117,6 +144,12 @@ img.logo {
 .text-hubungi-alamat {
   font-weight: 300;
   font-size: 12px;
+}
+
+.text-sosial {
+  font-size: 12px;
+  margin-left: 5px;
+  margin-top: -20px;
 }
 
 h1 {
@@ -146,8 +179,8 @@ h2 {
   border: 1px solid black !important;
   padding-top: 20px;
   padding-bottom: 10px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 23px;
+  padding-right: 23px;
 }
 
 .card-riwayat {
@@ -226,7 +259,7 @@ h2 {
 }
 
 .input-otp {
-  width: 25px !important;
+  width: 30px !important;
 }
 
 .ui-mobile, .ui-mobile body {
