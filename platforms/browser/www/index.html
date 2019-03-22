@@ -274,10 +274,42 @@
           <input id="cari-mobeng" data-type="search" placeholder="Cari di Mobeng">
         </form>
         <ul data-role="listview" data-filter="true" data-input="#cari-mobeng">
-          <li class="text-produk">Oli</li>
+          <li class="text-produk"><a href="#produk-oli">Oli</a></li>
           <li class="text-produk">Accu</li>
           <li class="text-produk">Ban</li>
           <li class="text-produk">Other</li>
+        </ul>
+      </div> 
+
+    </div>
+
+    <div data-role="page" id="produk-oli" data-theme="a">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
+        <h1>MOBENG</h1>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
+          <a href="#produk"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
+        </div>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+          <a href="#"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
+        </div>
+      </div>
+
+      <h2>Produk - Oli</h2>
+
+      <div role="main" class="ui-content">
+        <form class="ui-filterable">
+          <input id="cari-mobeng" data-type="search" placeholder="Cari di Mobeng">
+        </form>
+        <ul data-role="listview" data-filter="true" data-input="#cari-mobeng">
+          <li class="text-produk">Total</li>
+          <li class="text-produk">Q8</li>
+          <li class="text-produk">Valvoline</li>
+          <li class="text-produk">Gulf</li>
+          <li class="text-produk">Mobil</li>
+          <li class="text-produk">Shell</li>
+          <li class="text-produk">Fastron</li>
+          <li class="text-produk">Eneos</li>
         </ul>
       </div> 
 
@@ -297,7 +329,7 @@
 
       <h2>Promosi</h2>
 
-      <img src="img/promo-nasional.jpg" alt="promosi" width="100%">
+      <a href="#promosi-nasional"><img src="img/promo-nasional.jpg" alt="promosi" width="100%"></a>
       <hr box-align="center" size="2px" width="90%" color="black" />
 
       <div class="ui-field-contain">
@@ -314,6 +346,29 @@
           <option value="">Mobeng Cinere</option>
           <option value="">Mobeng Karawaci</option>
         </select>
+      </div>
+      
+    </div>
+
+    <div data-role="page" id="promosi-nasional" data-theme="a">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
+        <h1>MOBENG</h1>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
+          <a href="#promosi"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
+        </div>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+          <a href="#"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
+        </div>
+      </div>
+
+      <h2>Promosi - Promo Nasional</h2>
+
+      <div role="main" class="ui-content">
+        <img src="img/promo-nasional.jpg" alt="promosi" width="150px">
+        <img src="img/promo-nasional.jpg" alt="promosi" width="150px">
+        <img src="img/promo-nasional.jpg" alt="promosi" width="150px">
+        <img src="img/promo-nasional.jpg" alt="promosi" width="150px">
       </div>
       
     </div>
