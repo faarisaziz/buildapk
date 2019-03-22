@@ -28,7 +28,7 @@
           <form action="#dashboard" method="">
             <input type="number" name="" id="login-phone" data-wrapper-class="ui-custom" placeholder="&#xf0e0; No Telp">
             <input type="password" name="" id="login-password" data-wrapper-class="ui-custom" placeholder="&#xf023; Password">
-            <a href="#dashboard" class="pull-right">Forgot password ?</a>
+            <a href="#dashboard" class="text-forgot">Forgot password ?</a>
             <button type="submit" class="ui-btn btn-blue">Log in</button>
             <a href="#signup" class="ui-btn btn-green">Sign Up</a>
           </form>
@@ -64,14 +64,20 @@
             <div class="item">Masukan kode verifikasi yang</div>
             <div class="item">diterima pada nomor ponsel</div>
             <div class="item">anda melalui SMS</div>
-            <div data-role="fieldcontain" data-type="horizontal" class="card-verifikasi">
-              <input type="text" name="" id="verify-1" data-wrapper-class="ui-custom ui-verifikasi" maxlength="1">
-              <input type="text" name="" id="verify-2" data-wrapper-class="ui-custom ui-verifikasi" maxlength="1">
+            <div data-role="fieldcontain" class="card-verifikasi">
+              <fieldset data-role="controlgroup" data-type="horizontal" class="aside">
+                <input type="text" maxlength="1" id="1" data-wrapper-class="input-otp" onkeyup="moveOnMax(this,'a')" />
+                <input type="text" maxlength="1" id="a" data-wrapper-class="input-otp" onkeyup="moveOnMax(this,'b')" />
+                <input type="text" maxlength="1" id="b" data-wrapper-class="input-otp" onkeyup="moveOnMax(this,'c')" />
+                <input type="text" maxlength="1" id="c" data-wrapper-class="input-otp" onkeyup="moveOnMax(this,'d')" />
+                <input type="text" maxlength="1" id="d" data-wrapper-class="input-otp" onkeyup="moveOnMax(this,'e')" />
+                <input type="text" maxlength="1" id="e" data-wrapper-class="input-otp" />
+              </fieldset>
             </div>
             <div class="item">Masukan 6 Digit</div>
             <br>
             <div class="item">Tidak menerima kode verifikasi ?</div>
-            <div class="item"><a href="#">tekan disini</a></div>
+            <div class="item"><a href="#" class="text-tekan-disini">tekan disini</a></div>
             <div class="item">untuk mengirim ulang</div>
             <br>
             <button type="submit" class="ui-btn btn-blue">Next</button>
@@ -88,14 +94,18 @@
             <input type="text" name="" id="profile-username" data-wrapper-class="ui-custom" placeholder="Username">
             <input type="number" name="" id="profile-phone" data-wrapper-class="ui-custom" placeholder="No Telephone">
             <input type="text" name="" id="profile-email" data-wrapper-class="ui-custom" placeholder="Email">
-            <input type="text" data-role="date">
+            <input type="date" data-clear-btn="false" name="" id="profile-birth" value="" placeholder="birth">
             <div class="ui-grid-a">
-              <div class="ui-block-a"><input type="radio" name="" id="gender-male">Male</div>
-              <div class="ui-block-b"><input type="radio" name="" id="gender-female">Female</div>
+              <div class="ui-block-a">
+                <input type="radio" name="gender" id="gender-male"><label for="male">Male</label>
+              </div>
+              <div class="ui-block-b">
+                <input type="radio" name="gender" id="gender-female"><label for="female">Female</label>
+              </div>
             </div>
             <input type="text" name="" id="profile-vehicle" placeholder="Your Vehicle">
             <br>
-            <button type="submit" class="ui-btn btn-blue">Verify</button>
+            <button type="submit" class="ui-btn btn-blue">Next</button>
           </form>
         </div>
       </div>
@@ -111,7 +121,7 @@
       </div>
     
       <div role="main" class="ui-content jqm-content jqm-fullwidth">
-        <p>Nama User</p>
+        <div class="text-username">Nama User</div>
 
         <div class="banner-item">
           <div class="banner-item-list">
@@ -160,6 +170,8 @@
           <h3>Right Panel: Reveal</h3>
           <p>This panel is positioned on the right with the reveal display mode. The panel markup is <em>after</em> the header, content and footer in the source order.</p>
           <p>To close, click off the panel, swipe left or right, hit the Esc key, or use the button below:</p>
+          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
+          <a href="#verify" class="ui-btn ui-corner-all">Verifikasi</a>
           <a href="#demo-links" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a>
         </div>
       </div>
@@ -233,8 +245,11 @@
       <div role="main" class="ui-content" id="map-canvas">
         <!-- map loads here... -->
 
-        <p>Jl. Harapan Indah Raya, Rt 0003/007 Pejuang, Medan Satria,</p>
-        <p>Kota Bekasi, Jawa Barat 17132</p>
+        <div class="text-cabang-normal">Jl. Harapan Indah Raya, Rt 0003/007 Pejuang, Medan Satria,</div>
+        <div class="text-cabang-normal">Kota Bekasi, Jawa Barat 17132</div>
+        <div class="text-cabang-bold">Email : mobeng.harpin@mobeng.co.id</div>
+        <div class="text-cabang-bold">Call : 021 8886 6370</div>
+        <div class="text-cabang-bold">Phone : 0815 8672 1386</div>
 
       </div>
     </div>
@@ -254,8 +269,49 @@
       <h2>Produk</h2>
 
       <div role="main" class="ui-content">
-        <input type="search" data-mini="true" name="" id="search-content" value="" placeholder="Cari di Mobeng">
+        <form class="ui-filterable">
+          <input id="cari-mobeng" data-type="search" placeholder="Cari di Mobeng">
+        </form>
+        <ul data-role="listview" data-filter="true" data-input="#cari-mobeng">
+          <li class="text-produk"><a href="#produk-oli">Oli</a></li>
+          <li class="text-produk">Accu</li>
+          <li class="text-produk">Ban</li>
+          <li class="text-produk">Other</li>
+        </ul>
       </div> 
+
+    </div>
+
+    <div data-role="page" id="produk-oli" data-theme="a">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
+        <h1>MOBENG</h1>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
+          <a href="#produk"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
+        </div>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+          <a href="#"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
+        </div>
+      </div>
+
+      <h2>Produk - Oli</h2>
+
+      <div role="main" class="ui-content">
+        <form class="ui-filterable">
+          <input id="cari-oli" data-type="search" placeholder="Cari di Mobeng">
+        </form>
+        <ul data-role="listview" data-filter="true" data-input="#cari-oli">
+          <li class="text-produk">Total</li>
+          <li class="text-produk">Q8</li>
+          <li class="text-produk">Valvoline</li>
+          <li class="text-produk">Gulf</li>
+          <li class="text-produk">Mobil</li>
+          <li class="text-produk">Shell</li>
+          <li class="text-produk">Fastron</li>
+          <li class="text-produk">Eneos</li>
+        </ul>
+      </div> 
+
     </div>
 
     <div data-role="page" id="promosi" data-theme="a">
@@ -272,11 +328,11 @@
 
       <h2>Promosi</h2>
 
-      <img src="img/banner.png" alt="promosi" width="100%">
+      <a href="#promosi-nasional"><img src="img/promo-nasional.jpg" alt="promosi" width="100%"></a>
       <hr box-align="center" size="2px" width="90%" color="black" />
 
       <div class="ui-field-contain">
-        <select name="" id="promotion-select">
+        <select name="" id="">
           <option value="">Promosi Cabang Mobeng</option>
           <option value="">Mobeng Harapan Indah</option>
           <option value="">Mobeng BSD</option>
@@ -289,6 +345,29 @@
           <option value="">Mobeng Cinere</option>
           <option value="">Mobeng Karawaci</option>
         </select>
+      </div>
+      
+    </div>
+
+    <div data-role="page" id="promosi-nasional" data-theme="a">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
+        <h1>MOBENG</h1>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
+          <a href="#promosi"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
+        </div>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+          <a href="#"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
+        </div>
+      </div>
+
+      <h2>Promosi - Promo Nasional</h2>
+
+      <div role="main" class="ui-content">
+        <img src="img/promo-nasional.jpg" alt="promosi" width="150px">
+        <img src="img/promo-nasional.jpg" alt="promosi" width="150px">
+        <img src="img/promo-nasional.jpg" alt="promosi" width="150px">
+        <img src="img/promo-nasional.jpg" alt="promosi" width="150px">
       </div>
       
     </div>
@@ -315,17 +394,17 @@
           <div class="item">No Polis</div>
           <div class="item">Km</div>
           <div class="item">Type</div>
-          <a href="#" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>
+          <a href="#riwayat-detail" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>
           <div class="item float-right">Total Transaksi : <span class="price">Rp. 2.000.000</span></div>
         </div>
       </div>
     </div>
 
-    <div data-role="page" id="reminder" data-theme="a">
+    <div data-role="page" id="riwayat-detail" data-theme="a">
       <div data-role="header" data-position="fixed" data-tap-toggle="false">
         <h1>MOBENG</h1>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
-          <a href="#dashboard"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
+          <a href="#riwayat"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
         </div>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
           <a href="#"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
@@ -333,20 +412,47 @@
         </div>
       </div>
 
-      <h2>Reminder</h2>
+      <h2>Riwayat - Detail</h2>
 
       <div role="main" class="ui-content">
-        <div class="card-riwayat">
-          <div class="item">Servis</div>
-          <div class="item">Tanggal</div>
-          <div class="item">Kendaraan</div>
-          <div class="item">KM</div>
-          <div class="item">Oli</div>
-          <div class="item">Waktu</div>
-          <div class="item">Notes</div>
-          <a href="#" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>
-        </div>
+        <div class="text-riwayat">No Invoice : </div>
+        <div class="text-riwayat">Tanggal : </div>
+        <div class="text-riwayat">Customer : </div>
+        <div class="text-riwayat">No. Polis : </div>
+        <div class="text-riwayat">Km : </div>
+        <div class="text-riwayat">Type : </div>
+        <hr box-align="center" size="2px" width="90%" color="black" />
+        <table>
+          <thead>
+            <tr>
+              <th data-priority="1" style="width:200px">Item</th>
+              <th data-priority="2" style="width:20px">QTY</th>
+              <th data-priority="2" style="width:65px">Harga</th>
+              <th data-priority="3" style="width:65px">Disc</th>
+              <th data-priority="4" style="width:65px">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>(FS) QB Formula Special G/D Long Life 5W30 SN (dexos 1)1Liter</td>
+              <td>6</td>
+              <td>160.000</td>
+              <td>0</td>
+              <td>960.000</td>
+            </tr>
+            <tr>
+              <td>Oli Filter DXE-1003 Innova, Fortuner, Hilux</td>
+              <td>1</td>
+              <td>33.000</td>
+              <td>0</td>
+              <td>33.000</td>
+            </tr>
+          </tbody>
+        </table>
+        <span class="text-total">Total Transaksi : <span class="text-total-rp">Rp. 2.445.000</span></span><br>
+        <span class="text-ppn">*Harga sudah termasuk PPN</span>
       </div>
+
     </div>
 
     <div data-role="page" id="reminder" data-theme="a">
@@ -372,7 +478,28 @@
           <div class="item">Oli</div>
           <div class="item">Waktu</div>
           <div class="item">Notes</div>
-          <a href="#" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>
+          <a href="#reminder-detail" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>
+        </div>
+      </div>
+    </div>
+
+    <div data-role="page" id="reminder-detail" data-theme="a">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
+        <h1>MOBENG</h1>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
+          <a href="#reminder"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
+        </div>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+          <a href="#"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
+        </div>
+      </div>
+
+      <h2>Reminder - Detail</h2>
+
+      <div role="main" class="ui-content">
+        <div>
+          Pos Order
         </div>
       </div>
     </div>
@@ -391,12 +518,52 @@
 
       <h2>Blog</h2>
 
-      <img src="img/banner.png" alt="blog" width="100%">
+      <img src="img/engine1.jpg" alt="blog" width="100%" height="200px">
 
       <div role="main" class="ui-content">
         <div class="card-blog">
-          <div class="item">Nyuci Mobil Minim Sentuhan Tangan</div>
+          <table>
+            <td><img src="img/logo.png" alt="" width="80px"></td>
+            <td>
+              <span class="item-text-date">Selasa, 8 Januari 2019</span><br>
+              <span class="item-text-judul">Nyuci Mobil Minim Sentuhan Tangan, Bagaimana Caranya?</span><br>
+              <span class="item-text">"Tahapan cuci mobil konvensional biasanya mobil dibilas dengan air dulu. Setelah air, masuk ke tahap sampo. Habis itu mobil akan disabuni dengan digosok sama teknisi cuci untuk menghilangkan kotoran yang ada di permukaan cat. Keempat dibilas lagi, kelima baru dilap," buka</span><br>
+              <span class="item-text"><a href="#blog-detail">Baca Selengkapnya ...</a></span>
+            </td>
+          </table>
         </div>
+        <div class="card-blog">
+          <table>
+            <td><img src="img/logo.png" alt="" width="80px"></td>
+            <td>
+              <span class="item-text-date">Selasa, 8 Januari 2019</span><br>
+              <span class="item-text-judul">Nyuci Mobil Minim Sentuhan Tangan, Bagaimana Caranya?</span><br>
+              <span class="item-text">"Tahapan cuci mobil konvensional biasanya mobil dibilas dengan air dulu. Setelah air, masuk ke tahap sampo. Habis itu mobil akan disabuni dengan digosok sama teknisi cuci untuk menghilangkan kotoran yang ada di permukaan cat. Keempat dibilas lagi, kelima baru dilap," buka</span><br>
+              <span class="item-text"><a href="#blog-detail">Baca Selengkapnya ...</a></span>
+            </td>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div data-role="page" id="blog-detail" data-theme="a">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
+        <h1>MOBENG</h1>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
+          <a href="#blog"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
+        </div>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+          <a href="#"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
+        </div>
+      </div>
+
+      <h2>Blog - detail</h2>
+
+      <img src="img/engine1.jpg" alt="blog" width="100%" height="200px">
+
+      <div role="main" class="ui-content">
+        Jakarta - Kekhawatiran mobil akan terjatuh saat dicuci dengan sistem hidrolik terus membayangi pemilik mobil.
       </div>
     </div>
 
@@ -419,24 +586,40 @@
           <label for="fullname">
             Full Name<i class="fas fa-user"></i>
           </label>
-          <input type="text" name="" id="contact-name">
+          <input type="text" name="" id="hubungi-fullname">
           <label for="email">
             E-mail<i class="fas fa-envelope"></i>
           </label>
-          <input type="text" name="" id="contact-email">
+          <input type="text" name="" id="hubungi-email">
           <label for="subject">
             Subject<i class="fas fa-flag"></i>
           </label>
-          <input type="text" name="" id="contact-subject">
+          <input type="text" name="" id="hubungi-subject">
           <label for="message">
             Message <i class="far fa-file-alt"></i>
           </label>
-          <textarea cols="40" rows="20" name="" id="contact-message"></textarea>
+          <textarea cols="40" rows="20" name="" id="hubungi-message"></textarea>
           <label>
             <input type="checkbox" name="" data-mini="true">Send a copy to my e-mail address
           </label>
           <button type="submit" class="ui-btn btn-blue">Send Message</button>
         </form>
+        <div class="text-hubungi-ho">Head Office</div>
+        <div class="text-hubungi-pt">PT. Surga Mobil Indonesia</div>
+        <div class="text-hubungi-alamat">Jl. Pulo Buaran Raya Block III EE Kav. 2 - 3 - 6</div>
+        <div class="text-hubungi-alamat">Cakung, Jakarta Timur, Jakarta 13930</div>
+        <div class="text-hubungi-alamat">Telp : 0888 777 8989</div>
+        <div class="ui-grid-b">
+          <div class="ui-block-a">
+            <img class="sosial" src="img/icon-wa.png" alt="whatsapp"><span class="text-sosial">08887778989</span>
+          </div>
+          <div class="ui-block-b">
+            <img class="sosial" src="img/icon-ig.png" alt="instagram"><span class="text-sosial">@mobenginfo</span>
+          </div>
+          <div class="ui-block-c">
+            <img class="sosial" src="img/icon-fb.png" alt="facebook"><span class="text-sosial">mobeng</span>
+          </div>
+        </div>
       </div>
     </div>
 
