@@ -130,6 +130,22 @@ img.sosial {
   margin-left: 20px;
 }
 
+.text-total {
+  float: right;
+  margin-top: 50px;
+  color: #EB2026;
+}
+
+.text-total .text-total-rp {
+  color: #EB2026;
+  font-weight: 700;
+}
+
+.text-ppn {
+  font-size: 8px;
+  margin-top: 50px;
+}
+
 .text-hubungi-ho {
   font-weight: 900;
   font-size: 15px;
@@ -214,9 +230,7 @@ h2 {
 }
 
 .card-blog .item {
-  /* border: 1px solid black; */
   text-shadow: none;
-  float: right;
   width: 220px;
 }
 
@@ -227,14 +241,6 @@ h2 {
 }
 
 .card-blog .item-text-date {
-  /* float: right; */
-  font-size: 8px;
-  color: black;
-}
-
-.card-blog .item-text-link {
-  margin-top: 5px;
-  margin-bottom: 5px;
   font-size: 8px;
   color: black;
 }
@@ -264,22 +270,4 @@ h2 {
 
 .ui-mobile, .ui-mobile body {
   height: 80% !important;
-}
-
-/* coba-coba carding untuk blog */
-.coba-card {
-  position: static;
-  display: block;
-  max-width: 400px;
-  padding: 15px 15px 15px 160px;
-  margin: 2rem 0;
-  overflow: hidden;
-  font-size: 13px;
-  line-height: 1.4;
-  text-align: left;
-  background-color: rgba(0,0,0, .05);
-}
-
-.coba-card img {
-  float: left;
 }
