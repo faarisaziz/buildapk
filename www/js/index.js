@@ -15,7 +15,8 @@ var app = {
     $(".banner-item").slick({ 
       slidesToShow: 1, slidesToScroll: 1, 
       autoplay: true, autoplaySpeed: 5000,
-      centerMode: true
+      centerMode: true,
+      arrows: false
     });
     
     $(function() {
@@ -25,5 +26,12 @@ var app = {
     function hideSplash() {
       $.mobile.changePage("#login", "fade");
     }
+
+    moveOnMax =function (field, nextFieldID) {
+      if (field.value.length == 1) {
+          document.getElementById(nextFieldID).focus();
+      }
+    }
+    
   }
 };

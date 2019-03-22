@@ -68,9 +68,30 @@ img.logo {
   margin-bottom: 25px;
 }
 
-.pull-right {
+img.sosial {
+  width: 30px;
+  margin-top: 15px;
+}
+
+.text-forgot {
   float: right;
   font-size: 12px;
+  font-weight: 200 !important;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  color: gray !important;
+  text-decoration: none;
+}
+
+.text-username {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.text-tekan-disini {
+  text-decoration: none;
+  font-weight: 200;
+  color: #000 !important;
 }
 
 .text-menu {
@@ -79,11 +100,72 @@ img.logo {
 }
 
 .text-cabang {
-  font-size: 15px;
+  font-size: 20px;
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  text-align: left;
+  width: 100%;
+  padding-left: 20px;
+}
+
+.text-cabang-normal {
+  font-size: 14px;
+  font-weight: 100;
+  margin-bottom: 10px;
+}
+
+.text-cabang-bold {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.text-produk {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center !important;
+}
+
+.text-riwayat {
+  margin-left: 20px;
+}
+
+.text-total {
+  float: right;
+  margin-top: 50px;
+  color: #EB2026;
+}
+
+.text-total .text-total-rp {
+  color: #EB2026;
+  font-weight: 700;
+}
+
+.text-ppn {
+  font-size: 8px;
+  margin-top: 50px;
+}
+
+.text-hubungi-ho {
+  font-weight: 900;
+  font-size: 15px;
+  margin-top: 50px;
+}
+
+.text-hubungi-pt {
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.text-hubungi-alamat {
+  font-weight: 300;
+  font-size: 12px;
+}
+
+.text-sosial {
+  font-size: 12px;
+  margin-left: 5px;
+  margin-top: -20px;
 }
 
 h1 {
@@ -113,8 +195,8 @@ h2 {
   border: 1px solid black !important;
   padding-top: 20px;
   padding-bottom: 10px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 23px;
+  padding-right: 23px;
 }
 
 .card-riwayat {
@@ -141,8 +223,31 @@ h2 {
 }
 
 .card-blog {
-  border: black;
-  border-radius: 20px;
+  border: 1px solid black;
+  margin: 10px 15px 15px 15px;
+  text-shadow: none;
+  height: 200px;
+}
+
+.card-blog .item {
+  text-shadow: none;
+  width: 220px;
+}
+
+.card-blog .item-text-judul {
+  font-size: 13px;
+  color: black;
+  font-weight: 900;
+}
+
+.card-blog .item-text-date {
+  font-size: 8px;
+  color: black;
+}
+
+.card-blog .item-text {
+  font-size: 8px;
+  color: black;
 }
 
 .btn-riwayat {
@@ -155,23 +260,12 @@ h2 {
   margin-top: 10px !important;
 }
 
-.ui-input-text.ui-custom {
-  border: none;
-  box-shadow: none;
-  border-bottom: 2px solid black;
+.aside .ui-input-text {
+  display:inline-block;
 }
 
-.ui-input-text.ui-custom.ui-verifikasi {
-  width: 30px;
-  font-size: 20px;
-}
-
-textarea, input {
-  padding:10px;
-	font-family: FontAwesome, "Open Sans", Verdana, sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    text-decoration: inherit;
+.input-otp {
+  width: 30px !important;
 }
 
 .ui-mobile, .ui-mobile body {
