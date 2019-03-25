@@ -168,6 +168,21 @@ img.sosial {
   margin-top: -20px;
 }
 
+.text-harga {
+  text-align: center;
+  color: red;
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.text-alert {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 12px;
+}
+
 h1 {
   color: white;
 }
