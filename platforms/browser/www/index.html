@@ -127,20 +127,32 @@
 
         <div class="banner-item">
           <div class="banner-item-list">
-            <img src="img/banner.png" alt="Banner 1">
+            <img src="img/engine1.jpg" alt="Banner 1">
           </div>
           <div class="banner-item-list">
-            <img src="img/banner.png" alt="Banner 2">
+            <img src="img/engine1.jpg" alt="Banner 2">
           </div>
           <div class="banner-item-list">
-            <img src="img/banner.png" alt="Banner 3">
+            <img src="img/engine1.jpg" alt="Banner 3">
           </div>
         </div>
     
         <div class="ui-grid-b">
-          <div class="ui-block-a"><a href="#cabang"><img class="menu" src="img/icon-cabang.png" height="80px"></a></div>
-          <div class="ui-block-b"><a href="#produk"><img class="menu" src="img/icon-produk.png" height="80px"></a></div>
-          <div class="ui-block-c"><a href="#promosi"><img class="menu" src="img/icon-promosi.png" height="80px"></a></div>
+          <div class="ui-block-a">
+            <a href="#cabang" onclick="get_all_cabang()">
+              <img class="menu" src="img/icon-cabang.png" height="80px">
+            </a>
+          </div>
+          <div class="ui-block-b">
+            <a href="#produk">
+              <img class="menu" src="img/icon-produk.png" height="80px">
+            </a>
+          </div>
+          <div class="ui-block-c">
+            <a href="#promosi">
+              <img class="menu" src="img/icon-promosi.png" height="80px">
+            </a>
+          </div>
         </div>
         <div class="ui-grid-b">
           <div class="ui-block-a text-menu">Cabang</div>
@@ -169,12 +181,9 @@
     
       <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
         <div class="ui-panel-inner">
-          <h3>Right Panel: Reveal</h3>
-          <p>This panel is positioned on the right with the reveal display mode. The panel markup is <em>after</em> the header, content and footer in the source order.</p>
-          <p>To close, click off the panel, swipe left or right, hit the Esc key, or use the button below:</p>
           <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
           <a href="#verify" class="ui-btn ui-corner-all">Verifikasi</a>
-          <a href="#demo-links" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a>
+          <!-- <a href="#demo-links" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a> -->
         </div>
       </div>
 
@@ -211,23 +220,7 @@
       </div>
 
       <h2>Cabang</h2>
-
-      <div class="container-cabang">
-        <a href="#cabang-detail"><img src="img/banner.png" alt="" width="100%"></a>
-        <div class="text-cabang">Mobeng Harapan Indah</div>
-      </div>
-      <div class="container-cabang">
-        <a href="#cabang-detail"><img src="img/banner.png" alt="" width="100%"></a>
-        <div class="text-cabang">Mobeng Jatibening</div>
-      </div>
-      <div class="container-cabang">
-        <a href="#cabang-detail"><img src="img/banner.png" alt="" width="100%"></a>
-        <div class="text-cabang">Mobeng Serpong</div>
-      </div>
-      <div class="container-cabang">
-        <a href="#cabang-detail"><img src="img/banner.png" alt="" width="100%"></a>
-        <div class="text-cabang">Mobeng BSD</div>
-      </div>
+      <div id="all-cabang"><!-- CABANG LIST --></div>
     </div>
 
     <div data-role="page" id="cabang-detail" data-theme="a" data-url="map-page">
@@ -244,6 +237,7 @@
 
       <h2>Cabang - Detail</h2>
 
+      <div id="detail-cabang"><!-- CABANG CONTENT --></div>
       <iframe width="100%" height="200" frameborder="0" style="border:0"
 			    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyACMR6xDxS1kbYtcgN8IMGH_oRu1VF-6Po
 			    &q=Mobeng+Harapan+Indah" allowfullscreen>
@@ -336,8 +330,8 @@
       <hr box-align="center" size="2px" width="90%" color="black" />
 
       <div class="ui-field-contain">
-        <select name="" id="">
-          <option value="">Promosi Cabang Mobeng</option>
+        <select name="" id="promo-list">
+          <!-- <option value="">Promosi Cabang Mobeng</option>
           <option value="">Mobeng Harapan Indah</option>
           <option value="">Mobeng BSD</option>
           <option value="">Mobeng Serpong</option>
@@ -347,7 +341,7 @@
           <option value="">Mobeng Jatibening</option>
           <option value="">Mobeng Ciputat</option>
           <option value="">Mobeng Cinere</option>
-          <option value="">Mobeng Karawaci</option>
+          <option value="">Mobeng Karawaci</option> -->
         </select>
       </div>
       

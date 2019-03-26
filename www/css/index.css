@@ -4,7 +4,8 @@
 
 .banner-item-list img {
   width: calc(100% - 17px);
-  border-radius: 5px;
+  border-radius: 25px;
+  height: 160px;
 }
 
 .ui-page .ui-header {
