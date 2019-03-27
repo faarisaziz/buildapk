@@ -191,6 +191,7 @@
         <form>
           <div style="padding: 25px 25px;">
             <h3>Estimasi Servis</h3>
+            <div id="estimasi"><!-- ESTIMASI CONTENT --></div>
             <input type="text" name="" id="profile-type" value="" placeholder="Tipe Kendaraan">
             <input type="text" name="" id="profile-machine" value="" placeholder="Jenis Mesin">
             <input type="text" name="" id="profile-service" value="" placeholder="Jenis Servis">
@@ -238,18 +239,6 @@
       <h2>Cabang - Detail</h2>
 
       <div id="detail-cabang"><!-- CABANG CONTENT --></div>
-      <iframe width="100%" height="200" frameborder="0" style="border:0"
-			    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyACMR6xDxS1kbYtcgN8IMGH_oRu1VF-6Po
-			    &q=Mobeng+Harapan+Indah" allowfullscreen>
-			</iframe>
-      <div role="main" class="ui-content" id="map-canvas">
-        <div class="text-cabang-normal">Jl. Harapan Indah Raya, Rt 0003/007 Pejuang, Medan Satria,</div>
-        <div class="text-cabang-normal">Kota Bekasi, Jawa Barat 17132</div>
-        <div class="text-cabang-bold">Email : mobeng.harpin@mobeng.co.id</div>
-        <div class="text-cabang-bold">Call : 021 8886 6370</div>
-        <div class="text-cabang-bold">Phone : 0815 8672 1386</div>
-
-      </div>
     </div>
 
     <div data-role="page" id="produk" data-theme="a">
@@ -329,10 +318,12 @@
       <a href="#promosi-nasional"><img src="img/promo-nasional.jpg" alt="promosi" width="100%"></a>
       <hr box-align="center" size="2px" width="90%" color="black" />
 
+      <div id="all-promosi"><!-- PROMOSI LIST --></div>
+
       <div class="ui-field-contain">
         <select name="" id="promo-list">
-          <!-- <option value="">Promosi Cabang Mobeng</option>
-          <option value="">Mobeng Harapan Indah</option>
+          <option value="">Promosi Cabang Mobeng</option>
+          <!-- <option value="">Mobeng Harapan Indah</option>
           <option value="">Mobeng BSD</option>
           <option value="">Mobeng Serpong</option>
           <option value="">Mobeng Jemursari</option>
@@ -362,10 +353,10 @@
       <h2>Promosi - Promo Nasional</h2>
 
       <div role="main" class="ui-content">
-        <img src="img/promo-nasional.jpg" alt="promosi" width="150px">
-        <img src="img/promo-nasional.jpg" alt="promosi" width="150px">
-        <img src="img/promo-nasional.jpg" alt="promosi" width="150px">
-        <img src="img/promo-nasional.jpg" alt="promosi" width="150px">
+        <img class="promosi" src="img/promo-nasional.jpg" alt="promosi">
+        <img class="promosi" src="img/promo-nasional.jpg" alt="promosi">
+        <img class="promosi" src="img/promo-nasional.jpg" alt="promosi">
+        <img class="promosi" src="img/promo-nasional.jpg" alt="promosi">
       </div>
       
     </div>

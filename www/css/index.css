@@ -1,5 +1,5 @@
 .banner-item {
-  margin-left: -50px;
+  margin-left: auto;
 }
 
 .banner-item-list img {
@@ -72,6 +72,13 @@ img.logo {
 img.sosial {
   width: 30px;
   margin-top: 15px;
+}
+
+img.promosi {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 48%;
 }
 
 .text-forgot {
