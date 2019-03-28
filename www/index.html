@@ -125,17 +125,7 @@
       <div role="main" class="ui-content jqm-content jqm-fullwidth">
         <div class="text-username">Nama User</div>
 
-        <div class="banner-item">
-          <div class="banner-item-list">
-            <img src="img/engine1.jpg" alt="Banner 1">
-          </div>
-          <div class="banner-item-list">
-            <img src="img/engine1.jpg" alt="Banner 2">
-          </div>
-          <div class="banner-item-list">
-            <img src="img/engine1.jpg" alt="Banner 3">
-          </div>
-        </div>
+        <div class="banner-item" id="all-banner"><!-- BANNER CONTAIN --></div>
     
         <div class="ui-grid-b">
           <div class="ui-block-a">
@@ -192,7 +182,7 @@
           <div style="padding: 25px 25px;">
             <h3>Estimasi Servis</h3>
             <div id="estimasi"><!-- ESTIMASI CONTENT --></div>
-            <input type="text" name="" id="profile-type" value="" placeholder="Tipe Kendaraan">
+            <input class="autocomplete-input" type="text" name="txt_vehicle" id="profile-type" value="" placeholder="Tipe Kendaraan">
             <input type="text" name="" id="profile-machine" value="" placeholder="Jenis Mesin">
             <input type="text" name="" id="profile-service" value="" placeholder="Jenis Servis">
             <input type="text" name="" id="profile-product" value="" placeholder="Tipe Produk Servis">
@@ -204,6 +194,7 @@
             <input type="reset" data-inline="true" value="Hapus">
           </div>
         </form>
+        <ul id="autocomplete" data-role="listview" data-inset="true" data-filter="true" data-input=".autocomplete-input"></ul>
       </div>
 
     </div>
@@ -571,27 +562,27 @@
       <h2>Hubungi Kami</h2>
 
       <div role="main" class="ui-content">
-        <form action="" method="">
+        <form method="POST">
           <label for="fullname">
             Full Name<i class="fas fa-user"></i>
           </label>
-          <input type="text" name="" id="hubungi-fullname">
+          <input type="text" name="fullname" id="hubungi-fullname">
           <label for="email">
             E-mail<i class="fas fa-envelope"></i>
           </label>
-          <input type="text" name="" id="hubungi-email">
+          <input type="text" name="email" id="hubungi-email">
           <label for="subject">
             Subject<i class="fas fa-flag"></i>
           </label>
-          <input type="text" name="" id="hubungi-subject">
+          <input type="text" name="subject" id="hubungi-subject">
           <label for="message">
             Message <i class="far fa-file-alt"></i>
           </label>
-          <textarea cols="40" rows="20" name="" id="hubungi-message"></textarea>
+          <textarea cols="40" rows="20" name="text_message" id="hubungi-message"></textarea>
           <label>
             <input type="checkbox" name="" data-mini="true">Send a copy to my e-mail address
           </label>
-          <button type="submit" class="ui-btn btn-blue">Send Message</button>
+          <button type="submit" class="ui-btn btn-blue" onclick="post_hubungi_kami()">Send Message</button>
         </form>
         <div class="text-hubungi-ho">Head Office</div>
         <div class="text-hubungi-pt">PT. Surga Mobil Indonesia</div>
