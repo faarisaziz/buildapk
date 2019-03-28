@@ -1,5 +1,5 @@
-var urlLocation = "http://192.168.10.66:8000/";
-var mediaLocation = "http://192.168.10.66:8000/media/";
+var urlLocation = "http://mobeng.dcsys.id/";
+var mediaLocation = "http://mobeng.dcsys.id/media/";
 
 // http://192.168.10.66:4000/
 // http://mobeng.dcsys.id/
@@ -25,7 +25,7 @@ function get_all_cabang() {
 
         data.forEach(element => {
             html += '<div class="container-cabang">';
-            html += '<a href="#cabang-detail" onclick="get_detail_cabang('+element.pk+')"><img src="'+mediaLocation+element.fields.img_path+'"width="100%" class="cabang-img"></a>';
+            html += '<a href="#cabang-detail" onclick="get_detail_cabang('+element.pk+')"><img src="'+mediaLocation+element.fields.img_path+'"width="100%" height="150px" class="cabang-img"></a>';
             html += '<div class="text-cabang">'+element.fields.name+'</div>';
             html += '</div>';
         });
