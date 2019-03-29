@@ -139,7 +139,7 @@
             </a>
           </div>
           <div class="ui-block-c">
-            <a href="#promosi">
+            <a href="#promosi" onclick="get_all_promotion()">
               <img class="menu" src="img/icon-promosi.png" height="80px">
             </a>
           </div>
@@ -150,9 +150,21 @@
           <div class="ui-block-c text-menu">Promosi</div>
         </div>
         <div class="ui-grid-b">
-          <div class="ui-block-a"><a href="#popupEstimasiServis" data-rel="popup" data-position-to="window" data-transition="pop"><img class="menu" src="img/icon-estimasi-servis.png" height="80px"></a></div>
-          <div class="ui-block-b"><a href="#riwayat"><img class="menu" src="img/icon-riwayat.png" height="80px"></a></div>
-          <div class="ui-block-c"><a href="#reminder"><img class="menu" src="img/icon-reminder.png" height="80px"></a></div>
+          <div class="ui-block-a">
+            <a href="#popupEstimasiServis" data-rel="popup" data-position-to="window" data-transition="pop">
+              <img class="menu" src="img/icon-estimasi-servis.png" height="80px">
+            </a>
+          </div>
+          <div class="ui-block-b">
+            <a href="#riwayat">
+              <img class="menu" src="img/icon-riwayat.png" height="80px">
+            </a>
+          </div>
+          <div class="ui-block-c">
+            <a href="#reminder">
+              <img class="menu" src="img/icon-reminder.png" height="80px">
+            </a>
+          </div>
         </div>
         <div class="ui-grid-b">
           <div class="ui-block-a text-menu">Estimasi Servis</div>
@@ -160,8 +172,16 @@
           <div class="ui-block-c text-menu">Reminder</div>
         </div>
         <div class="ui-grid-b">
-          <div class="ui-block-a"><a href="#blog"><img class="menu" src="img/icon-blog.png" height="80px"></a></div>
-          <div class="ui-block-b"><a href="#hubungikami"><img class="menu" src="img/icon-hubungi-kami.png" height="80px"></a></div>
+          <div class="ui-block-a">
+            <a href="#blog" onclick="get_all_blog()">
+              <img class="menu" src="img/icon-blog.png" height="80px">
+            </a>
+          </div>
+          <div class="ui-block-b">
+            <a href="#hubungikami">
+              <img class="menu" src="img/icon-hubungi-kami.png" height="80px">
+            </a>
+          </div>
         </div>
         <div class="ui-grid-b">
           <div class="ui-block-a text-menu">Blog</div>
@@ -306,30 +326,18 @@
 
       <h2>Promosi</h2>
 
-      <a href="#promosi-nasional"><img src="img/promo-nasional.jpg" alt="promosi" width="100%"></a>
+      <a href="#"><img src="img/promo-nasional.jpg" alt="promosi" width="100%"></a>
       <hr box-align="center" size="2px" width="90%" color="black" />
 
-      <div id="all-promosi"><!-- PROMOSI LIST --></div>
-
       <div class="ui-field-contain">
-        <select name="" id="promo-list">
+        <select id="promo-list" onchange="get_detail_promotion(this)"><!-- PROMOSI LIST -->
           <option value="">Promosi Cabang Mobeng</option>
-          <!-- <option value="">Mobeng Harapan Indah</option>
-          <option value="">Mobeng BSD</option>
-          <option value="">Mobeng Serpong</option>
-          <option value="">Mobeng Jemursari</option>
-          <option value="">Mobeng Citraland</option>
-          <option value="">Mobeng Sawangan</option>
-          <option value="">Mobeng Jatibening</option>
-          <option value="">Mobeng Ciputat</option>
-          <option value="">Mobeng Cinere</option>
-          <option value="">Mobeng Karawaci</option> -->
         </select>
       </div>
       
     </div>
 
-    <div data-role="page" id="promosi-nasional" data-theme="a">
+    <div data-role="page" id="promosi-detail" data-theme="a">
       <div data-role="header" data-position="fixed" data-tap-toggle="false">
         <h1>MOBENG</h1>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
@@ -341,13 +349,10 @@
         </div>
       </div>
 
-      <h2>Promosi - Promo Nasional</h2>
+      <h2>Promosi - Promo Cabang Mobeng</h2>
 
       <div role="main" class="ui-content">
-        <img class="promosi" src="img/promo-nasional.jpg" alt="promosi">
-        <img class="promosi" src="img/promo-nasional.jpg" alt="promosi">
-        <img class="promosi" src="img/promo-nasional.jpg" alt="promosi">
-        <img class="promosi" src="img/promo-nasional.jpg" alt="promosi">
+        <div id="detail-promosi"><!-- PROMOSI CONTENT --></div>
       </div>
       
     </div>
@@ -501,28 +506,7 @@
       <img src="img/engine1.jpg" alt="blog" width="100%" height="200px">
 
       <div role="main" class="ui-content">
-        <div class="card-blog">
-          <table>
-            <td><img src="img/logo.png" alt="" width="80px"></td>
-            <td>
-              <span class="item-text-date">Selasa, 8 Januari 2019</span><br>
-              <span class="item-text-judul">Nyuci Mobil Minim Sentuhan Tangan, Bagaimana Caranya?</span><br>
-              <span class="item-text">"Tahapan cuci mobil konvensional biasanya mobil dibilas dengan air dulu. Setelah air, masuk ke tahap sampo. Habis itu mobil akan disabuni dengan digosok sama teknisi cuci untuk menghilangkan kotoran yang ada di permukaan cat. Keempat dibilas lagi, kelima baru dilap," buka</span><br>
-              <span class="item-text"><a href="#blog-detail">Baca Selengkapnya ...</a></span>
-            </td>
-          </table>
-        </div>
-        <div class="card-blog">
-          <table>
-            <td><img src="img/logo.png" alt="" width="80px"></td>
-            <td>
-              <span class="item-text-date">Selasa, 8 Januari 2019</span><br>
-              <span class="item-text-judul">Nyuci Mobil Minim Sentuhan Tangan, Bagaimana Caranya?</span><br>
-              <span class="item-text">"Tahapan cuci mobil konvensional biasanya mobil dibilas dengan air dulu. Setelah air, masuk ke tahap sampo. Habis itu mobil akan disabuni dengan digosok sama teknisi cuci untuk menghilangkan kotoran yang ada di permukaan cat. Keempat dibilas lagi, kelima baru dilap," buka</span><br>
-              <span class="item-text"><a href="#blog-detail">Baca Selengkapnya ...</a></span>
-            </td>
-          </table>
-        </div>
+        <div id="all-blog"><!-- BLOG LIST --></div>
       </div>
     </div>
 
@@ -540,10 +524,8 @@
 
       <h2>Blog - detail</h2>
 
-      <img src="img/engine1.jpg" alt="blog" width="100%" height="200px">
+      <div id="detail-blog"><!-- BLOG DETAIL --></div>
 
-      <div role="main" class="ui-content">
-        Jakarta - Kekhawatiran mobil akan terjatuh saat dicuci dengan sistem hidrolik terus membayangi pemilik mobil.
       </div>
     </div>
 

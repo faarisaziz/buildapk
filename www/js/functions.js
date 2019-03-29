@@ -39,7 +39,7 @@ function get_detail_cabang(id) {
         var html = "";
 
         html += '<iframe width="100%" height="200" frameborder="0" style="border:0" ';
-        html += 'src="https://www.google.com/maps/embed/v1/place?q='+data[0].lat+','+data[0].lang+'&amp; key="AIzaSyACMR6xDxS1kbYtcgN8IMGH_oRu1VF-6Po"></iframe>';
+        html += 'src="https://www.google.com/maps/embed/v1/place?q='+data[0].lat+','+data[0].lang+'&amp;key=AIzaSyACMR6xDxS1kbYtcgN8IMGH_oRu1VF-6Po"></iframe>';
         html += '<div role="main" class="ui-content" id="map-canvas"><div class="text-cabang-normal">'+data[0].address+'</div>';
         html += '<div class="text-cabang-bold">Email    : '+data[0].email+'</div>';
         html += '<div class="text-cabang-bold">Call     : '+data[0].Call+'</div>';
@@ -50,26 +50,32 @@ function get_detail_cabang(id) {
 }
 
 function get_all_promotion() {
-    $.get(urlLocation + "api/promotes", function( data ) {
-        var select = document.getElementById('promo-list');
+    $.get(urlLocation + "api/cabangs", function( data ) {
+        var html = "";
 
-        for (var i in data) {
-            $(select).append('<option value='+data[i]+'>'+data[i]+'</select>');
-            console.log(data);
-        }
+        data.forEach(element => {
+            html += '<option value="'+element.pk+'">'+element.fields.name+'</option>';
+
+        });
+
+        $('#promo-list').html(html);
     });
 }
 
 function get_detail_promotion(id) {
-    $.get(urlLocation + "api/get/promote/"+id, function( data ) {
+    $.get(urlLocation + "api/get/promote/"+id.value, function( data ) {
         var html = "";
 
+        html += '<h2>Promosi - Nama cabang disini</h2>';
+ 
         data.forEach(element => {
-            html += '';
-            html += '';
+            html += '<img class="promosi" src="'+mediaLocation+element.Image+'" alt="promosi">';
         });
 
+        console.log(mediaLocation+data[0].Image);
+
         $('#detail-promosi').html(html);
+        window.location.href = "#promosi-detail";
     });
 }
 
@@ -106,10 +112,39 @@ function get_detail_promotion(id) {
 //     });
 // }
 
+function get_all_blog() {
+    $.get(urlLocation + "api/articles", function( data ) {
+        var html = "";
+
+        data.forEach(element => {
+            html += '<div class="card-blog">';
+            html += '<table><td><img src="'+mediaLocation+element.fields.img_path+'" width="80px"></td>';
+            html += '<td><span class="item-text-date">'+element.fields.created_dt+'</span><br>';
+            html += '<span class="item-text-judul">'+element.fields.title+'</span><br>';
+            html += '<span class="item-text">test</span><br>';
+            html += '<span class="item-text"><a href="#blog-detail" onclick="get_detail_blog('+element.pk+')">Baca Selengkapnya ...</a></span>';
+            html += '</td></table></div>';
+        });
+
+        $('#all-blog').html(html);
+    });
+}
+
+function get_detail_blog(id) {
+    $.get(urlLocation + "api/get/article/"+id, function( data ) {
+        var html = "";
+
+        html += '<img src="'+mediaLocation+data[0].Images+'" alt="blog" width="100%" height="200px">';
+        html += '<div role="main" class="ui-content">'+data[0].created_dt+'<br>'+data[0].Conten+'</div>';
+
+        $('#detail-blog').html(html);
+    });
+}
+
 function post_hubungi_kami() {
     $.ajax({
         type: "POST",
-        url: "http://192.168.10.66:8000/api/add/contact",
+        url: urlLocation+"api/add/contact",
         contentType: 'application/json',
         dataType: 'json',
         data: {

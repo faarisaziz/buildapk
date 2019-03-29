@@ -249,7 +249,7 @@ h2 {
   border: 1px solid black;
   margin: 10px 15px 15px 15px;
   text-shadow: none;
-  height: 200px;
+  /* height: 200px; */
 }
 
 .card-blog .item {
