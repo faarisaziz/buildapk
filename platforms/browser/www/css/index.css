@@ -45,6 +45,10 @@ img.menu {
   font-weight: 100 !important;
 }
 
+.btn-check {
+  width: 85px !important;
+}
+
 .fas {
   padding-top: 13px;
   padding-right: 8px;
@@ -289,6 +293,10 @@ h2 {
 
 .input-otp {
   width: 30px !important;
+}
+
+.input-phone {
+  width: 150px !important;
 }
 
 .ui-mobile, .ui-mobile body {

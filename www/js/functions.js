@@ -1,5 +1,6 @@
-var urlLocation = "http://mobeng.dcsys.id/";
-var mediaLocation = "http://mobeng.dcsys.id/media/";
+var urlLocation = "http://192.168.10.66:8000/";
+var mediaLocation = "http://192.168.10.66:8000/media/";
+var urlOdoo = "http://192.168.10.66:4000/";
 
 // http://192.168.10.66:4000/
 // http://mobeng.dcsys.id/
@@ -7,6 +8,49 @@ var mediaLocation = "http://mobeng.dcsys.id/media/";
 // get_all_promotion();
 // post_vehicle_type();
 get_banner_mobile();
+
+$('#signup-check').click(function(e){
+    $.ajax({
+        type: 'post',
+        url: urlOdoo + "api/get/telp",
+        contentType: 'aplication/json',
+        dataType: 'json',
+        data: JSON.stringify({
+            "telp" : $('#signup-phone').val()
+        }),
+        processData: false,
+        success: function( data ) {
+            $('#signup-username').val(data.name);
+            $('#signup-email').val(data.email);
+            $('#signup-password').val(data.password);
+            console.log(data);         
+        },
+        error: function( errorThrown ){
+            console.log(errorThrown);
+        }
+    });
+    e.preventDefault();
+})
+
+$('#signup-verify').click(function(e){
+    $.ajax({
+        type: 'post',
+        url: urlLocation + "api/authentication",
+        contentType: 'aplication/json',
+        dataType: 'json',
+        data: JSON.stringify({
+            "telp" : $('#signup-phone').val()
+        }),
+        processData: false,
+        success: function( data ) {
+            console.log(data);           
+        },
+        error: function( errorThrown ){
+            console.log(errorThrown);
+        }
+    });
+    e.preventDefault();
+})
 
 function get_banner_mobile() {
     $.get(urlLocation + "api/banner/mobile", function( data ) {
@@ -57,6 +101,7 @@ function get_all_promotion() {
             html += '<option value="'+element.pk+'">'+element.fields.name+'</option>';
 
         });
+        console.log(data);
 
         $('#promo-list').html(html);
     });
@@ -65,14 +110,19 @@ function get_all_promotion() {
 function get_detail_promotion(id) {
     $.get(urlLocation + "api/get/promote/"+id.value, function( data ) {
         var html = "";
-
         html += '<h2>Promosi - Nama cabang disini</h2>';
  
         data.forEach(element => {
-            html += '<img class="promosi" src="'+mediaLocation+element.Image+'" alt="promosi">';
+            html += '<img class="promosi" src="'+mediaLocation+element.name[2]+'" alt="promosi">';
         });
-
-        console.log(mediaLocation+data[0].Image);
+        console.log(data)
+        // for(var i=0; i<=data.length; i++) {
+        //     console.log(data[i])
+        //     for(var j=0; j<=data[i].length-1; j++) {
+        //         // console.log(data[i][j])
+        //         html += '<img class="promosi" src="'+mediaLocation+data[i][j]+'" alt="promosi">';
+        //     }
+        // }
 
         $('#detail-promosi').html(html);
         window.location.href = "#promosi-detail";
@@ -121,7 +171,7 @@ function get_all_blog() {
             html += '<table><td><img src="'+mediaLocation+element.fields.img_path+'" width="80px"></td>';
             html += '<td><span class="item-text-date">'+element.fields.created_dt+'</span><br>';
             html += '<span class="item-text-judul">'+element.fields.title+'</span><br>';
-            html += '<span class="item-text">test</span><br>';
+            html += '<span class="item-text" style="display:block;text-overflow: ellipsis;width: 200px;overflow: hidden; white-space: nowrap;">'+element.fields.content+'</span><br>';
             html += '<span class="item-text"><a href="#blog-detail" onclick="get_detail_blog('+element.pk+')">Baca Selengkapnya ...</a></span>';
             html += '</td></table></div>';
         });
@@ -141,21 +191,26 @@ function get_detail_blog(id) {
     });
 }
 
-function post_hubungi_kami() {
+$('#hubungi-send').click(function(e){
     $.ajax({
-        type: "POST",
-        url: urlLocation+"api/add/contact",
+        type: 'post',
+        url: urlLocation + "api/add/contact",
         contentType: 'application/json',
         dataType: 'json',
-        data: {
-            fullname : $('#hubungi-fullname').val(),
-            email : $('#hubungi-email').val(),
-            subject : $('#hubungi-subject').val(),
-            text_message : $('#hubungi-message').val()
-        },
-        success: function(data) {
-            console.log('werwrwerwetaweeargeaw');
+        data: JSON.stringify({
+            "fullname" : $('#hubungi-fullname').val(),
+            "email" : $('#hubungi-email').val(),
+            "subject" : $('#hubungi-subject').val(),
+            "txt_message" : $('#hubungi-message').val()
+        }),
+        processData: false,
+        success: function( data ) {
             console.log(data);
+            alert('Berhasil dikirim');
+        },
+        error: function( errorThrown ){
+            console.log(errorThrown);
         }
     });
-}
+    e.preventDefault();
+})

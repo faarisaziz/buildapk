@@ -25,7 +25,7 @@
       <div role="main" class="ui-content">
         <img class="logo" src="img/logo-mobeng.png" alt="logo">
         <div class="card">
-          <form action="" method="">
+          <form>
             <input type="number" name="" id="login-phone" data-wrapper-class="ui-custom" placeholder="No Telp">
             <input type="password" name="" id="login-password" data-wrapper-class="ui-custom" placeholder="Password">
             <a href="#" class="text-forgot">Forgot password ?</a>
@@ -42,15 +42,18 @@
       <div role="main" class="ui-content">
         <img class="logo" src="img/logo-mobeng.png" alt="logo">
         <div class="card">
-          <form action="" method="">
+          <form>
+            <table>
+              <td><input type="number" name="" id="signup-phone" data-wrapper-class="input-phone" placeholder="No Telephone"></td>
+              <td><button class="ui-btn btn-blue btn-check" id="signup-check">Check</button></td>
+            </table>
             <input type="text" name="" id="signup-username" data-wrapper-class="ui-custom" placeholder="Username">
-            <input type="number" name="" id="signup-phone" data-wrapper-class="ui-custom" placeholder="No Telephone">
             <input type="text" name="" id="signup-email" data-wrapper-class="ui-custom" placeholder="Email">
             <input type="password" name="" id="signup-password" data-wrapper-class="ui-custom" placeholder="Password">
             <label>
               <input type="checkbox" name="" data-mini="true">I'm not robot
             </label>
-            <button type="submit" class="ui-btn btn-blue">Verify</button>
+            <button type="submit" class="ui-btn btn-blue" id="signup-verify">Verify</button>
           </form>
         </div>
       </div>
@@ -564,7 +567,7 @@
           <label>
             <input type="checkbox" name="" data-mini="true">Send a copy to my e-mail address
           </label>
-          <button type="submit" class="ui-btn btn-blue" onclick="post_hubungi_kami()">Send Message</button>
+          <button type="submit" class="ui-btn btn-blue" id="hubungi-send">Send Message</button>
         </form>
         <div class="text-hubungi-ho">Head Office</div>
         <div class="text-hubungi-pt">PT. Surga Mobil Indonesia</div>
