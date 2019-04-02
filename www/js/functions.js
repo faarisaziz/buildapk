@@ -4,9 +4,13 @@ var urlOdoo = "http://192.168.10.66:4000/";
 
 // http://192.168.10.66:4000/
 // http://mobeng.dcsys.id/
-// get_detail_cabang();
-// get_all_promotion();
-// post_vehicle_type();
+
+var verify = false;
+var phonenumber = '';
+var username = '';
+var email = '';
+var password = '';
+
 get_banner_mobile();
 
 $('#signup-check').click(function(e){
@@ -18,12 +22,27 @@ $('#signup-check').click(function(e){
         data: JSON.stringify({
             "telp" : $('#signup-phone').val()
         }),
-        processData: false,
         success: function( data ) {
-            $('#signup-username').val(data.name);
-            $('#signup-email').val(data.email);
-            $('#signup-password').val(data.password);
-            console.log(data);         
+            if(data.status){
+                $('#signup-username').val(data.name);
+                username = data.name;
+                $('#signup-email').val(data.email);
+                email = data.email;
+                $('#signup-password').val(data.password);
+                phonenumber = data.mobile;
+                verify = true;
+                $.mobile.toast({
+                    message: 'Nomor tersedia'
+                });
+            } else {
+                $('#signup-username').val('');
+                $('#signup-email').val('');
+                $('#signup-password').val('');
+                verify = false;
+                $.mobile.toast({
+                    message: 'Nomor tidak tersedia'
+                });
+            }
         },
         error: function( errorThrown ){
             console.log(errorThrown);
@@ -33,24 +52,84 @@ $('#signup-check').click(function(e){
 })
 
 $('#signup-verify').click(function(e){
+    if(verify){
+        $.ajax({
+            type: 'post',
+            url: urlLocation + "api/authentication",
+            contentType: 'aplication/json',
+            dataType: 'json',
+            data: JSON.stringify({
+                "telp" : phonenumber
+            }),
+            success: function() {
+                $.mobile.changePage("#verify");
+                $.mobile.toast({
+                    message: 'kode OTP telah dikirim'
+                });
+            },
+            complete: function(data) {
+                add_user(data.fullname, data.email, data.apps_password, data.mobile);
+                console.log(data);
+            },
+            error: function( errorThrown ){
+                console.log('jajajangjajajajjang')
+                console.log(errorThrown.error);
+            }
+        });
+    } else {
+        $.mobile.toast({
+            message: 'Lengkapi data terlebih dahulu'
+        });
+    }
+    e.preventDefault();
+})
+
+function add_user() {
     $.ajax({
         type: 'post',
-        url: urlLocation + "api/authentication",
+        url: urlLocation + "api/add_user",
         contentType: 'aplication/json',
         dataType: 'json',
         data: JSON.stringify({
-            "telp" : $('#signup-phone').val()
+            "txt_fullname" : username,
+            "email" : email,
+            "password" : password,
+            "telp" : phonenumber
         }),
-        processData: false,
-        success: function( data ) {
-            console.log(data);           
+        success: function(data) {
+            console.log(data);
         },
         error: function( errorThrown ){
             console.log(errorThrown);
         }
     });
-    e.preventDefault();
-})
+}
+
+// $('#verify-next').click(function(e){
+//     if(verify){
+//         $.ajax({
+//             type: 'post',
+//             url: urlLocation + "api/add_user",
+//             contentType: 'aplication/json',
+//             dataType: 'json',
+//             data: JSON.stringify({
+//                 "telp" : phonenumber
+
+//             }),
+//             success: function() {
+//                 $.mobile.changePage("#profile");   
+//             },
+//             error: function( errorThrown ){
+//                 console.log(errorThrown);
+//             }
+//         });
+//     } else {
+//         $.mobile.toast({
+//             message: 'Lengkapi data terlebih dahulu'
+//         });
+//     }
+//     e.preventDefault();
+// })
 
 function get_banner_mobile() {
     $.get(urlLocation + "api/banner/mobile", function( data ) {
@@ -99,9 +178,7 @@ function get_all_promotion() {
 
         data.forEach(element => {
             html += '<option value="'+element.pk+'">'+element.fields.name+'</option>';
-
         });
-        console.log(data);
 
         $('#promo-list').html(html);
     });
@@ -110,57 +187,18 @@ function get_all_promotion() {
 function get_detail_promotion(id) {
     $.get(urlLocation + "api/get/promote/"+id.value, function( data ) {
         var html = "";
-        html += '<h2>Promosi - Nama cabang disini</h2>';
- 
+        html += '<span class="text-promosi">Promo '+data[0].name[3]+'</span>';
+        html += '<hr box-align="center" size="1px" width="90%" color="black" />';
+        
         data.forEach(element => {
             html += '<img class="promosi" src="'+mediaLocation+element.name[2]+'" alt="promosi">';
+
         });
-        console.log(data)
-        // for(var i=0; i<=data.length; i++) {
-        //     console.log(data[i])
-        //     for(var j=0; j<=data[i].length-1; j++) {
-        //         // console.log(data[i][j])
-        //         html += '<img class="promosi" src="'+mediaLocation+data[i][j]+'" alt="promosi">';
-        //     }
-        // }
 
         $('#detail-promosi').html(html);
         window.location.href = "#promosi-detail";
     });
 }
-
-// function post_vehicle_type() {
-//     $( document ).on( "pagecreate", "#estimasi", function() {
-//             $( ".autocomplete" ).on( "filterablebeforefilter", function ( e, data ) {
-//                 var $ul = $( this ),
-//                     $input = $( data.input ),
-//                     value = $input.val(),
-//                     html = "";
-//                 $ul.html( "" );
-//                 if ( value && value.length > 2 ) {
-//                     $ul.html( "<li><div class='ui-loader'><span class='ui-icon ui-icon-loading'></span></div></li>" );
-//                     $ul.listview( "refresh" );
-//                     $.ajax({
-//                         url: urlLocation+"api/vehicle/type",
-//                         dataType: "jsonp",
-//                         crossDomain: true,
-//                         data: {
-//                             q: $input.val()
-//                         }
-//                     })
-//                     .then( function ( response ) {
-//                         $.each( response, function ( i, val ) {
-//                             html += "<li>" + val + "</li>";
-//                         });
-//                         $ul.html( html );
-//                         $ul.listview( "refresh" );
-//                         $ul.trigger( "updatelayout");
-//                     });
-//                 }
-//                 console.log('ok');
-//             });
-//     });
-// }
 
 function get_all_blog() {
     $.get(urlLocation + "api/articles", function( data ) {
@@ -203,10 +241,10 @@ $('#hubungi-send').click(function(e){
             "subject" : $('#hubungi-subject').val(),
             "txt_message" : $('#hubungi-message').val()
         }),
-        processData: false,
         success: function( data ) {
-            console.log(data);
-            alert('Berhasil dikirim');
+            $.mobile.toast({
+                message: 'Data berhasil dikirim'
+            });
         },
         error: function( errorThrown ){
             console.log(errorThrown);

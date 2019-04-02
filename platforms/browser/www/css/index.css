@@ -132,6 +132,11 @@ img.promosi {
   margin-bottom: 10px;
 }
 
+.text-promosi {
+  font-weight: 600;
+  margin-left: 15px;
+}
+
 .text-produk {
   font-size: 20px;
   font-weight: 700;

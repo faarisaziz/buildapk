@@ -63,7 +63,7 @@
       <div role="main" class="ui-content">
         <img class="logo" src="img/logo-mobeng.png" alt="logo">
         <div class="card">
-          <form action="" method="">
+          <form>
             <div class="item">Verifikasi Nomor Ponsel</div>
             <br>
             <div class="item">Masukan kode verifikasi yang</div>
@@ -85,7 +85,7 @@
             <div class="item"><a href="#" class="text-tekan-disini">tekan disini</a></div>
             <div class="item">untuk mengirim ulang</div>
             <br>
-            <button type="submit" class="ui-btn btn-blue">Next</button>
+            <button type="submit" class="ui-btn btn-blue" id="verify-next">Next</button>
           </form>
         </div>
       </div>
@@ -195,7 +195,6 @@
       <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
         <div class="ui-panel-inner">
           <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
-          <a href="#verify" class="ui-btn ui-corner-all">Verifikasi</a>
           <!-- <a href="#demo-links" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a> -->
         </div>
       </div>
@@ -593,6 +592,7 @@
   <script type="text/javascript" src="cordova.js"></script>
   <script type="text/javascript" src="js/jquery.js"></script>
   <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
+  <script type="text/javascript" src="js/jquery.mobile.toast.min.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
   <script type="text/javascript" src="js/slick.min.js"></script>
   <script type="text/javascript" src="js/initializers.js"></script>
