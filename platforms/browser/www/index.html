@@ -11,6 +11,8 @@
   <link rel="stylesheet" type="text/css" href="css/slick.css">
   <link rel="stylesheet" type="text/css" href="css/slick-theme.css">
   <link rel="stylesheet" type="text/css" href="css/all.css">
+  <link rel="stylesheet" type="text/css" href="css/easy-autocomplete.css">
+
 
   <title>Mobeng App</title>
 </head>
@@ -204,8 +206,8 @@
           <div style="padding: 25px 25px;">
             <h3>Estimasi Servis</h3>
             <div id="estimasi"><!-- ESTIMASI CONTENT --></div>
-            <input class="autocomplete-input" type="text" name="txt_vehicle" id="profile-type" value="" placeholder="Tipe Kendaraan">
-            <input type="text" name="" id="profile-machine" value="" placeholder="Jenis Mesin">
+            <input id="profile-type">
+            <!-- <input type="text" name="" id="profile-machine" value="" placeholder="Jenis Mesin"> -->
             <input type="text" name="" id="profile-service" value="" placeholder="Jenis Servis">
             <input type="text" name="" id="profile-product" value="" placeholder="Tipe Produk Servis">
             <div class="text-harga">HARGA : </div>
@@ -216,7 +218,7 @@
             <input type="reset" data-inline="true" value="Hapus">
           </div>
         </form>
-        <ul id="autocomplete" data-role="listview" data-inset="true" data-filter="true" data-input=".autocomplete-input"></ul>
+        <!-- <ul id="autocomplete" data-role="listview" data-inset="true" data-filter="true" data-input=".autocomplete-input"></ul> -->
       </div>
 
     </div>
@@ -273,7 +275,7 @@
           <input id="cari-mobeng" data-type="search" placeholder="Cari di Mobeng">
         </form>
         <ul data-role="listview" data-filter="true" data-input="#cari-mobeng">
-          <li class="text-produk"><a href="#produk-oli">Oli</a></li>
+          <li class="text-produk"><a href="#produk-detail">Oli</a></li>
           <li class="text-produk">Accu</li>
           <li class="text-produk">Ban</li>
           <li class="text-produk">Other</li>
@@ -282,7 +284,7 @@
 
     </div>
 
-    <div data-role="page" id="produk-oli" data-theme="a">
+    <div data-role="page" id="produk-detail" data-theme="a">
       <div data-role="header" data-position="fixed" data-tap-toggle="false">
         <h1>MOBENG</h1>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
@@ -595,6 +597,7 @@
   <script type="text/javascript" src="js/jquery.mobile.toast.min.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
   <script type="text/javascript" src="js/slick.min.js"></script>
+  <script type="text/javascript" src="js/jquery.easy-autocomplete.js"></script>
   <script type="text/javascript" src="js/initializers.js"></script>
   <script type="text/javascript" src="js/functions.js"></script>
   <script type="text/javascript" src="js/integrations.js"></script>
