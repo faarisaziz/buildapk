@@ -11,7 +11,6 @@
   <link rel="stylesheet" type="text/css" href="css/slick.css">
   <link rel="stylesheet" type="text/css" href="css/slick-theme.css">
   <link rel="stylesheet" type="text/css" href="css/all.css">
-  <link rel="stylesheet" type="text/css" href="css/easy-autocomplete.css">
 
 
   <title>Mobeng App</title>
@@ -84,7 +83,7 @@
             <div class="item">Masukan 6 Digit</div>
             <br>
             <div class="item">Tidak menerima kode verifikasi ?</div>
-            <div class="item"><a href="#" class="text-tekan-disini">tekan disini</a></div>
+            <div class="item"><a href="#verify" onclick="resend_auth()" class="text-tekan-disini">tekan disini</a></div>
             <div class="item">untuk mengirim ulang</div>
             <br>
             <button type="submit" class="ui-btn btn-blue" id="verify-next">Next</button>
@@ -112,7 +111,7 @@
             </div>
             <input type="text" name="" id="profile-vehicle" placeholder="Your Vehicle">
             <br>
-            <button type="submit" class="ui-btn btn-blue">Next</button>
+            <button type="submit" class="ui-btn btn-blue" id="profile-next">Next</button>
           </form>
         </div>
       </div>
@@ -206,7 +205,7 @@
           <div style="padding: 25px 25px;">
             <h3>Estimasi Servis</h3>
             <div id="estimasi"><!-- ESTIMASI CONTENT --></div>
-            <input id="profile-type">
+            <input type="text" id="profile-type" placeholder="Tipe Kendaraan" style="width: 100%">
             <!-- <input type="text" name="" id="profile-machine" value="" placeholder="Jenis Mesin"> -->
             <input type="text" name="" id="profile-service" value="" placeholder="Jenis Servis">
             <input type="text" name="" id="profile-product" value="" placeholder="Tipe Produk Servis">
@@ -376,7 +375,8 @@
       <h2>Riwayat</h2>
 
       <div role="main" class="ui-content">
-        <div class="card-riwayat">
+        <div id="riwayat-list"><!-- RIWAYAT LIST --></div>
+        <!-- <div class="card-riwayat">
           <div class="item">No Invoice</div>
           <div class="item">Tanggal</div>
           <div class="item">Customer</div>
@@ -385,7 +385,7 @@
           <div class="item">Type</div>
           <a href="#riwayat-detail" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>
           <div class="item float-right">Total Transaksi : <span class="price">Rp. 2.000.000</span></div>
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -404,7 +404,8 @@
       <h2>Riwayat - Detail</h2>
 
       <div role="main" class="ui-content">
-        <div class="text-riwayat">No Invoice : </div>
+        <div id="detail-riwayat"><!-- RIWAYAT CONTENT --></div>
+        <!-- <div class="text-riwayat">No Invoice : </div>
         <div class="text-riwayat">Tanggal : </div>
         <div class="text-riwayat">Customer : </div>
         <div class="text-riwayat">No. Polis : </div>
@@ -439,7 +440,7 @@
           </tbody>
         </table>
         <span class="text-total">Total Transaksi : <span class="text-total-rp">Rp. 2.445.000</span></span><br>
-        <span class="text-ppn">*Harga sudah termasuk PPN</span>
+        <span class="text-ppn">*Harga sudah termasuk PPN</span> -->
       </div>
 
     </div>
@@ -459,16 +460,8 @@
       <h2>Reminder</h2>
 
       <div role="main" class="ui-content">
-        <div class="card-riwayat">
-          <div class="item">Servis</div>
-          <div class="item">Tanggal</div>
-          <div class="item">Kendaraan</div>
-          <div class="item">KM</div>
-          <div class="item">Oli</div>
-          <div class="item">Waktu</div>
-          <div class="item">Notes</div>
-          <a href="#reminder-detail" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>
-        </div>
+        <div id="reminder-list"><!-- REMINDER LIST --></div>
+
       </div>
     </div>
 
@@ -487,9 +480,25 @@
       <h2>Reminder - Detail</h2>
 
       <div role="main" class="ui-content">
-        <div>
-          Pos Order
-        </div>
+        <div id="detail-reminder"><!-- REMINDER DETAIL --></div>
+        <div class="text-reminder-title">POS Order</div>
+        <div class="text-reminder">Mobeng Citraland SBY</div>
+        <div class="text-reminder">Store store store</div>
+        <div class="text-reminder">Store store store</div>
+        <div class="text-reminder">Store store store</div>
+        <div class="text-reminder">Store store store</div>
+        <div class="text-reminder-title">Kondisi Yang Paling Sering Dijalani/Direncanakan</div>
+        <div class="text-reminder">Kondisi lalu lintas</div>
+        <div class="text-reminder">Kondisi lalu lintas</div>
+        <div class="text-reminder">Kondisi lalu lintas</div>
+        <div class="text-reminder">Kondisi lalu lintas</div>
+        <div class="text-reminder">Kondisi lalu lintas</div>
+        <div class="text-reminder">Kondisi lalu lintas</div>
+        <div class="text-reminder-title">Hasil</div>
+        <div class="text-reminder">Kondisi berkendara anda</div>
+        <div class="text-reminder">Kondisi lalu lintas</div>
+        <div class="text-reminder">Kondisi lalu lintas</div>
+        <div class="text-reminder-title">Created By : Galih</div>
       </div>
     </div>
 
@@ -597,7 +606,6 @@
   <script type="text/javascript" src="js/jquery.mobile.toast.min.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
   <script type="text/javascript" src="js/slick.min.js"></script>
-  <script type="text/javascript" src="js/jquery.easy-autocomplete.js"></script>
   <script type="text/javascript" src="js/initializers.js"></script>
   <script type="text/javascript" src="js/functions.js"></script>
   <script type="text/javascript" src="js/integrations.js"></script>

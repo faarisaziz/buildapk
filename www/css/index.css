@@ -163,6 +163,17 @@ img.promosi {
   margin-top: 50px;
 }
 
+.text-reminder-title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.text-reminder {
+  font-size: 14px;
+  font-weight: 300;
+}
+
 .text-hubungi-ho {
   font-weight: 900;
   font-size: 15px;
@@ -307,3 +318,7 @@ h2 {
 .ui-mobile, .ui-mobile body {
   height: 80% !important;
 }
+/* 
+input.estimasi-type {
+  width: 100% !important;
+} */
