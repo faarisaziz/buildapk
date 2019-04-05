@@ -27,12 +27,12 @@
         <img class="logo" src="img/logo-mobeng.png" alt="logo">
         <div class="card">
           <form>
-            <input type="number" name="" id="login-phone" data-wrapper-class="ui-custom" placeholder="No Telp">
+            <input type="text" name="" id="login-phone" data-wrapper-class="ui-custom" placeholder="No Telp">
             <input type="password" name="" id="login-password" data-wrapper-class="ui-custom" placeholder="Password">
             <a href="#" class="text-forgot">Forgot password ?</a>
             <br>
             <br>
-            <a href="#dashboard" class="ui-btn btn-blue">Log in</a>
+            <a href="#" id="login-btn" class="ui-btn btn-blue">Log in</a>
             <a href="#signup" class="ui-btn btn-green">Sign Up</a>
           </form>
         </div>
@@ -127,7 +127,7 @@
       </div>
     
       <div role="main" class="ui-content jqm-content jqm-fullwidth">
-        <div class="text-username">Nama User</div>
+        <div class="text-username"><span id="profil-user"></span></div>
 
         <div class="banner-item" id="all-banner"><!-- BANNER CONTAIN --></div>
     
@@ -138,7 +138,7 @@
             </a>
           </div>
           <div class="ui-block-b">
-            <a href="#produk">
+            <a href="#produk" onclick="get_all_produk()">
               <img class="menu" src="img/icon-produk.png" height="80px">
             </a>
           </div>
@@ -160,7 +160,7 @@
             </a>
           </div>
           <div class="ui-block-b">
-            <a href="#riwayat">
+            <a href="#riwayat" onclick="get_all_riwayat()">
               <img class="menu" src="img/icon-riwayat.png" height="80px">
             </a>
           </div>
@@ -196,7 +196,7 @@
       <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
         <div class="ui-panel-inner">
           <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
-          <!-- <a href="#demo-links" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a> -->
+          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
         </div>
       </div>
 
@@ -206,7 +206,6 @@
             <h3>Estimasi Servis</h3>
             <div id="estimasi"><!-- ESTIMASI CONTENT --></div>
             <input type="text" id="profile-type" placeholder="Tipe Kendaraan" style="width: 100%">
-            <!-- <input type="text" name="" id="profile-machine" value="" placeholder="Jenis Mesin"> -->
             <input type="text" name="" id="profile-service" value="" placeholder="Jenis Servis">
             <input type="text" name="" id="profile-product" value="" placeholder="Tipe Produk Servis">
             <div class="text-harga">HARGA : </div>
@@ -217,7 +216,6 @@
             <input type="reset" data-inline="true" value="Hapus">
           </div>
         </form>
-        <!-- <ul id="autocomplete" data-role="listview" data-inset="true" data-filter="true" data-input=".autocomplete-input"></ul> -->
       </div>
 
     </div>
@@ -236,6 +234,12 @@
 
       <h2>Cabang</h2>
       <div id="all-cabang"><!-- CABANG LIST --></div>
+      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
+        <div class="ui-panel-inner">
+          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
+          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
+        </div>
+      </div>
     </div>
 
     <div data-role="page" id="cabang-detail" data-theme="a" data-url="map-page">
@@ -253,6 +257,12 @@
       <h2>Cabang - Detail</h2>
 
       <div id="detail-cabang"><!-- CABANG CONTENT --></div>
+      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
+        <div class="ui-panel-inner">
+          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
+          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
+        </div>
+      </div>
     </div>
 
     <div data-role="page" id="produk" data-theme="a">
@@ -273,13 +283,21 @@
         <form class="ui-filterable">
           <input id="cari-mobeng" data-type="search" placeholder="Cari di Mobeng">
         </form>
-        <ul data-role="listview" data-filter="true" data-input="#cari-mobeng">
-          <li class="text-produk"><a href="#produk-detail">Oli</a></li>
+        <!-- <div id="all-produk"></div> -->
+        <ul id="all-produk" data-role="listview" data-filter="true" data-input="#cari-mobeng">
+          
+          <!-- <li class="text-produk"><a href="#produk-detail">Oli</a></li>
           <li class="text-produk">Accu</li>
           <li class="text-produk">Ban</li>
-          <li class="text-produk">Other</li>
+          <li class="text-produk">Other</li> -->
         </ul>
       </div> 
+      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
+        <div class="ui-panel-inner">
+          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
+          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
+        </div>
+      </div>
 
     </div>
 
@@ -294,23 +312,13 @@
           <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
         </div>
       </div>
-
-      <h2>Produk - Oli</h2>
-
-      <div role="main" class="ui-content">
-        <form class="ui-filterable">
-          <input id="cari-oli" data-type="search" placeholder="Cari di Mobeng">
-        </form>
-        <ul data-role="listview" data-filter="true" data-input="#cari-oli">
-          <li class="text-produk">Total</li>
-          <li class="text-produk">Q8</li>
-          <li class="text-produk">Valvoline</li>
-          <li class="text-produk">Gulf</li>
-          <li class="text-produk">Mobil</li>
-          <li class="text-produk">Shell</li>
-          <li class="text-produk">Fastron</li>
-          <li class="text-produk">Eneos</li>
-        </ul>
+      
+      <div id="detail-produk"><!-- PRODUK CONTENT --></div>
+      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
+        <div class="ui-panel-inner">
+          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
+          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
+        </div>
       </div> 
 
     </div>
@@ -337,6 +345,12 @@
           <option value="">Promosi Cabang Mobeng</option>
         </select>
       </div>
+      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
+        <div class="ui-panel-inner">
+          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
+          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
+        </div>
+      </div>
       
     </div>
 
@@ -357,6 +371,12 @@
       <div role="main" class="ui-content">
         <div id="detail-promosi"><!-- PROMOSI CONTENT --></div>
       </div>
+      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
+        <div class="ui-panel-inner">
+          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
+          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
+        </div>
+      </div>
       
     </div>
 
@@ -376,17 +396,15 @@
 
       <div role="main" class="ui-content">
         <div id="riwayat-list"><!-- RIWAYAT LIST --></div>
-        <!-- <div class="card-riwayat">
-          <div class="item">No Invoice</div>
-          <div class="item">Tanggal</div>
-          <div class="item">Customer</div>
-          <div class="item">No Polis</div>
-          <div class="item">Km</div>
-          <div class="item">Type</div>
-          <a href="#riwayat-detail" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>
-          <div class="item float-right">Total Transaksi : <span class="price">Rp. 2.000.000</span></div>
-        </div> -->
+      
       </div>
+      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
+        <div class="ui-panel-inner">
+          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
+          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
+        </div>
+      </div>
+
     </div>
 
     <div data-role="page" id="riwayat-detail" data-theme="a">
@@ -405,42 +423,13 @@
 
       <div role="main" class="ui-content">
         <div id="detail-riwayat"><!-- RIWAYAT CONTENT --></div>
-        <!-- <div class="text-riwayat">No Invoice : </div>
-        <div class="text-riwayat">Tanggal : </div>
-        <div class="text-riwayat">Customer : </div>
-        <div class="text-riwayat">No. Polis : </div>
-        <div class="text-riwayat">Km : </div>
-        <div class="text-riwayat">Type : </div>
-        <hr box-align="center" size="2px" width="90%" color="black" />
-        <table>
-          <thead>
-            <tr>
-              <th data-priority="1" style="width:200px">Item</th>
-              <th data-priority="2" style="width:20px">QTY</th>
-              <th data-priority="2" style="width:65px">Harga</th>
-              <th data-priority="3" style="width:65px">Disc</th>
-              <th data-priority="4" style="width:65px">Subtotal</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>(FS) QB Formula Special G/D Long Life 5W30 SN (dexos 1)1Liter</td>
-              <td>6</td>
-              <td>160.000</td>
-              <td>0</td>
-              <td>960.000</td>
-            </tr>
-            <tr>
-              <td>Oli Filter DXE-1003 Innova, Fortuner, Hilux</td>
-              <td>1</td>
-              <td>33.000</td>
-              <td>0</td>
-              <td>33.000</td>
-            </tr>
-          </tbody>
-        </table>
-        <span class="text-total">Total Transaksi : <span class="text-total-rp">Rp. 2.445.000</span></span><br>
-        <span class="text-ppn">*Harga sudah termasuk PPN</span> -->
+        
+      </div>
+      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
+        <div class="ui-panel-inner">
+          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
+          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
+        </div>
       </div>
 
     </div>
@@ -463,6 +452,13 @@
         <div id="reminder-list"><!-- REMINDER LIST --></div>
 
       </div>
+      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
+        <div class="ui-panel-inner">
+          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
+          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
+        </div>
+      </div>
+
     </div>
 
     <div data-role="page" id="reminder-detail" data-theme="a">
@@ -481,25 +477,15 @@
 
       <div role="main" class="ui-content">
         <div id="detail-reminder"><!-- REMINDER DETAIL --></div>
-        <div class="text-reminder-title">POS Order</div>
-        <div class="text-reminder">Mobeng Citraland SBY</div>
-        <div class="text-reminder">Store store store</div>
-        <div class="text-reminder">Store store store</div>
-        <div class="text-reminder">Store store store</div>
-        <div class="text-reminder">Store store store</div>
-        <div class="text-reminder-title">Kondisi Yang Paling Sering Dijalani/Direncanakan</div>
-        <div class="text-reminder">Kondisi lalu lintas</div>
-        <div class="text-reminder">Kondisi lalu lintas</div>
-        <div class="text-reminder">Kondisi lalu lintas</div>
-        <div class="text-reminder">Kondisi lalu lintas</div>
-        <div class="text-reminder">Kondisi lalu lintas</div>
-        <div class="text-reminder">Kondisi lalu lintas</div>
-        <div class="text-reminder-title">Hasil</div>
-        <div class="text-reminder">Kondisi berkendara anda</div>
-        <div class="text-reminder">Kondisi lalu lintas</div>
-        <div class="text-reminder">Kondisi lalu lintas</div>
-        <div class="text-reminder-title">Created By : Galih</div>
+        
       </div>
+      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
+        <div class="ui-panel-inner">
+          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
+          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
+        </div>
+      </div>
+
     </div>
 
     <div data-role="page" id="blog" data-theme="a">
@@ -521,6 +507,13 @@
       <div role="main" class="ui-content">
         <div id="all-blog"><!-- BLOG LIST --></div>
       </div>
+      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
+        <div class="ui-panel-inner">
+          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
+          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
+        </div>
+      </div>
+
     </div>
 
     <div data-role="page" id="blog-detail" data-theme="a">
@@ -538,7 +531,12 @@
       <h2>Blog - detail</h2>
 
       <div id="detail-blog"><!-- BLOG DETAIL --></div>
-
+      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
+        <div class="ui-panel-inner">
+          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
+          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
+        </div>
+      </div>
 
     </div>
 
@@ -594,6 +592,12 @@
           <div class="ui-block-c">
             <img class="sosial" src="img/icon-fb.png" alt="facebook"><span class="text-sosial">mobeng</span>
           </div>
+        </div>
+      </div>
+      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
+        <div class="ui-panel-inner">
+          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
+          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
         </div>
       </div>
     </div>

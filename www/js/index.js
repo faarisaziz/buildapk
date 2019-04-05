@@ -18,9 +18,17 @@ var app = {
       centerMode: true,
       arrows: false
     });
-    
+
     $(function() {
-      setTimeout(hideSplash, 2000);
+      if(window.localStorage.getItem("loggedIn") == 1) {
+        $('#profil-user').text(window.localStorage.getItem('name'));
+        $.mobile.changePage("#dashboard");
+      }
+      else
+      {
+        setTimeout(hideSplash, 2000);
+      }
+      
     });
     
     function hideSplash() {
