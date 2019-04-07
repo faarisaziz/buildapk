@@ -49,6 +49,30 @@ img.menu {
   width: 85px !important;
 }
 
+.select2-selection {
+  -webkit-box-shadow: 0;
+  box-shadow: 0;
+  background-color: #fff;
+  border: 0;
+  border-radius: 0;
+  color: #555555;
+  margin-bottom: 20px;
+  font-size: 15px;
+  outline: 0;
+  min-height: 40px;
+  text-align: left;
+}
+
+.select2-container--open .select2-dropdown {
+  /* left: -8px !important; */
+  top: -29px;
+}
+
+.custom-1 .select2-container--open .select2-dropdown {
+  left: -8px !important;
+  top: -29px;
+}
+
 .fas {
   padding-top: 13px;
   padding-right: 8px;

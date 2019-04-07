@@ -1,6 +1,6 @@
-var urlLocation = "http://192.168.10.66:8000/";
-var mediaLocation = "http://192.168.10.66:8000/media/";
-var urlOdoo = "http://192.168.10.66:4000/";
+var urlLocation = "http://192.168.1.8:8000/";
+var mediaLocation = "http://192.168.1.8:8000/media/";
+var urlOdoo = "http://192.168.1.8:3000/";
 
 // http://192.168.10.66:4000/
 // http://mobeng.dcsys.id/
@@ -156,7 +156,134 @@ $('#verify-next').click(function(e){
     e.preventDefault();
 })
 
-$('#profile-next').click(function(e){
+$('#forgot-btn').click(function(e){
+    $.ajax({
+        type: 'post',
+        url: urlOdoo + "api/get/telp",
+        contentType: 'aplication/json',
+        dataType: 'json',
+        data: JSON.stringify({
+            "telp" : $('#forgot-username').val()
+        }),
+        success: function( data ) {
+            if(data.status){
+                verify = true;
+                phonenumber = data.mobile;
+                $.mobile.toast({
+                    message: 'Kode OTP telah dikirim'
+                });
+                forgot_auth(data.mobile);
+                $.mobile.changePage("#forgot-verify");
+            } else {
+                $('#forgot-username').val('');
+                verify = false;
+                $.mobile.toast({
+                    message: 'Nomor tidak tersedia'
+                });
+            }
+        },
+        error: function( errorThrown ){
+            console.log(errorThrown);
+        }
+    });
+    e.preventDefault();
+})
+
+function forgot_auth(){
+    $.ajax({
+        type: 'post',
+        url: urlLocation + "api/authentication",
+        contentType: 'aplication/json',
+        dataType: 'json',
+        data: JSON.stringify({
+            "telp" : $('#forgot-username').val()
+        }),
+        success: function(data) {
+        },
+        error: function( errorThrown ){
+            console.log(errorThrown.error);
+        }
+    });
+}
+
+function forgot_resend(){
+    $.ajax({
+        type: 'post',
+        url: urlLocation + "api/authentication",
+        contentType: 'aplication/json',
+        dataType: 'json',
+        data: JSON.stringify({
+            "telp" : phonenumber
+        }),
+        success: function(data) {
+            $.mobile.toast({
+                message: 'kode OTP telah dikirim ulang'
+            });
+        },
+        error: function( errorThrown ){
+            console.log(errorThrown.error);
+        }
+    });
+}
+
+$('#forgot-verify-next').click(function(e){
+    $.ajax({
+        type: 'post',
+        url: urlLocation + "api/verify",
+        contentType: 'aplication/json',
+        dataType: 'json',
+        data: JSON.stringify({
+            "telp" : phonenumber,
+            "otp" : $('#f-1').val()+$('#f-a').val()+$('#f-b').val()+$('#f-c').val()+$('#f-d').val()+$('#f-e').val()
+        }),
+        success: function(data) {
+            if(data.status == 'true'){
+                $.mobile.changePage("#forgot-verify");
+            } else {
+                $.mobile.toast({
+                    message: 'kode OTP tidak sesuai'
+                });
+            }
+        },
+        error: function( errorThrown ){
+            console.log(errorThrown);
+        }
+    });
+    e.preventDefault();
+})
+
+$('#update-btn').click(function(e){
+    var pass1 = $('#forgot-password-1').val();
+    var pass2 = $('#forgot-password-2').val();
+
+    if(pass1 == pass2){
+        $.ajax({
+            type: 'post',
+            url: urlLocation + "api/authentication",
+            contentType: 'aplication/json',
+            dataType: 'json',
+            // data: JSON.stringify({
+            //     "password" : $('#forgot-password-1').val()
+            // }),
+            success: function(data) {
+                $.mobile.toast({
+                    message: 'Password Telah Diubah'
+                });
+                $.mobile.changePage("#login");
+            },
+            error: function( errorThrown ){
+                console.log(errorThrown.error);
+            }
+        });
+    } else {
+        $.mobile.toast({
+            message: 'Password Tidak Sama'
+        });
+    }
+    e.preventDefault();
+})
+
+$('#profile-next').click(function(){
     $.ajax({
         type: 'post',
         url: urlOdoo + "get/telp",
@@ -172,7 +299,6 @@ $('#profile-next').click(function(e){
             console.log(errorThrown);
         }
     });
-    e.preventDefault();
 })
 
 $('#login-btn').click(function(e){
@@ -208,7 +334,7 @@ $('#login-btn').click(function(e){
     e.preventDefault();
 })
 
-$('#logout-btn').click(function(e){
+$('#logout-btn').click(function(){
     window.localStorage.setItem('loggedIn', 0);
     $.mobile.changePage("#login");
     $('#login-phone').val('');
@@ -386,56 +512,156 @@ function get_detail_promotion(id) {
     });
 }
 
-// function get_vehicle() {
-//     $.ajax({
-//         type: 'post',
-//         url: urlOdoo + "api/estimated/vehicle",
-//         contentType: 'aplication/json',
-//         dataType: 'json',
-//         data: JSON.stringify({
-//             "key_token" : "a53c6d8a114ebf02d0fb05782534c738bb8f1c8845",
-//             "txt_vehicle" : $('#profile-type').val()
-//         }),
-//         success: function( data ) {
-//             console.log(data);
-//             $('#profile-type').autocomplete({
-//                 minLength: 0,
-//                 source: data.model,
-//                 select: function( event, ui ) {
-//                     $('#profile-type').val(ui.item,value);
-//                     return false;
-//                 }
-//             })
-            
-//         },
-//         error: function( errorThrown ){
-//             console.log(errorThrown);
-//         }
-//     });
-// }
+var vehicle = '';
+var serviceType = '';
+var productType = '';
 
-// $('#profile-type').autocomplete({
-//     source: function (request, response) {
-//         $.ajax({
-//             type: 'post',
-//             url: urlOdoo + "api/estimated/vehicle",
-//             data: {
-//                 key_token: "a53c6d8a114ebf02d0fb05782534c738bb8f1c8845",
-//                 txt_vehicle: $('#profile-type').val()
-//             },
-//             success: response,
-//             dataType: 'json',
-//             minLength: 2,
-//             delay: 100
-//         });
-//     }
-// });
-
-// $("#profile-type").focusout(function() {
-//     if ($("#profile-type").val() === '') {
-//         $('#profile-type').val('');
-//     }
-// });
+function getOilPrice(type, term){
+    $.ajax({
+        type : 'POST',
+        url  : urlOdoo + 'api/estimated/getoilprice',
+        data : JSON.stringify({
+            'key_token': 'a53c6d8a114ebf02d0fb05782534c738bb8f1c8845',
+            'txt_vehicle': term,
+            'oil_type': type
+        }),
+        success : function(response) {
+            $('#price').text(response[0].price)
+            var result = response[0].vehicle+'<br/>';
+            if(response[0].price!="0"){
+                $('#detail').html(result);
+            }else{
+                $('#detail').html("Detail Produk");
+            }
+        }
+    });
+}
+function getTirePrice(size, term){
+    $.ajax({
+        type : 'POST',
+        url  : urlOdoo + 'api/estimated/getTirePrice',
+        data : JSON.stringify({
+            'key_token': 'a53c6d8a114ebf02d0fb05782534c738bb8f1c8845',
+            'txt_vehicle': term,
+            'ring_size': size
+        }),
+        success : function(response) {
+            $('#price').text(response[0].price);
+            var result = response[0].vehicle+'<br/>';
+            if(response[0].price!="0"){
+                $('#detail').html(result);
+            }else{
+                $('#detail').html("Detail Produk");
+            }
+        }
+    });
+}
+function getAccuPrice(term){
+    $.ajax({
+        type : 'POST',
+        url  : urlOdoo + 'api/estimated/getAccuPrice',
+        data : JSON.stringify({
+            'key_token': 'a53c6d8a114ebf02d0fb05782534c738bb8f1c8845',
+            'txt_vehicle': term
+        }),
+        success : function(response) {
+            console.log();
+            $('#price').text(response[0].price);
+            var result = response[0].vehicle+'<br/>';
+            if(response[0].price!="0"){
+                $('#detail').html(result);
+            }else{
+                $('#detail').html("Detail Produk");
+            }
+        }
+    });
+}
+$(document).ready(function(){
+    $('#serviceType').prop('disabled', true);
+    $('#productType').prop('disabled', true);
+    $('#vehicle').select2({
+        dropdownParent: $("#popupEstimasiServis"),
+        placeholder: "Pilih Kendaraan",
+        minimumInputLength: 4,
+        ajax: {
+            url: urlOdoo + 'api/estimated/vehicle',
+            data: function (params) {
+                return {
+                    term: $.trim(params.term)
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: data
+                };
+            },
+            cache: true
+        }
+    }).on('select2:select', function (evt) {
+        $('#serviceType').prop('disabled', false);
+        $('#productType').prop('disabled', true);
+        var data = $("#vehicle").val();
+        vehicle = data;
+        $("#serviceType option").remove();
+        $("#serviceType").append("<option value='oil' selected>Oli</option>");
+        $("#serviceType").append("<option value='tire' selected>Ban</option>");
+        $("#serviceType").append("<option value='accu' selected>Accu</option>");
+        $('#serviceType').trigger('change');
+        $('#serviceType').val(null).trigger('change');
+        $('#productType').val(null).trigger('change');
+        $('#price').text('0');
+        $('#detail').text('Detail Produk');
+    });
+    $('#serviceType').select2({placeholder: "Jenis Service"}).on('select2:select', function (evt) {
+        $('#productType').prop('disabled', false);
+        var data = $("#serviceType").val();
+        serviceType = data;
+        if(serviceType==="oil"){
+            $("#productType option").remove();
+            $("#productType").append("<option value='ss' selected>Semi Sintetis</option>");
+            $("#productType").append("<option value='fs' selected>Full Sintetis</option>");
+            $('#productType').trigger('change');
+            $('#price').text('0');
+            $('#detail').text('Detail Produk');
+        }else if(serviceType==='tire'){
+            $("#productType option").remove();
+            $("#productType").append("<option value='13' selected>Ring 13</option>");
+            $("#productType").append("<option value='14' selected>Ring 14</option>");
+            $("#productType").append("<option value='15' selected>Ring 15</option>");
+            $("#productType").append("<option value='16' selected>Ring 16</option>");
+            $("#productType").append("<option value='17' selected>Ring 17</option>");
+            $("#productType").append("<option value='18' selected>Ring 18</option>");
+            $("#productType").append("<option value='19' selected>Ring 19</option>");
+            $("#productType").append("<option value='20' selected>Ring 20</option>");
+            $('#productType').trigger('change');
+            $('#price').text('0');
+            $('#detail').text('Detail Produk');
+        }else{
+            $("#productType option").remove();
+            $('#productType').prop('disabled', true);
+            getAccuPrice(vehicle);
+        }
+        $('#productType').val(null).trigger('change');
+    });
+    $('#productType').select2({placeholder: "Tipe Produk Service"}).on('select2:select', function (evt) {
+        var data = $("#productType").val();
+        productType = data;
+        if(serviceType==="oil"){
+            getOilPrice(productType, vehicle);
+        }else if(serviceType==='tire'){
+            getTirePrice(productType, vehicle);
+        }
+    });
+});
+function clearEstimate(){
+    $('#price').text('0');
+    $('#detail').text('Detail Produk');
+    $('#serviceType').prop('disabled', true);
+    $('#productType').prop('disabled', true);
+    $('#vehicle').val(null).trigger('change');
+    $('#serviceType').val(null).trigger('change');
+    $('#productType').val(null).trigger('change');
+}
 
 function get_all_reminder() {
     $.ajax({

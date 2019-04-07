@@ -11,7 +11,13 @@
   <link rel="stylesheet" type="text/css" href="css/slick.css">
   <link rel="stylesheet" type="text/css" href="css/slick-theme.css">
   <link rel="stylesheet" type="text/css" href="css/all.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.1/css/select2.css" rel="stylesheet" />
+  <style>
+    .select2-container--open {
+      z-index: 9999999
+    }
 
+  </style>
 
   <title>Mobeng App</title>
 </head>
@@ -29,7 +35,7 @@
           <form>
             <input type="text" name="" id="login-phone" data-wrapper-class="ui-custom" placeholder="No Telp">
             <input type="password" name="" id="login-password" data-wrapper-class="ui-custom" placeholder="Password">
-            <a href="#" class="text-forgot">Forgot password ?</a>
+            <a href="#forgot" class="text-forgot">Forgot password ?</a>
             <br>
             <br>
             <a href="#" id="login-btn" class="ui-btn btn-blue">Log in</a>
@@ -87,6 +93,66 @@
             <div class="item">untuk mengirim ulang</div>
             <br>
             <button type="submit" class="ui-btn btn-blue" id="verify-next">Next</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div data-role="page" id="forgot" class="bgGreen" data-theme="a">
+      <div role="main" class="ui-content">
+        <img class="logo" src="img/logo-mobeng.png" alt="logo">
+        <div class="card">
+          <form>
+            <input type="text" name="" id="forgot-username" data-wrapper-class="ui-custom" placeholder="No Telp">
+            <br>
+
+            <a href="#" id="forgot-btn" class="ui-btn btn-blue">Next</a>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div data-role="page" id="forgot-verify" class="bgGreen" data-theme="a">
+      <div role="main" class="ui-content">
+        <img class="logo" src="img/logo-mobeng.png" alt="logo">
+        <div class="card">
+          <form>
+            <div class="item">Verifikasi Nomor Ponsel</div>
+            <br>
+            <div class="item">Masukan kode verifikasi yang</div>
+            <div class="item">diterima pada nomor ponsel</div>
+            <div class="item">anda melalui SMS</div>
+            <div data-role="fieldcontain" class="card-verifikasi">
+              <fieldset data-role="controlgroup" data-type="horizontal" class="aside">
+                <input type="text" maxlength="1" id="f-1" data-wrapper-class="input-otp" onkeyup="moveOnMax(this,'f-a')" />
+                <input type="text" maxlength="1" id="f-a" data-wrapper-class="input-otp" onkeyup="moveOnMax(this,'f-b')" />
+                <input type="text" maxlength="1" id="f-b" data-wrapper-class="input-otp" onkeyup="moveOnMax(this,'f-c')" />
+                <input type="text" maxlength="1" id="f-c" data-wrapper-class="input-otp" onkeyup="moveOnMax(this,'f-d')" />
+                <input type="text" maxlength="1" id="f-d" data-wrapper-class="input-otp" onkeyup="moveOnMax(this,'f-e')" />
+                <input type="text" maxlength="1" id="f-e" data-wrapper-class="input-otp" />
+              </fieldset>
+            </div>
+            <div class="item">Masukan 6 Digit</div>
+            <br>
+            <div class="item">Tidak menerima kode verifikasi ?</div>
+            <div class="item"><a href="#forgot-verify" onclick="forgot_resend()" class="text-tekan-disini">tekan disini</a></div>
+            <div class="item">untuk mengirim ulang</div>
+            <br>
+            <button type="submit" class="ui-btn btn-blue" id="forgot-verify-next">Next</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div data-role="page" id="update-password" class="bgGreen" data-theme="a">
+      <div role="main" class="ui-content">
+        <img class="logo" src="img/logo-mobeng.png" alt="logo">
+        <div class="card">
+          <form>
+            <input type="password" name="" id="forgot-password-1" data-wrapper-class="ui-custom" placeholder="Password Baru">
+            <input type="password" name="" id="forgot-password-2" data-wrapper-class="ui-custom" placeholder="Ulangi Password Baru">
+            <br>
+            <a href="#" id="update-btn" class="ui-btn btn-blue">Simpan</a>
           </form>
         </div>
       </div>
@@ -193,29 +259,27 @@
         </div>
       </div>
     
-      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
+      <!-- <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
         <div class="ui-panel-inner">
-          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
-          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
+          <a href="#profile" class="ui-btn ui-corner-all btn-green">Profile</a>
+          <a href="#" id="logout-btn" class="ui-btn ui-corner-all btn-red">Log Out</a>
         </div>
-      </div>
+      </div> -->
 
       <div data-role="popup" id="popupEstimasiServis" data-theme="a" class="ui-corner-all" data-dismissible="false">
-        <form>
-          <div style="padding: 25px 25px;">
-            <h3>Estimasi Servis</h3>
-            <div id="estimasi"><!-- ESTIMASI CONTENT --></div>
-            <input type="text" id="profile-type" placeholder="Tipe Kendaraan" style="width: 100%">
-            <input type="text" name="" id="profile-service" value="" placeholder="Jenis Servis">
-            <input type="text" name="" id="profile-product" value="" placeholder="Tipe Produk Servis">
-            <div class="text-harga">HARGA : </div>
-            <input type="text" disabled="disabled" name="" id="profile-detail" value="" placeholder="Detail Produk">
-            <div class="text-alert">Alat bantu ini hanya sebagai perkiraan. Kami sangat menyarankan Anda mengunjungi cabang kami terdekat, untuk merekomendasikan produk terbaik untuk kendaraan anda
-            <br>Terima Kasih</div>
-            <a href="#" data-rel="back" class="ui-btn btn-red ui-btn-inline ui-corner-all">Tutup</a>
-            <input type="reset" data-inline="true" value="Hapus">
-          </div>
-        </form>
+        <div style="padding: 25px 25px;">
+          <h3>Estimasi Servis</h3>
+
+          <select id="vehicle" class="custom-1" style="width:100%;" data-role="none"></select>
+          <select id="serviceType" style="width:100%" placeholder="Jenis Service" disabled data-role="none"></select>
+          <select id="productType" style="width:100%" placeholder="Tipe Produk Service" disabled data-role="none"></select>
+          <div class="text-harga">HARGA : <span id="price">0</span></div>
+          <div class="card-body"><span id="detail">Detail Produk</span></div>
+          <div class="text-alert">Alat bantu ini hanya sebagai perkiraan. Kami sangat menyarankan Anda mengunjungi cabang kami terdekat, untuk merekomendasikan produk terbaik untuk kendaraan anda
+          <br>Terima Kasih</div>
+          <a href="#" data-rel="back" class="ui-btn btn-red ui-btn-inline ui-corner-all">Tutup</a>
+          <input type="button" data-inline="true" value="Hapus" onclick="clearEstimate()">
+        </div>
       </div>
 
     </div>
@@ -234,12 +298,7 @@
 
       <h2>Cabang</h2>
       <div id="all-cabang"><!-- CABANG LIST --></div>
-      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
-        <div class="ui-panel-inner">
-          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
-          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
-        </div>
-      </div>
+
     </div>
 
     <div data-role="page" id="cabang-detail" data-theme="a" data-url="map-page">
@@ -257,12 +316,7 @@
       <h2>Cabang - Detail</h2>
 
       <div id="detail-cabang"><!-- CABANG CONTENT --></div>
-      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
-        <div class="ui-panel-inner">
-          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
-          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
-        </div>
-      </div>
+
     </div>
 
     <div data-role="page" id="produk" data-theme="a">
@@ -292,12 +346,6 @@
           <li class="text-produk">Other</li> -->
         </ul>
       </div> 
-      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
-        <div class="ui-panel-inner">
-          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
-          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
-        </div>
-      </div>
 
     </div>
 
@@ -314,12 +362,6 @@
       </div>
       
       <div id="detail-produk"><!-- PRODUK CONTENT --></div>
-      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
-        <div class="ui-panel-inner">
-          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
-          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
-        </div>
-      </div> 
 
     </div>
 
@@ -345,12 +387,6 @@
           <option value="">Promosi Cabang Mobeng</option>
         </select>
       </div>
-      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
-        <div class="ui-panel-inner">
-          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
-          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
-        </div>
-      </div>
       
     </div>
 
@@ -370,12 +406,6 @@
 
       <div role="main" class="ui-content">
         <div id="detail-promosi"><!-- PROMOSI CONTENT --></div>
-      </div>
-      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
-        <div class="ui-panel-inner">
-          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
-          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
-        </div>
       </div>
       
     </div>
@@ -398,12 +428,6 @@
         <div id="riwayat-list"><!-- RIWAYAT LIST --></div>
       
       </div>
-      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
-        <div class="ui-panel-inner">
-          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
-          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
-        </div>
-      </div>
 
     </div>
 
@@ -424,12 +448,6 @@
       <div role="main" class="ui-content">
         <div id="detail-riwayat"><!-- RIWAYAT CONTENT --></div>
         
-      </div>
-      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
-        <div class="ui-panel-inner">
-          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
-          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
-        </div>
       </div>
 
     </div>
@@ -452,12 +470,6 @@
         <div id="reminder-list"><!-- REMINDER LIST --></div>
 
       </div>
-      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
-        <div class="ui-panel-inner">
-          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
-          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
-        </div>
-      </div>
 
     </div>
 
@@ -478,12 +490,6 @@
       <div role="main" class="ui-content">
         <div id="detail-reminder"><!-- REMINDER DETAIL --></div>
         
-      </div>
-      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
-        <div class="ui-panel-inner">
-          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
-          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
-        </div>
       </div>
 
     </div>
@@ -507,12 +513,6 @@
       <div role="main" class="ui-content">
         <div id="all-blog"><!-- BLOG LIST --></div>
       </div>
-      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
-        <div class="ui-panel-inner">
-          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
-          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
-        </div>
-      </div>
 
     </div>
 
@@ -531,12 +531,6 @@
       <h2>Blog - detail</h2>
 
       <div id="detail-blog"><!-- BLOG DETAIL --></div>
-      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
-        <div class="ui-panel-inner">
-          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
-          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
-        </div>
-      </div>
 
     </div>
 
@@ -594,12 +588,28 @@
           </div>
         </div>
       </div>
-      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
-        <div class="ui-panel-inner">
-          <a href="#profile" class="ui-btn ui-corner-all">Profile</a>
-          <a href="#" id="logout-btn" class="ui-btn ui-corner-all">Log Out</a>
+
+    </div>
+
+    <div data-role="page" id="notifikasi" data-theme="a">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
+        <h1>MOBENG</h1>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
+          <a href="#dashboard"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
+        </div>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+          <a href="#"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
         </div>
       </div>
+
+      <h2>Notifikasi</h2>
+
+      <div role="main" class="ui-content">
+        <div id="notifikasi-list"><!-- NOTIFIKASI LIST --></div>
+      
+      </div>
+
     </div>
 
   </div>
@@ -610,6 +620,7 @@
   <script type="text/javascript" src="js/jquery.mobile.toast.min.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
   <script type="text/javascript" src="js/slick.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.1/js/select2.js"></script>
   <script type="text/javascript" src="js/initializers.js"></script>
   <script type="text/javascript" src="js/functions.js"></script>
   <script type="text/javascript" src="js/integrations.js"></script>
