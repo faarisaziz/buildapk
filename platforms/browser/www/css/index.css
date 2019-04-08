@@ -63,12 +63,16 @@ img.menu {
   text-align: left;
 }
 
+.select2-container--open {
+  z-index: 9999999
+}
+
 .select2-container--open .select2-dropdown {
   /* left: -8px !important; */
   top: -29px;
 }
 
-.custom-1 .select2-container--open .select2-dropdown {
+.select2-container--open .select2-dropdown .custom-1 {
   left: -8px !important;
   top: -29px;
 }
@@ -301,7 +305,6 @@ h2 {
   border: 1px solid black;
   margin: 10px 15px 15px 15px;
   text-shadow: none;
-  /* height: 200px; */
 }
 
 .card-blog .item {
@@ -350,7 +353,3 @@ h2 {
 .ui-mobile, .ui-mobile body {
   height: 80% !important;
 }
-/* 
-input.estimasi-type {
-  width: 100% !important;
-} */

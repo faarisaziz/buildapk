@@ -11,13 +11,7 @@
   <link rel="stylesheet" type="text/css" href="css/slick.css">
   <link rel="stylesheet" type="text/css" href="css/slick-theme.css">
   <link rel="stylesheet" type="text/css" href="css/all.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.1/css/select2.css" rel="stylesheet" />
-  <style>
-    .select2-container--open {
-      z-index: 9999999
-    }
-
-  </style>
+  <link rel="stylesheet" type="text/css" href="css/select2.css">
 
   <title>Mobeng App</title>
 </head>
@@ -162,23 +156,23 @@
       <div role="main" class="ui-content">
         <img class="logo" src="img/logo-mobeng.png" alt="logo">
         <div class="card">
-          <form action="" method="">
+          <!-- <form> -->
             <input type="text" name="" id="profile-username" data-wrapper-class="ui-custom" placeholder="Username">
             <input type="number" name="" id="profile-phone" data-wrapper-class="ui-custom" placeholder="No Telephone">
             <input type="text" name="" id="profile-email" data-wrapper-class="ui-custom" placeholder="Email">
             <input type="date" data-clear-btn="false" name="" id="profile-birth" value="" placeholder="birth">
             <div class="ui-grid-a">
               <div class="ui-block-a">
-                <input type="radio" name="gender" id="gender-male"><label for="gender-male">Male</label>
+                <input type="radio" name="gender" id="gender-male" value="L"><label for="gender-male">Male</label>
               </div>
               <div class="ui-block-b">
-                <input type="radio" name="gender" id="gender-female"><label for="gender-female">Female</label>
+                <input type="radio" name="gender" id="gender-female" value="P"><label for="gender-female">Female</label>
               </div>
             </div>
             <input type="text" name="" id="profile-vehicle" placeholder="Your Vehicle">
             <br>
             <button type="submit" class="ui-btn btn-blue" id="profile-next">Next</button>
-          </form>
+          <!-- </form> -->
         </div>
       </div>
     </div>
@@ -187,7 +181,7 @@
       <div data-role="header" data-position="fixed" data-tap-toggle="false">
         <h1>MOBENG</h1>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-          <a href="#"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
           <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a> 
         </div>
       </div>
@@ -259,12 +253,12 @@
         </div>
       </div>
     
-      <!-- <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
+      <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
         <div class="ui-panel-inner">
-          <a href="#profile" class="ui-btn ui-corner-all btn-green">Profile</a>
+          <!-- <a href="#profile" class="ui-btn ui-corner-all btn-green">Profile</a> -->
           <a href="#" id="logout-btn" class="ui-btn ui-corner-all btn-red">Log Out</a>
         </div>
-      </div> -->
+      </div>
 
       <div data-role="popup" id="popupEstimasiServis" data-theme="a" class="ui-corner-all" data-dismissible="false">
         <div style="padding: 25px 25px;">
@@ -337,13 +331,9 @@
         <form class="ui-filterable">
           <input id="cari-mobeng" data-type="search" placeholder="Cari di Mobeng">
         </form>
-        <!-- <div id="all-produk"></div> -->
+
         <ul id="all-produk" data-role="listview" data-filter="true" data-input="#cari-mobeng">
-          
-          <!-- <li class="text-produk"><a href="#produk-detail">Oli</a></li>
-          <li class="text-produk">Accu</li>
-          <li class="text-produk">Ban</li>
-          <li class="text-produk">Other</li> -->
+
         </ul>
       </div> 
 
@@ -361,8 +351,17 @@
         </div>
       </div>
       
-      <div id="detail-produk"><!-- PRODUK CONTENT --></div>
+      <span id="produk-header"></span>
 
+      <div role="main" class="ui-content">
+        <form class="ui-filterable">
+          <input id="cari-detail" data-type="search" placeholder="Cari di Mobeng">
+        </form>
+
+        <ul id="detail-produk" data-role="listview" data-filter="true" data-input="#cari-detail">
+
+        </ul>
+      </div> 
     </div>
 
     <div data-role="page" id="promosi" data-theme="a">
@@ -528,7 +527,7 @@
         </div>
       </div>
 
-      <h2>Blog - detail</h2>
+      <span id="blog-header"></span>
 
       <div id="detail-blog"><!-- BLOG DETAIL --></div>
 
@@ -591,7 +590,7 @@
 
     </div>
 
-    <div data-role="page" id="notifikasi" data-theme="a">
+    <div data-role="page" id="notification" data-theme="a">
       <div data-role="header" data-position="fixed" data-tap-toggle="false">
         <h1>MOBENG</h1>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
@@ -606,8 +605,29 @@
       <h2>Notifikasi</h2>
 
       <div role="main" class="ui-content">
-        <div id="notifikasi-list"><!-- NOTIFIKASI LIST --></div>
+        <div id="notification-list"><!-- NOTIFICATION LIST --></div>
       
+      </div>
+
+    </div>
+
+    <div data-role="page" id="notification-detail" data-theme="a">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
+        <h1>MOBENG</h1>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
+          <a href="#notification"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
+        </div>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+          <a href="#"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
+        </div>
+      </div>
+
+      <h2>Riwayat - Detail</h2>
+
+      <div role="main" class="ui-content">
+        <div id="detail-notification"><!-- NOTIFICATION CONTENT --></div>
+        
       </div>
 
     </div>
@@ -620,7 +640,7 @@
   <script type="text/javascript" src="js/jquery.mobile.toast.min.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
   <script type="text/javascript" src="js/slick.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.1/js/select2.js"></script>
+  <script type="text/javascript" src="js/select2.js"></script>
   <script type="text/javascript" src="js/initializers.js"></script>
   <script type="text/javascript" src="js/functions.js"></script>
   <script type="text/javascript" src="js/integrations.js"></script>
