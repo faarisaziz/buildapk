@@ -301,26 +301,40 @@ $('#update-btn').click(function(e){
 })
 
 $('#profile-next').click(function(){
-    $.ajax({
-        type: 'post',
-        url: urlMobeng + "api/profile",
-        contentType: 'aplication/json',
-        dataType: 'json',
-        data: JSON.stringify({
-            "user_id" : userid,
-            "fullname" : $('#profile-username').val(),
-            "email" : $('#profile-email').val(),
-            "dt_birth" : $('#profile-birth').val(),
-            "gender" : $("input[name='gender']:checked").val(),
-            "txt_vehicle" : $('#profile-vehicle').val()
-        }),
-        success: function(data) {
-            $.mobile.changePage("#dashboard");
-        },
-        error: function( errorThrown ){
-            console.log(errorThrown);
-        }
-    });
+    var lahir = $('#profile-birth').val();
+    if(lahir != '') {
+        $.ajax({
+            type: 'post',
+            url: urlMobeng + "api/profile",
+            contentType: 'aplication/json',
+            dataType: 'json',
+            data: JSON.stringify({
+                "user_id" : userid,
+                "telp" : $('#profile-phone').val(),
+                "fullname" : $('#profile-username').val(),
+                "email" : $('#profile-email').val(),
+                "dt_birth" : $('#profile-birth').val(),
+                "gender" : $("input[name='gender']:checked").val(),
+                "txt_vehicle" : $('#profile-vehicle').val()
+            }),
+            success: function(data) {
+                window.localStorage.setItem('name', username);
+                window.localStorage.setItem('userid', userid);
+                window.localStorage.setItem('loggedIn', 1);
+                $('#profil-user').text(window.localStorage.getItem('name'));
+                get_count_badge();
+                get_count_reminder();
+                $.mobile.changePage("#dashboard");
+            },
+            error: function( errorThrown ){
+                console.log(errorThrown);
+            }
+        });
+    } else {
+        $.mobile.toast({
+            message: 'Lengkapi Data'
+        });
+    }
 })
 
 $('#login-btn').click(function(e){
@@ -359,10 +373,32 @@ $('#login-btn').click(function(e){
 })
 
 function logout() {
+    window.localStorage.setItem('name', '');
+    window.localStorage.setItem('userid', '');
     window.localStorage.setItem('loggedIn', 0);
+    console.log(userid);
     $.mobile.changePage("#login");
     $('#login-phone').val('');
     $('#login-password').val('');
+    $('#1').val('');
+    $('#a').val('');
+    $('#b').val('');
+    $('#c').val('');
+    $('#d').val('');
+    $('#e').val('');
+    $('#f-1').val('');
+    $('#f-a').val('');
+    $('#f-b').val('');
+    $('#f-c').val('');
+    $('#f-d').val('');
+    $('#f-e').val('');
+    $('#profile-username').val('');
+    $('#profile-phone').val('');
+    $('#profile-email').val('');
+    $('#signup-username').val('');
+    $('#signup-email').val('');
+    $('#signup-phone').val('');
+    $('#signup-password').val('');
 }
 
 function get_banner_mobile() {
@@ -779,7 +815,7 @@ function get_all_reminder() {
 function get_detail_reminder(invoice) {
     $.ajax({
         type: 'post',
-        url: urlOdoo + "api/get/detail/reminder"+userid,
+        url: urlOdoo + "api/get/detail/reminder",
         contentType: 'aplication/json',
         dataType: 'json',
         data: JSON.stringify({
@@ -791,14 +827,14 @@ function get_detail_reminder(invoice) {
             var html = "";
 
             html += '<div class="text-reminder-title">POS Order</div>';
-            html += '<div class="text-reminder">'+data.shop_cd+'</div>';
-            html += '<div class="text-reminder">Customer : '+data.customer+'/div>';
-            html += '<div class="text-reminder">Lisence Number : '+data.nopol+'</div>';
-            html += '<div class="text-reminder">Type Kendaraan : '+data.vehicle+'</div>';
-            html += '<div class="text-reminder">Kilometer Saat Ini : '+data.km+'</div>';
-            html += '<div class="text-reminder">Jenis '+data.product+': '+data.product_nm+'</div>';
-            html += '<div class="text-reminder">Tanggal : '+data.date_order+'</div>';
-            html += '<div class="text-reminder">Store : '+data.shop_nm+'</div>';
+            html += '<div class="text-reminder">'+data[0].shop_cd+'</div>';
+            html += '<div class="text-reminder">Customer : '+data[0].customer+'</div>';
+            html += '<div class="text-reminder">Lisence Number : '+data[0].nopol+'</div>';
+            html += '<div class="text-reminder">Type Kendaraan : '+data[0].vehicle+'</div>';
+            html += '<div class="text-reminder">Kilometer Saat Ini : '+data[0].km+'</div>';
+            html += '<div class="text-reminder">Jenis '+data[0].product+' : '+data[0].product_nm+'</div>';
+            html += '<div class="text-reminder">Tanggal : '+data[0].date_order+'</div>';
+            html += '<div class="text-reminder">Store : '+data[0].shop_nm+'</div>';
             html += '<div class="text-reminder-title">Kondisi Yang Paling Sering Dijalani/Direncanakan</div>';
             // html += '<div class="text-reminder">Pemakaian Kendaraan : </div>';
             // html += '<div class="text-reminder">Perkiraan Jarak : </div>';
@@ -808,9 +844,9 @@ function get_detail_reminder(invoice) {
             // html += '<div class="text-reminder">Bahan Bakar : </div>';
             html += '<div class="text-reminder-title">Hasil</div>';
             // html += '<div class="text-reminder">Kondisi berkendara anda : </div>';
-            html += '<div class="text-reminder">Jenis : '+data.jenis+'</div>';
+            html += '<div class="text-reminder">Jenis : '+data[0].jenis+'</div>';
             // html += '<div class="text-reminder">KM  Penggantian Berikutnya : </div>';
-            html += '<div class="text-reminder">Tanggal Ganti Oli Berikutnya : '+data.date_target+'</div>';
+            html += '<div class="text-reminder">Tanggal Ganti Oli Berikutnya : '+data[0].date_target+'</div>';
             // html += '<div class="text-reminder">Var KM : </div>';
             // html += '<div class="text-reminder">Var Hari : </div>';            
 
@@ -829,25 +865,23 @@ function get_all_riwayat() {
         contentType: 'aplication/json',
         dataType: 'json',
         data: JSON.stringify({
-            "user_id" : "26812"
+            "user_id" : userid
         }),
         success: function( data ) {
             var html = "";
-            // console.log(data);
-            
-            data.forEach(element => {
+
+            for(var i = 0; i < data.length; i++) {
                 html += '<div class="card-riwayat">';
-                html += '<div class="item">No Invoice : '+element.invoice+'</div>';
-                html += '<div class="item">Tanggal : '+element.date+'</div>';
-                html += '<div class="item">Customer : '+element.customer+'</div>';
-                html += '<div class="item">No. Polis : '+element.nopol+'</div>';
-                // html += '<div class="item">KM : '+element.km+'</div>';
-                // html += '<div class="item">Type : '+element.type+'</div>';
-                html += '<a href="#riwayat-detail" onclick="get_detail_riwayat(\''+element.invoice+'\')" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>';
-                html += '<div class="item float-right">Total Transaksi : <span class="price">Rp. '+element.harga+'</span></div>';
+                html += '<div class="item">No Invoice : '+data[i].invoice+'</div>';
+                html += '<div class="item">Tanggal : '+data[i].date+'</div>';
+                html += '<div class="item">Customer : '+data[i].customer+'</div>';
+                html += '<div class="item">No. Polis : '+data[i].nopol+'</div>';
+                // html += '<div class="item">KM : '+data[i].km+'</div>';
+                // html += '<div class="item">Type : '+data[i].type+'</div>';
+                html += '<a href="#riwayat-detail" onclick="get_detail_riwayat(\''+data[i].invoice+'\')" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>';
+                html += '<div class="item float-right">Total Transaksi : <span class="price">Rp. '+data[i].harga+'</span></div>';
                 html += '</div>';
-                
-            });
+            }
 
             $('#riwayat-list').html(html);
         },
@@ -1007,7 +1041,7 @@ function get_count_badge() {
             if(data.notif_count > 0) {
                 html = data.notif_count;
 
-                $('#badge-notif').html(html).show();
+                $('.badge-notif').html(html).show();
             } else  {
                 $('.badge-notif').hide();
             }

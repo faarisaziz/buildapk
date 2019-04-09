@@ -156,23 +156,21 @@
       <div role="main" class="ui-content">
         <img class="logo" src="img/logo-mobeng.png" alt="logo">
         <div class="card">
-          <!-- <form> -->
-            <input type="text" name="" id="profile-username" data-wrapper-class="ui-custom" placeholder="Username">
-            <input type="number" name="" id="profile-phone" data-wrapper-class="ui-custom" placeholder="No Telephone">
-            <input type="text" name="" id="profile-email" data-wrapper-class="ui-custom" placeholder="Email">
-            <input type="date" data-clear-btn="false" name="" id="profile-birth" value="" placeholder="birth">
-            <div class="ui-grid-a">
-              <div class="ui-block-a">
-                <input type="radio" name="gender" id="gender-male" value="L"><label for="gender-male">Male</label>
-              </div>
-              <div class="ui-block-b">
-                <input type="radio" name="gender" id="gender-female" value="P"><label for="gender-female">Female</label>
-              </div>
+          <input type="text" name="" id="profile-username" data-wrapper-class="ui-custom" placeholder="Username">
+          <input type="text" name="" id="profile-phone" data-wrapper-class="ui-custom" placeholder="No Telephone">
+          <input type="text" name="" id="profile-email" data-wrapper-class="ui-custom" placeholder="Email">
+          <input type="date" data-clear-btn="false" name="" id="profile-birth" value="" placeholder="birth">
+          <div class="ui-grid-a">
+            <div class="ui-block-a">
+              <input type="radio" name="gender" id="gender-male" value="L" checked="checked"><label for="gender-male">Male</label>
             </div>
-            <input type="text" name="" id="profile-vehicle" placeholder="Your Vehicle">
-            <br>
-            <button type="submit" class="ui-btn btn-blue" id="profile-next">Next</button>
-          <!-- </form> -->
+            <div class="ui-block-b">
+              <input type="radio" name="gender" id="gender-female" value="P"><label for="gender-female">Female</label>
+            </div>
+          </div>
+          <input type="text" name="" id="profile-vehicle" placeholder="Your Vehicle">
+          <br>
+          <button type="submit" class="ui-btn btn-blue" id="profile-next">Next</button>
         </div>
       </div>
     </div>
@@ -181,7 +179,7 @@
       <div data-role="header" data-position="fixed" data-tap-toggle="false">
         <h1>MOBENG</h1>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a><span id="badge-notif" class="badge badge-notif"></span>
+          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a><span class="badge badge-notif"></span>
           <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a> 
         </div>
       </div>
@@ -252,13 +250,6 @@
           <div class="ui-block-b text-menu">Hubungi Kami</div>
         </div>
       </div>
-    
-      <!-- <div data-role="panel" data-position="right" data-position-fixed="true" data-display="push" data-theme="a" id="add-form">
-        <div class="ui-panel-inner">
-          <a href="#profile" class="ui-btn ui-corner-all btn-green">Profile</a>
-          <a href="#" id="logout-btn" class="ui-btn ui-corner-all btn-red">Log Out</a>
-        </div>
-      </div> -->
 
       <div data-role="popup" id="popupEstimasiServis" data-theme="a" class="ui-corner-all" data-dismissible="false">
         <div style="padding: 25px 25px;">
@@ -285,7 +276,7 @@
           <a href="#dashboard"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
         </div>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a><span class="badge badge-notif"></span>
           <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
         </div>
       </div>
@@ -302,7 +293,7 @@
           <a href="#cabang"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
         </div>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a><span class="badge badge-notif"></span>
           <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
         </div>
       </div>
@@ -320,7 +311,7 @@
           <a href="#dashboard"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
         </div>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a><span class="badge badge-notif"></span>
           <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
         </div>
       </div>
@@ -346,7 +337,7 @@
           <a href="#produk"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
         </div>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a><span class="badge badge-notif"></span>
           <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
         </div>
       </div>
@@ -371,7 +362,7 @@
           <a href="#produk-detail"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
         </div>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a><span class="badge badge-notif"></span>
           <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
         </div>
       </div>
@@ -396,7 +387,7 @@
           <a href="#dashboard"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
         </div>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a><span class="badge badge-notif"></span>
           <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
         </div>
       </div>
@@ -421,7 +412,7 @@
           <a href="#promosi"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
         </div>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a><span class="badge badge-notif"></span>
           <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
         </div>
       </div>
@@ -441,7 +432,7 @@
           <a href="#dashboard"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
         </div>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a><span class="badge badge-notif"></span>
           <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
         </div>
       </div>
@@ -462,7 +453,7 @@
           <a href="#riwayat"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
         </div>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a><span class="badge badge-notif"></span>
           <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
         </div>
       </div>
@@ -483,7 +474,7 @@
           <a href="#dashboard" onclick="get_count_reminder()"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
         </div>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a><span class="badge badge-notif"></span>
           <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
         </div>
       </div>
@@ -504,7 +495,7 @@
           <a href="#reminder"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
         </div>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a><span class="badge badge-notif"></span>
           <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
         </div>
       </div>
@@ -525,7 +516,7 @@
           <a href="#dashboard"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
         </div>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a><span class="badge badge-notif"></span>
           <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
         </div>
       </div>
@@ -547,7 +538,7 @@
           <a href="#blog"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
         </div>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a><span class="badge badge-notif"></span>
           <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
         </div>
       </div>
@@ -565,7 +556,7 @@
           <a href="#dashboard"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
         </div>
         <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
-          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a> 
+          <a href="#notification" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a><span class="badge badge-notif"></span>
           <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
         </div>
       </div>

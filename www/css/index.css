@@ -366,7 +366,7 @@ h2 {
   height: 80% !important;
 }
 
-.badge{
+.badge-notif {
   padding: 3px 5px 2px;
   position: absolute;
   top: 12px;
@@ -381,17 +381,17 @@ h2 {
   white-space: nowrap;
   text-align: center;
   border-radius: 20px;
-}
-.badge-notif {
   background-color: #ffffff;
   border-color: #7dbf43;
   border-style: solid;
+  display: none;
 }
+
 .badge-reminder {
   padding: 3px 5px 2px;
   position: absolute;
   top: 358px;
-  right: 88px;
+  right: 85px;
   display: inline-block;
   min-width: 10px;
   font-size: 9px;
@@ -405,4 +405,5 @@ h2 {
   background-color: #ffffff;
   border-color: #7dbf43;
   border-style: solid;
+  display: none;
 }
