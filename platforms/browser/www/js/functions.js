@@ -1,9 +1,6 @@
-var urlLocation = "http://192.168.10.66:8000/";
-var mediaLocation = "http://192.168.10.66:8000/media/";
-var urlOdoo = "http://192.168.10.66:4000/";
-
-// http://192.168.10.66:4000/
-// http://mobeng.dcsys.id/
+var urlMobeng = "http://mobeng.dcsys.id/";
+var mediaLocation = "http://mobeng.dcsys.id/media/";
+var urlOdoo = "http://mobeng-api.dcsys.id/";
 
 var verify = false;
 var phonenumber = '';
@@ -14,8 +11,11 @@ var userid = '';
 var vehicle = '';
 var serviceType = '';
 var productType = '';
+var productName = '';
 
 get_banner_mobile();
+get_count_badge();
+get_count_reminder();
 
 $('#signup-check').click(function(e){
     $.ajax({
@@ -61,7 +61,7 @@ $('#signup-verify').click(function(e){
     if(verify){
         $.ajax({
             type: 'post',
-            url: urlLocation + "api/authentication",
+            url: urlMobeng + "api/authentication",
             contentType: 'aplication/json',
             dataType: 'json',
             data: JSON.stringify({
@@ -94,7 +94,7 @@ $('#signup-verify').click(function(e){
 function resend_auth(){
     $.ajax({
         type: 'post',
-        url: urlLocation + "api/authentication",
+        url: urlMobeng + "api/authentication",
         contentType: 'aplication/json',
         dataType: 'json',
         data: JSON.stringify({
@@ -118,7 +118,7 @@ function resend_auth(){
 function add_user() {
     $.ajax({
         type: 'post',
-        url: urlLocation + "api/add_user",
+        url: urlMobeng + "api/add_user",
         contentType: 'aplication/json',
         dataType: 'json',
         data: JSON.stringify({
@@ -139,7 +139,7 @@ function add_user() {
 $('#verify-next').click(function(e){
     $.ajax({
         type: 'post',
-        url: urlLocation + "api/verify",
+        url: urlMobeng + "api/verify",
         contentType: 'aplication/json',
         dataType: 'json',
         data: JSON.stringify({
@@ -165,14 +165,13 @@ $('#verify-next').click(function(e){
 $('#forgot-btn').click(function(e){
     $.ajax({
         type: 'post',
-        url: urlLocation + "api/check_user",
+        url: urlMobeng + "api/check_user",
         contentType: 'aplication/json',
         dataType: 'json',
         data: JSON.stringify({
             "telp" : $('#forgot-username').val()
         }),
         success: function( data ) {
-            console.log(data);
             if(data.status == 'true'){
                 verify = true;
                 phonenumber = data.phone_number;
@@ -199,7 +198,7 @@ $('#forgot-btn').click(function(e){
 function forgot_auth(){
     $.ajax({
         type: 'post',
-        url: urlLocation + "api/authentication",
+        url: urlMobeng + "api/authentication",
         contentType: 'aplication/json',
         dataType: 'json',
         data: JSON.stringify({
@@ -216,7 +215,7 @@ function forgot_auth(){
 function forgot_resend(){
     $.ajax({
         type: 'post',
-        url: urlLocation + "api/check_user",
+        url: urlMobeng + "api/check_user",
         contentType: 'aplication/json',
         dataType: 'json',
         data: JSON.stringify({
@@ -236,7 +235,7 @@ function forgot_resend(){
 $('#forgot-verify-next').click(function(e){
     $.ajax({
         type: 'post',
-        url: urlLocation + "api/forget/otp",
+        url: urlMobeng + "api/forget/otp",
         contentType: 'aplication/json',
         dataType: 'json',
         data: JSON.stringify({
@@ -262,39 +261,49 @@ $('#forgot-verify-next').click(function(e){
 $('#update-btn').click(function(e){
     var pass1 = $('#forgot-password-1').val();
     var pass2 = $('#forgot-password-2').val();
-
-    if(pass1 == pass2){
-        $.ajax({
-            type: 'post',
-            url: urlLocation + "api/recovery",
-            contentType: 'aplication/json',
-            dataType: 'json',
-            data: JSON.stringify({
-                "telp" : phonenumber,
-                "password" : $('#forgot-password-1').val()
-            }),
-            success: function(data) {
-                $.mobile.toast({
-                    message: 'Password Telah Diubah'
-                });
-                $.mobile.changePage("#login");
-            },
-            error: function( data ){
-                console.log(data);
-            }
-        });
+    
+    if(pass1.length > 0){
+        if(pass1 == pass2){
+            $.ajax({
+                type: 'post',
+                url: urlMobeng + "api/recovery",
+                contentType: 'aplication/json',
+                dataType: 'json',
+                data: JSON.stringify({
+                    "telp" : phonenumber,
+                    "password" : $('#forgot-password-1').val()
+                }),
+                success: function(data) {
+                    $.mobile.toast({
+                        message: 'Password Telah Diubah'
+                    });
+                    $.mobile.changePage("#login");
+                    $('#login-phone').val('');
+                    $('#login-password').val('');
+                },
+                error: function( errorThrown ){
+                    console.log(errorThrown);
+                }
+            });
+        } else {
+            $.mobile.toast({
+                message: 'Password Tidak Sama'
+            });
+        }
     } else {
         $.mobile.toast({
-            message: 'Password Tidak Sama'
+            message: 'Password Tidak Boleh Kosong'
         });
     }
+
+    
     e.preventDefault();
 })
 
 $('#profile-next').click(function(){
     $.ajax({
         type: 'post',
-        url: urlLocation + "api/profile",
+        url: urlMobeng + "api/profile",
         contentType: 'aplication/json',
         dataType: 'json',
         data: JSON.stringify({
@@ -306,7 +315,6 @@ $('#profile-next').click(function(){
             "txt_vehicle" : $('#profile-vehicle').val()
         }),
         success: function(data) {
-            console.log('taaaaaaaaaaaaaaaaaaaaarrrrrrrrrrttttt');
             $.mobile.changePage("#dashboard");
         },
         error: function( errorThrown ){
@@ -318,7 +326,7 @@ $('#profile-next').click(function(){
 $('#login-btn').click(function(e){
     $.ajax({
         type: 'post',
-        url: urlLocation + "api/login",
+        url: urlMobeng + "api/login",
         contentType: 'aplication/json',
         dataType: 'json',
         data: JSON.stringify({
@@ -334,6 +342,8 @@ $('#login-btn').click(function(e){
                 window.localStorage.setItem('loggedIn', 1);
                 $('#profil-user').text(window.localStorage.getItem('name'));
                 $.mobile.changePage("#dashboard");
+                get_count_badge();
+                get_count_reminder();
             } else {
                 $.mobile.toast({
                     message: 'Username atau password salah'
@@ -348,17 +358,17 @@ $('#login-btn').click(function(e){
     e.preventDefault();
 })
 
-$('#logout-btn').click(function(){
+function logout() {
     window.localStorage.setItem('loggedIn', 0);
     $.mobile.changePage("#login");
     $('#login-phone').val('');
     $('#login-password').val('');
-})
+}
 
 function get_banner_mobile() {
     $.ajax({
         type: 'get',
-        url: urlLocation + "api/banner/mobile",
+        url: urlMobeng + "api/banner/mobile",
         contentType: 'aplication/json',
         dataType: 'json',
         success: function( data ) {
@@ -369,6 +379,7 @@ function get_banner_mobile() {
             });
     
             $('#all-banner').html(html);
+            userid = window.localStorage.getItem('userid');
         },
         error: function( errorThrown ){
             console.log(errorThrown);
@@ -379,7 +390,7 @@ function get_banner_mobile() {
 function get_all_cabang() {
     $.ajax({
         type: 'get',
-        url: urlLocation + "api/cabangs",
+        url: urlMobeng + "api/cabangs",
         contentType: 'aplication/json',
         dataType: 'json',
         success: function( data ) {
@@ -403,7 +414,7 @@ function get_all_cabang() {
 function get_detail_cabang(id) {
     $.ajax({
         type: 'get',
-        url: urlLocation + "api/get/cabang/"+id,
+        url: urlMobeng + "api/get/cabang/"+id,
         contentType: 'aplication/json',
         dataType: 'json',
         success: function( data ) {
@@ -463,11 +474,14 @@ function get_detail_produk(name) {
         success: function( data ) {
             var header = "";
             var html = "";
+            productName = name;
 
             header += '<h2>Produk - '+name+'</h2>';
 
             for(var i=0; i<data.length; i++) {
-                html += '<li class="text-produk ui-listview ui-li-static">'+data[i].brand+'</li>';
+                html += '<li class="text-produk ui-listview ui-li-static"><a style="text-decoration:none; color: black;" href="#produk-detail-brand" onclick="get_detail_brand(\''+data[i].brand+'\')">';
+                html += data[i].brand;
+                html += '</a></li>';
             }
 
             $('#produk-header').html(header);
@@ -479,10 +493,41 @@ function get_detail_produk(name) {
     });
 }
 
+function get_detail_brand(brand) {
+    $.ajax({
+        type: 'post',
+        url: urlOdoo + "api/get/product-by-brand-type",
+        contentType: 'aplication/json',
+        dataType: 'json',
+        data: JSON.stringify({
+            "key_token" : "a53c6d8a114ebf02d0fb05782534c738bb8f1c8845",
+            "type" : productName,
+            "brand" : brand
+        }),
+        success: function( data ) {
+            var header = "";
+            var html = "";
+            
+
+            header += '<h2>Produk - '+productName+' - '+brand+'</h2>';
+
+            for(var i=0; i<data.length; i++) {
+                html += '<li class="text-produk ui-listview ui-li-static">'+data[i].name+'<br> Harga : '+data[i].price+'</li>';
+            }
+
+            $('#produk-header-brand').html(header);
+            $('#detail-produk-brand').html(html);
+        },
+        error: function( errorThrown ){
+            console.log(errorThrown);
+        }
+    });
+}
+
 function get_all_promotion() {
     $.ajax({
         type: 'get',
-        url: urlLocation + "api/cabangs",
+        url: urlMobeng + "api/cabangs",
         contentType: 'aplication/json',
         dataType: 'json',
         success: function( data ) {
@@ -503,7 +548,7 @@ function get_all_promotion() {
 function get_detail_promotion(id) {
     $.ajax({
         type: 'get',
-        url: urlLocation + "api/get/promote/"+id.value,
+        url: urlMobeng + "api/get/promote/"+id.value,
         contentType: 'aplication/json',
         dataType: 'json',
         success: function( data ) {
@@ -672,6 +717,31 @@ function clearEstimate(){
     $('#productType').val(null).trigger('change');
 }
 
+function get_count_reminder() {
+    $.ajax({
+        type: 'post',
+        url: urlOdoo + "api/get/count/reminder",
+        contentType: 'aplication/json',
+        dataType: 'json',
+        data: JSON.stringify({
+            "key_token" : "a53c6d8a114ebf02d0fb05782534c738bb8f1c8845",
+            "user_id" : userid
+        }),
+        success: function( data ) {
+            var html = "";
+            if(data.count > 0) {
+                html = data.count;
+                $('#badge-reminder').html(html).show();
+            } else  {
+                $('.badge-reminder').hide();
+            }
+        },
+        error: function( errorThrown ){
+            console.log(errorThrown);
+        }
+    });
+}
+
 function get_all_reminder() {
     $.ajax({
         type: 'post',
@@ -687,14 +757,14 @@ function get_all_reminder() {
             
             data.forEach(element => {
                 html += '<div class="card-riwayat">';
-                html += '<div class="item">Servis : '+element.invoice+'</div>';
-                html += '<div class="item">Tanggal : '+element.invoice+'</div>';
-                html += '<div class="item">Kendaraan : '+element.invoice+'</div>';
-                html += '<div class="item">KM : '+element.invoice+'</div>';
-                html += '<div class="item">Oli : '+element.invoice+'</div>';
-                html += '<div class="item">Waktu : '+element.invoice+'</div>';
-                html += '<div class="item">Notes : '+element.invoice+'</div>';
-                html += '<a href="#reminder-detail" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>';
+                html += '<div class="item">Servis : '+element.name+'</div>';
+                html += '<div class="item">Tanggal : '+element.trx_date+'</div>';
+                html += '<div class="item">Kendaraan : '+element.nopol+'</div>';
+                html += '<div class="item">KM : '+element.km+'</div>';
+                html += '<div class="item">Oli : '+element.product+'</div>';
+                html += '<div class="item">Waktu : '+element.interval+'</div>';
+                html += '<div class="item">Notes : '+element.note+'</div>';
+                html += '<a href="#reminder-detail" onclick="get_detail_reminder(\''+element.acc_invoice+'\')" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>';
                 html += '</div>';
             });
 
@@ -706,33 +776,43 @@ function get_all_reminder() {
     });
 }
 
-function get_detail_reminder(userid) {
+function get_detail_reminder(invoice) {
     $.ajax({
-        type: 'get',
-        url: urlOdoo + "api/get/product/reminder"+userid,
+        type: 'post',
+        url: urlOdoo + "api/get/detail/reminder"+userid,
         contentType: 'aplication/json',
         dataType: 'json',
+        data: JSON.stringify({
+            "key_token" : "a53c6d8a114ebf02d0fb05782534c738bb8f1c8845",
+            "user_id" : userid,
+            "invoice" : invoice
+        }),
         success: function( data ) {
             var html = "";
 
             html += '<div class="text-reminder-title">POS Order</div>';
-            html += '<div class="text-reminder">Mobeng Citraland SBY</div>';
-            html += '<div class="text-reminder">Store store store</div>';
-            html += '<div class="text-reminder">Store store store</div>';
-            html += '<div class="text-reminder">Store store store</div>';
-            html += '<div class="text-reminder">Store store store</div>';
+            html += '<div class="text-reminder">'+data.shop_cd+'</div>';
+            html += '<div class="text-reminder">Customer : '+data.customer+'/div>';
+            html += '<div class="text-reminder">Lisence Number : '+data.nopol+'</div>';
+            html += '<div class="text-reminder">Type Kendaraan : '+data.vehicle+'</div>';
+            html += '<div class="text-reminder">Kilometer Saat Ini : '+data.km+'</div>';
+            html += '<div class="text-reminder">Jenis '+data.product+': '+data.product_nm+'</div>';
+            html += '<div class="text-reminder">Tanggal : '+data.date_order+'</div>';
+            html += '<div class="text-reminder">Store : '+data.shop_nm+'</div>';
             html += '<div class="text-reminder-title">Kondisi Yang Paling Sering Dijalani/Direncanakan</div>';
-            html += '<div class="text-reminder">Kondisi lalu lintas</div>';
-            html += '<div class="text-reminder">Kondisi lalu lintas</div>';
-            html += '<div class="text-reminder">Kondisi lalu lintas</div>';
-            html += '<div class="text-reminder">Kondisi lalu lintas</div>';
-            html += '<div class="text-reminder">Kondisi lalu lintas</div>';
+            // html += '<div class="text-reminder">Pemakaian Kendaraan : </div>';
+            // html += '<div class="text-reminder">Perkiraan Jarak : </div>';
+            // html += '<div class="text-reminder">Jumlah Muatan : </div>';
+            // html += '<div class="text-reminder">Trek Jalan : </div>';
+            // html += '<div class="text-reminder">Kondisi lalu lintas : </div>';
+            // html += '<div class="text-reminder">Bahan Bakar : </div>';
             html += '<div class="text-reminder-title">Hasil</div>';
-            html += '<div class="text-reminder">Kondisi berkendara anda</div>';
-            html += '<div class="text-reminder">Kondisi lalu lintas</div>';
-            html += '<div class="text-reminder">Kondisi lalu lintas</div>';
-            html += '<div class="text-reminder">Kondisi lalu lintas</div>';
-            html += '<div class="text-reminder-title">Created By : Galih</div>';
+            // html += '<div class="text-reminder">Kondisi berkendara anda : </div>';
+            html += '<div class="text-reminder">Jenis : '+data.jenis+'</div>';
+            // html += '<div class="text-reminder">KM  Penggantian Berikutnya : </div>';
+            html += '<div class="text-reminder">Tanggal Ganti Oli Berikutnya : '+data.date_target+'</div>';
+            // html += '<div class="text-reminder">Var KM : </div>';
+            // html += '<div class="text-reminder">Var Hari : </div>';            
 
             $('#detail-reminder').html(html);
         },
@@ -829,7 +909,7 @@ function get_detail_riwayat(invoice) {
 function get_all_blog() {
     $.ajax({
         type: 'get',
-        url: urlLocation + "api/articles",
+        url: urlMobeng + "api/articles",
         contentType: 'aplication/json',
         dataType: 'json',
         success: function( data ) {
@@ -856,7 +936,7 @@ function get_all_blog() {
 function get_detail_blog(id) {
     $.ajax({
         type: 'get',
-        url: urlLocation + "api/get/article/"+id,
+        url: urlMobeng + "api/get/article/"+id,
         contentType: 'aplication/json',
         dataType: 'json',
         success: function( data ) {
@@ -885,7 +965,7 @@ $('#hubungi-send').click(function(e){
     if((fname != '') && (eml != '') && (sbk != '') && (tm != '')) {
         $.ajax({
             type: 'post',
-            url: urlLocation + "api/add/contact",
+            url: urlMobeng + "api/add/contact",
             contentType: 'application/json',
             dataType: 'json',
             data: JSON.stringify({
@@ -916,22 +996,51 @@ $('#hubungi-send').click(function(e){
     e.preventDefault();
 })
 
+function get_count_badge() {
+    $.ajax({
+        type: 'get',
+        url: urlMobeng + "api/get/notif_count",
+        contentType: 'aplication/json',
+        dataType: 'json',
+        success: function( data ) {
+            var html = "";
+            if(data.notif_count > 0) {
+                html = data.notif_count;
+
+                $('#badge-notif').html(html).show();
+            } else  {
+                $('.badge-notif').hide();
+            }
+        },
+        error: function( errorThrown ){
+            console.log(errorThrown);
+        }
+    });
+}
+
 function get_all_notification() {
     $.ajax({
         type: 'get',
-        url: urlLocation + "api/notifications",
+        url: urlMobeng + "api/notifications",
         contentType: 'aplication/json',
         dataType: 'json',
         success: function( data ) {
             var html = "";
             
             data.forEach(element => {
-                html += '<div class="card-riwayat">';
-                html += '<div class="item" style="display:block;text-overflow: ellipsis;width: 200px;overflow: hidden; white-space: nowrap;">Pesan : '+element.fields.txt_message+'</div>';
-                html += '<div class="item">Tanggal : '+element.fields.created_dt+'</div>';
-                html += '<a href="#notification-detail" onclick="get_detail_notification(\''+element.pk+'\')" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>';
-                html += '</div>';
-                
+                if(element.fields.isRead == true) {
+                    html += '<div class="card-riwayat-read">';
+                    html += '<div class="item" style="display:block;text-overflow: ellipsis;width: 200px;overflow: hidden; white-space: nowrap;">Pesan : '+element.fields.txt_message+'</div>';
+                    html += '<div class="item">Tanggal : '+element.fields.created_dt+'</div>';
+                    html += '<a href="#notification-detail" onclick="get_detail_notification(\''+element.pk+'\')" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>';
+                    html += '</div>';
+                } else {
+                    html += '<div class="card-riwayat">';
+                    html += '<div class="item" style="display:block;text-overflow: ellipsis;width: 200px;overflow: hidden; white-space: nowrap;">Pesan : '+element.fields.txt_message+'</div>';
+                    html += '<div class="item">Tanggal : '+element.fields.created_dt+'</div>';
+                    html += '<a href="#notification-detail" onclick="get_detail_notification(\''+element.pk+'\')" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>';
+                    html += '</div>';
+                }
             });
 
             $('#notification-list').html(html);
@@ -943,19 +1052,39 @@ function get_all_notification() {
 }
 
 function get_detail_notification(id) {
+    var idIsTrue = id;
     $.ajax({
         type: 'get',
-        url: urlLocation + "api/get/notification/"+id,
+        url: urlMobeng + "api/get/notification/"+id,
         contentType: 'aplication/json',
         dataType: 'json',
         success: function( data ) {
             var html = "";
-            console.log(data.created_dt);
 
             html += '<div class="text-riwayat">Pesan : '+data.txt_message+'</div>';
-            html += '<div class="text-riwayat">Tanggal : '+data.created_dt+'</div>';
+            html += '<div class="text-riwayat">Tanggal : '+data.created_date+'</div>';
 
             $('#detail-notification').html(html);
+        },
+        complete: function() {
+            update_notification(idIsTrue);
+        },
+        error: function( errorThrown ){
+            console.log(errorThrown);
+        }
+    });
+}
+
+function update_notification(id) {
+    $.ajax({
+        type: 'post',
+        url: urlMobeng + "api/put/notif="+id,
+        contentType: 'aplication/json',
+        dataType: 'json',
+        data: JSON.stringify({
+            "id" : id
+        }),
+        success: function() {
         },
         error: function( errorThrown ){
             console.log(errorThrown);

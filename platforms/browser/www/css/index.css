@@ -68,7 +68,6 @@ img.menu {
 }
 
 .select2-container--open .select2-dropdown {
-  /* left: -8px !important; */
   top: -29px;
 }
 
@@ -286,6 +285,19 @@ h2 {
   margin-bottom: 10px;
 }
 
+.card-riwayat-read {
+  background-color: #fff;
+  padding: 20px 20px 10px;
+  border-radius: 20px;
+  border-style: solid;
+  border-color: #7dbf43 !important;
+  color: black;
+  font-size: 12px;
+  font-weight: 50 !important;
+  text-shadow: none;
+  margin-bottom: 10px;
+}
+
 .card-riwayat .item {
   font-size: 12px;
   font-weight: 50 !important;
@@ -352,4 +364,45 @@ h2 {
 
 .ui-mobile, .ui-mobile body {
   height: 80% !important;
+}
+
+.badge{
+  padding: 3px 5px 2px;
+  position: absolute;
+  top: 12px;
+  right: 52px;
+  display: inline-block;
+  min-width: 10px;
+  font-size: 9px;
+  font-weight: 400;
+  color: #ff0505;
+  line-height: 1;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  border-radius: 20px;
+}
+.badge-notif {
+  background-color: #ffffff;
+  border-color: #7dbf43;
+  border-style: solid;
+}
+.badge-reminder {
+  padding: 3px 5px 2px;
+  position: absolute;
+  top: 358px;
+  right: 88px;
+  display: inline-block;
+  min-width: 10px;
+  font-size: 9px;
+  font-weight: 400;
+  color: #ff0505;
+  line-height: 1;
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-align: center;
+  border-radius: 20px;
+  background-color: #ffffff;
+  border-color: #7dbf43;
+  border-style: solid;
 }
