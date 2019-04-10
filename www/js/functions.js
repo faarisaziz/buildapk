@@ -58,7 +58,7 @@ $('#signup-check').click(function(e){
 })
 
 $('#signup-verify').click(function(e){
-    if(verify){
+    if((verify) && ($('input[type=checkbox]').prop('checked'))){
         $.ajax({
             type: 'post',
             url: urlMobeng + "api/authentication",
@@ -123,8 +123,8 @@ function add_user() {
         dataType: 'json',
         data: JSON.stringify({
             "txt_fullname" : username,
-            "email" : email,
-            "txt_password" : pwd,
+            "email" : $('#signup-email').val(),
+            "txt_password" : $('#signup-password').val(),
             "telp" : phonenumber,
             "user_id": userid
         }),
@@ -338,37 +338,44 @@ $('#profile-next').click(function(){
 })
 
 $('#login-btn').click(function(e){
-    $.ajax({
-        type: 'post',
-        url: urlMobeng + "api/login",
-        contentType: 'aplication/json',
-        dataType: 'json',
-        data: JSON.stringify({
-            "username" : $('#login-phone').val(),
-            "password" : $('#login-password').val()
-        }),
-        success: function(data) {
-            userid = data.id;
-            username = data.user_name;
-            if(data.status == 'true'){
-                window.localStorage.setItem('name', username);
-                window.localStorage.setItem('userid', userid);
-                window.localStorage.setItem('loggedIn', 1);
-                $('#profil-user').text(window.localStorage.getItem('name'));
-                $.mobile.changePage("#dashboard");
-                get_count_badge();
-                get_count_reminder();
-            } else {
-                $.mobile.toast({
-                    message: 'Username atau password salah'
-                });
+    var un = $('#login-phone').val();
+    var pw = $('#login-password').val();
+    if((un != '') && (pw != '')) {
+        $.ajax({
+            type: 'post',
+            url: urlMobeng + "api/login",
+            contentType: 'aplication/json',
+            dataType: 'json',
+            data: JSON.stringify({
+                "username" : $('#login-phone').val(),
+                "password" : $('#login-password').val()
+            }),
+            success: function(data) {
+                userid = data.id;
+                username = data.user_name;
+                if(data.status == 'true'){
+                    window.localStorage.setItem('name', username);
+                    window.localStorage.setItem('userid', userid);
+                    window.localStorage.setItem('loggedIn', 1);
+                    $('#profil-user').text(window.localStorage.getItem('name'));
+                    $.mobile.changePage("#dashboard");
+                    get_count_badge();
+                    get_count_reminder();
+                } else {
+                    $.mobile.toast({
+                        message: 'Username atau password salah'
+                    });
+                }
+            },
+            error: function( errorThrown ){
+                console.log(errorThrown);
             }
-            
-        },
-        error: function( errorThrown ){
-            console.log(errorThrown);
-        }
-    });
+        });
+    } else {
+        $.mobile.toast({
+            message: 'Masukan No Telp dan Password'
+        });
+    }
     e.preventDefault();
 })
 
