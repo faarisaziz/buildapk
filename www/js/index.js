@@ -8,6 +8,16 @@ var app = {
   },
 
   onDeviceReady: function() {
+    document.addEventListener("backbutton", function(e){
+       if($.mobile.activePage.is('#dashboard')){
+           e.preventDefault();
+           navigator.app.exitApp();
+       }
+       else {
+           navigator.app.backHistory();
+       }
+    }, false);
+
     app.receivedEvent('deviceready');
   },
 
