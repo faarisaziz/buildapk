@@ -36,6 +36,9 @@
     },
     "cordova-plugin-vibration": {
       "PACKAGE_NAME": "com.mobeng.app"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.mobeng.app"
     }
   },
   "dependent_plugins": {
