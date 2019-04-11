@@ -353,19 +353,22 @@ $('#login-btn').click(function(e){
             success: function(data) {
                 userid = data.id;
                 username = data.user_name;
-                if(data.status == 'true'){
-                    window.localStorage.setItem('name', username);
-                    window.localStorage.setItem('userid', userid);
-                    window.localStorage.setItem('loggedIn', 1);
-                    $('#profil-user').text(window.localStorage.getItem('name'));
-                    $.mobile.changePage("#dashboard");
-                    get_count_badge();
-                    get_count_reminder();
-                } else {
-                    $.mobile.toast({
-                        message: 'Username atau password salah'
-                    });
-                }
+
+                jQuery("body").html("running ");
+                jQuery("body").append(data.status);
+                // if(data.status == 'true'){
+                //     window.localStorage.setItem('name', username);
+                //     window.localStorage.setItem('userid', userid);
+                //     window.localStorage.setItem('loggedIn', 1);
+                //     $('#profil-user').text(window.localStorage.getItem('name'));
+                //     $.mobile.changePage("#dashboard");
+                //     get_count_badge();
+                //     get_count_reminder();
+                // } else {
+                //     $.mobile.toast({
+                //         message: 'Username atau password salah'
+                //     });
+                // }
             },
             error: function( errorThrown ){
                 console.log(errorThrown);
