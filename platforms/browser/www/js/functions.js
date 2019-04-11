@@ -873,12 +873,16 @@ function get_all_riwayat() {
         contentType: 'aplication/json',
         dataType: 'json',
         data: JSON.stringify({
-            "user_id" : userid
+            "user_id" : '40974'
         }),
         success: function( data ) {
             var html = "";
-
-            for(var i = 0; i < data.length; i++) {
+            if (data.status == 'false') {
+                $.mobile.toast({
+                    message: 'Riwayat tidak ditemukan'
+                });
+            } else {
+                for(var i = 0; i < data.length; i++) {
                 html += '<div class="card-riwayat">';
                 html += '<div class="item">No Invoice : '+data[i].invoice+'</div>';
                 html += '<div class="item">Tanggal : '+data[i].date+'</div>';
@@ -890,8 +894,9 @@ function get_all_riwayat() {
                 html += '<div class="item float-right">Total Transaksi : <span class="price">Rp. '+data[i].harga+'</span></div>';
                 html += '</div>';
             }
-
             $('#riwayat-list').html(html);
+            }
+            
         },
         error: function( errorThrown ){
             console.log(errorThrown);
@@ -911,6 +916,7 @@ function get_detail_riwayat(invoice) {
         success: function( data ) {
             var html = "";
 
+            console.log(data);
             html += '<div class="text-riwayat">No Invoice : '+data[0].invoice_no+'</div>';
             html += '<div class="text-riwayat">Tanggal : '+data[0].date+'</div>';
             html += '<div class="text-riwayat">Customer : '+data[0].customer+'</div>';
