@@ -869,7 +869,7 @@ function get_detail_reminder(invoice) {
 function get_all_riwayat() {
     $.ajax({
         type: 'post',
-        url: "http://192.168.10.66:4000/api/transaction",
+        url: urlOdoo + "api/transaction",
         contentType: 'aplication/json',
         dataType: 'json',
         data: JSON.stringify({
