@@ -9,7 +9,7 @@ var app = {
 
   onDeviceReady: function() {
     document.addEventListener("backbutton", function(e){
-       if($.mobile.activePage.is('#dashboard')){
+       if($.mobile.activePage.is('#dashboard') || $.mobile.activePage.is('#login')){
            e.preventDefault();
            navigator.app.exitApp();
        }
