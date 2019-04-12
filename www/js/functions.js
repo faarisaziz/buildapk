@@ -1010,6 +1010,15 @@ $('#hubungi-send').click(function(e){
     var eml = $('#hubungi-email').val();
     var sbk = $('#hubungi-subject').val();
     var tm = $('#hubungi-message').val();
+    var cc = '';
+
+    if ($('#check-copy').is(":checked"))
+    {
+        cc = '1';
+    } else {
+        cc = '0';
+    }
+    
     if((fname != '') && (eml != '') && (sbk != '') && (tm != '')) {
         $.ajax({
             type: 'post',
@@ -1020,7 +1029,8 @@ $('#hubungi-send').click(function(e){
                 "fullname" : $('#hubungi-fullname').val(),
                 "email" : $('#hubungi-email').val(),
                 "subject" : $('#hubungi-subject').val(),
-                "txt_message" : $('#hubungi-message').val()
+                "txt_message" : $('#hubungi-message').val(),
+                "send_copy" : cc
             }),
             success: function() {
                 $.mobile.toast({
