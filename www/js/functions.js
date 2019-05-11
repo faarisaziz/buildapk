@@ -17,6 +17,15 @@ get_banner_mobile();
 get_count_badge();
 get_count_reminder();
 
+function checkSession() {
+    if(window.localStorage.getItem("loggedIn") == 1) {
+        $.mobile.changePage("#dashboard", {transition: "fade"});
+        $('#profil-user').text(window.localStorage.getItem('name'));
+    } else {
+        $.mobile.changePage("#login", {transition: "fade"});
+    }
+}
+
 $('#signup-check').click(function(e){
     $.ajax({
         type: 'post',
@@ -68,7 +77,7 @@ $('#signup-verify').click(function(e){
                 "telp" : phonenumber
             }),
             success: function(data) {
-                $.mobile.changePage("#verify");
+                $.mobile.changePage("#verify", {transition: "slide"});
                 $.mobile.toast({
                     message: 'kode OTP telah dikirim'
                 });
@@ -101,7 +110,7 @@ function resend_auth(){
             "telp" : phonenumber
         }),
         success: function(data) {
-            $.mobile.changePage("#verify");
+            // $.mobile.changePage("#verify");
             $.mobile.toast({
                 message: 'kode OTP telah dikirim ulang'
             });
@@ -148,7 +157,7 @@ $('#verify-next').click(function(e){
         }),
         success: function(data) {
             if(data.status == 'true'){
-                $.mobile.changePage("#profile");
+                $.mobile.changePage("#profile", {transition: "slide"});
             } else {
                 $.mobile.toast({
                     message: 'kode OTP tidak sesuai'
@@ -178,8 +187,7 @@ $('#forgot-btn').click(function(e){
                 $.mobile.toast({
                     message: 'Kode OTP telah dikirim'
                 });
-                // forgot_auth(data.phone_number);
-                $.mobile.changePage("#forgot-verify");
+                $.mobile.changePage("#forgot-verify", {transition: "slide"});
             } else {
                 $('#forgot-username').val('');
                 verify = false;
@@ -277,7 +285,7 @@ $('#update-btn').click(function(e){
                     $.mobile.toast({
                         message: 'Password Telah Diubah'
                     });
-                    $.mobile.changePage("#login");
+                    $.mobile.changePage("#login", {transition: "slide"});
                     $('#login-phone').val('');
                     $('#login-password').val('');
                 },
@@ -324,7 +332,7 @@ $('#profile-next').click(function(){
                 $('#profil-user').text(window.localStorage.getItem('name'));
                 get_count_badge();
                 get_count_reminder();
-                $.mobile.changePage("#dashboard");
+                $.mobile.changePage("#dashboard", {transition: "slide"});
             },
             error: function( errorThrown ){
                 console.log(errorThrown);
@@ -359,7 +367,7 @@ $('#login-btn').click(function(e){
                     window.localStorage.setItem('userid', userid);
                     window.localStorage.setItem('loggedIn', 1);
                     $('#profil-user').text(window.localStorage.getItem('name'));
-                    $.mobile.changePage("#dashboard");
+                    $.mobile.changePage("#dashboard", {transition: "pop"});
                     get_count_badge();
                     get_count_reminder();
                 } else {
@@ -384,8 +392,7 @@ function logout() {
     window.localStorage.setItem('name', '');
     window.localStorage.setItem('userid', '');
     window.localStorage.setItem('loggedIn', 0);
-    console.log(userid);
-    $.mobile.changePage("#login");
+    $.mobile.changePage("#login", {transition: "pop", reverse: true});
     $('#login-phone').val('');
     $('#login-password').val('');
     $('#1').val('');
@@ -442,7 +449,7 @@ function get_all_cabang() {
 
             data.forEach(element => {
                 html += '<div class="container-cabang">';
-                html += '<a href="#cabang-detail" onclick="get_detail_cabang('+element.pk+')"><img src="'+mediaLocation+element.fields.img_path+'"width="100%" height="150px" class="cabang-img"></a>';
+                html += '<a href="#cabang-detail" data-transition="slide" onclick="get_detail_cabang('+element.pk+')"><img src="'+mediaLocation+element.fields.img_path+'"width="100%" height="150px" class="cabang-img"></a>';
                 html += '<div class="text-cabang">'+element.fields.name+'</div>';
                 html += '</div>';
             });
@@ -486,17 +493,18 @@ function get_all_produk() {
         contentType: 'aplication/json',
         dataType: 'json',
         data: JSON.stringify({
+            "type" : "t",
             "key_token" : "a53c6d8a114ebf02d0fb05782534c738bb8f1c8845"
         }),
         success: function( data ) {
             var html = "";
 
             data.forEach(element => {
-                html += '<li class="text-produk ui-listview ui-li-static"><a style="text-decoration:none; color: black;" href="#produk-detail" onclick="get_detail_produk(\''+element.name+'\')">';
+                html += '<li class="text-produk ui-listview ui-li-static"><a style="text-decoration:none; color: black;" href="#produk-detail" data-transition="slide" onclick="get_detail_produk(\''+element.name+'\')">';
                 html += element.name;
                 html += '</a></li>';
             });
-
+             html += '<li class="text-produk ui-listview ui-li-static"><a style="text-decoration:none; color: black;" href="#produk-detail" data-transition="slide"><a>Other</a></li>';
             $('#all-produk').html(html);
         },
         error: function( errorThrown ){
@@ -523,7 +531,7 @@ function get_detail_produk(name) {
             header += '<h2>Produk - '+name+'</h2>';
 
             for(var i=0; i<data.length; i++) {
-                html += '<li class="text-produk ui-listview ui-li-static"><a style="text-decoration:none; color: black;" href="#produk-detail-brand" onclick="get_detail_brand(\''+data[i].brand+'\')">';
+                html += '<li class="text-produk ui-listview ui-li-static"><a style="text-decoration:none; color: black;" href="#produk-detail-brand" data-transition="slide" onclick="get_detail_brand(\''+data[i].brand+'\')">';
                 html += data[i].brand;
                 html += '</a></li>';
             }
@@ -808,7 +816,7 @@ function get_all_reminder() {
                 html += '<div class="item">Oli : '+element.product+'</div>';
                 html += '<div class="item">Waktu : '+element.interval+'</div>';
                 html += '<div class="item">Notes : '+element.note+'</div>';
-                html += '<a href="#reminder-detail" onclick="get_detail_reminder(\''+element.acc_invoice+'\')" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>';
+                html += '<a href="#reminder-detail" data-transition="pop" onclick="get_detail_reminder(\''+element.acc_invoice+'\')" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>';
                 html += '</div>';
             });
 
@@ -890,7 +898,7 @@ function get_all_riwayat() {
                 html += '<div class="item">No. Polis : '+data[i].nopol+'</div>';
                 // html += '<div class="item">KM : '+data[i].km+'</div>';
                 // html += '<div class="item">Type : '+data[i].type+'</div>';
-                html += '<a href="#riwayat-detail" onclick="get_detail_riwayat(\''+data[i].invoice+'\')" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>';
+                html += '<a href="#riwayat-detail" data-transition="pop" onclick="get_detail_riwayat(\''+data[i].invoice+'\')" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>';
                 html += '<div class="item float-right">Total Transaksi : <span class="price">Rp. '+data[i].harga+'</span></div>';
                 html += '</div>';
             }
@@ -991,7 +999,7 @@ function get_detail_blog(id) {
             var html = "";
             var header = '';
 
-            header += '<h2>Blog - '+data[0].title+'</h2>';
+            header += '<h2>'+data[0].title+'</h2>';
 
             html += '<img src="'+mediaLocation+data[0].Images+'" alt="blog" width="100%" height="200px">';
             html += '<div role="main" class="ui-content">'+data[0].created_dt+'<br>'+data[0].Conten+'</div>';
@@ -1087,13 +1095,13 @@ function get_all_notification() {
             
             data.forEach(element => {
                 if(element.fields.isRead == true) {
-                    html += '<div class="card-riwayat-read">';
-                    html += '<div class="item" style="display:block;text-overflow: ellipsis;width: 200px;overflow: hidden; white-space: nowrap;">Pesan : '+element.fields.txt_message+'</div>';
-                    html += '<div class="item">Tanggal : '+element.fields.created_dt+'</div>';
+                    html += '<div class="card-notif-read">';
+                    html += '<div class="item" style="display:block;text-overflow: ellipsis;width: 200px;overflow: hidden; white-space: nowrap;"><strong>Pesan : </strong>'+element.fields.txt_message+'</div><br>';
+                    html += '<div class="item"><strong>Tanggal : </strong>'+element.fields.created_dt+'</div>';
                     html += '<a href="#notification-detail" onclick="get_detail_notification(\''+element.pk+'\')" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>';
                     html += '</div>';
                 } else {
-                    html += '<div class="card-riwayat">';
+                    html += '<div class="card-notif">';
                     html += '<div class="item" style="display:block;text-overflow: ellipsis;width: 200px;overflow: hidden; white-space: nowrap;">Pesan : '+element.fields.txt_message+'</div>';
                     html += '<div class="item">Tanggal : '+element.fields.created_dt+'</div>';
                     html += '<a href="#notification-detail" onclick="get_detail_notification(\''+element.pk+'\')" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>';
@@ -1119,8 +1127,8 @@ function get_detail_notification(id) {
         success: function( data ) {
             var html = "";
 
-            html += '<div class="text-riwayat">Pesan : '+data.txt_message+'</div>';
-            html += '<div class="text-riwayat">Tanggal : '+data.created_date+'</div>';
+            html += '<div class="text-riwayat"><strong>Pesan : </strong>'+data.txt_message+'</div>';
+            html += '<div class="text-riwayat"><strong>Tanggal : </strong>'+data.created_date+'</div>';
 
             $('#detail-notification').html(html);
         },

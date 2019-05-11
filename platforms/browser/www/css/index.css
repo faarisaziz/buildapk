@@ -100,11 +100,6 @@ img.logo {
   margin-bottom: 25px;
 }
 
-img.sosial {
-  width: 30px;
-  margin-top: 15px;
-}
-
 img.promosi {
   display: block;
   margin-left: auto;
@@ -225,9 +220,9 @@ img.promosi {
 }
 
 .text-sosial {
-  font-size: 12px;
+  font-size: 12px;/*
   margin-left: 5px;
-  margin-top: -20px;
+  margin-top: -20px;*/
 }
 
 .text-harga {
@@ -291,6 +286,29 @@ h2 {
   border-radius: 20px;
   border-style: solid;
   border-color: #7dbf43 !important;
+  color: black;
+  font-size: 12px;
+  font-weight: 50 !important;
+  text-shadow: none;
+  margin-bottom: 10px;
+}
+
+.card-notif {
+  background-color: #cecece;
+  padding: 20px 20px 10px;
+  border: 1px solid black;
+  /*border-radius: 20px;*/
+  color: #fff;
+  text-shadow: none;
+  margin-bottom: 10px;
+}
+
+.card-notif-read {
+  background-color: #fff;
+  padding: 20px 20px 10px;
+  border: 1px solid black;
+  /*border-radius: 20px;*/
+  border-style: solid;
   color: black;
   font-size: 12px;
   font-weight: 50 !important;
@@ -363,7 +381,7 @@ h2 {
 }
 
 .ui-mobile, .ui-mobile body {
-  height: 80% !important;
+  /*background-color: #7dbf43 !important;*/
 }
 
 .badge-notif {
