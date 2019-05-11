@@ -476,7 +476,8 @@ function get_detail_cabang(id) {
             html += '<div role="main" class="ui-content" id="map-canvas"><div class="text-cabang-normal">'+data[0].address+'</div>';
             html += '<div class="text-cabang-bold">Email    : '+data[0].email+'</div>';
             html += '<div class="text-cabang-bold">Call     : '+data[0].Call+'</div>';
-            html += '<div class="text-cabang-bold">Phone    : '+data[0].Phone+'</div></div>';
+            html += '<div class="text-cabang-bold">Phone    : '+data[0].Phone+'</div></div><br><br>';
+            html += '<a href="geo:'+data[0].lat+','+data[0].lang+'" class="ui-btn btn-blue">Petunjuk dengan Google Maps</a>';
 
             $('#detail-cabang').html(html);
         },
@@ -864,7 +865,8 @@ function get_detail_reminder(invoice) {
             // html += '<div class="text-reminder">KM  Penggantian Berikutnya : </div>';
             html += '<div class="text-reminder">Tanggal Ganti Oli Berikutnya : '+data[0].date_target+'</div>';
             // html += '<div class="text-reminder">Var KM : </div>';
-            // html += '<div class="text-reminder">Var Hari : </div>';            
+            // html += '<div class="text-reminder">Var Hari : </div>';     
+            html += '<div class="text-reminder">Created By : </div>';     
 
             $('#detail-reminder').html(html);
         },
@@ -885,7 +887,7 @@ function get_all_riwayat() {
         }),
         success: function( data ) {
             var html = "";
-            if (data.status == 'false') {
+            if (data.status = 'false') {
                 $.mobile.toast({
                     message: 'Riwayat tidak ditemukan'
                 });
@@ -972,11 +974,14 @@ function get_all_blog() {
             var html = "";
 
             data.forEach(element => {
+                var str = element.fields.content;
+                var sub = str.substring(0, 200);
+
                 html += '<div class="card-blog">';
                 html += '<table><td><img src="'+mediaLocation+element.fields.img_path+'" width="80px"></td>';
                 html += '<td><span class="item-text-date">'+element.fields.created_dt+'</span><br>';
                 html += '<span class="item-text-judul">'+element.fields.title+'</span><br>';
-                html += '<span class="item-text" style="display:block;text-overflow: ellipsis;width: 200px;overflow: hidden; white-space: nowrap;">'+element.fields.content+'</span><br>';
+                html += '<span class="item-text">'+sub+'</span><br>';
                 html += '<span class="item-text"><a href="#blog-detail" onclick="get_detail_blog('+element.pk+')">Baca Selengkapnya ...</a></span>';
                 html += '</td></table></div>';
             });
@@ -1156,4 +1161,12 @@ function update_notification(id) {
             console.log(errorThrown);
         }
     });
+}
+
+function showFooter() {
+    $('#popupFooter').show();
+}
+
+function hideFooter() {
+    $('#popupFooter').hide();
 }

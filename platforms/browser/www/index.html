@@ -213,7 +213,7 @@
         </div>
         <div class="ui-grid-b">
           <div class="ui-block-a">
-            <a href="#popupEstimasiServis" data-rel="popup" data-position-to="window" data-transition="pop">
+            <a href="#popupEstimasiServis" data-rel="popup" data-position-to="window" data-transition="pop" onclick="showFooter()">
               <img class="menu" src="img/icon-estimasi-servis.png" height="80px">
             </a>
           </div>
@@ -262,8 +262,10 @@
           <div class="card-body"><span id="detail">Detail Produk</span></div>
           <div class="text-alert">Alat bantu ini hanya sebagai perkiraan. Kami sangat menyarankan Anda mengunjungi cabang kami terdekat, untuk merekomendasikan produk terbaik untuk kendaraan anda
           <br>Terima Kasih</div>
-          <a href="#" data-rel="back" class="ui-btn btn-red ui-btn-inline ui-corner-all">Tutup</a>
-          <input type="button" data-inline="true" value="Hapus" onclick="clearEstimate()">
+          <div data-role="footer" style="margin-bottom: 30px; display: none;" id="popupFooter">
+            <a href="#" data-rel="back" class="ui-btn btn-red ui-btn-inline ui-corner-all ui-btn-left" onclick="hideFooter()">Tutup</a>
+            <a href="#" class="ui-btn ui-btn-inline ui-corner-all ui-btn-right" onclick="clearEstimate()">Hapus</a>
+          </div>
         </div>
       </div>
 
