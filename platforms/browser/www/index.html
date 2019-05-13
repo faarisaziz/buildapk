@@ -258,7 +258,7 @@
           <select id="vehicle" class="custom-1" style="width:100%;" data-role="none"></select>
           <select id="serviceType" style="width:100%" placeholder="Jenis Service" disabled data-role="none"></select>
           <select id="productType" style="width:100%" placeholder="Tipe Produk Service" disabled data-role="none"></select>
-          <div class="text-harga">HARGA : <span id="price">0</span></div>
+          <div class="text-harga">HARGA : Rp. <span id="price">0</span></div>
           <div class="card-body"><span id="detail">Detail Produk</span></div>
           <div class="text-alert">Alat bantu ini hanya sebagai perkiraan. Kami sangat menyarankan Anda mengunjungi cabang kami terdekat, untuk merekomendasikan produk terbaik untuk kendaraan anda
           <br>Terima Kasih</div>
@@ -396,13 +396,37 @@
 
       <h2>Promosi</h2>
 
-      <a href="#"><img src="img/promo-nasional.jpg" alt="promosi" width="100%"></a>
+      <a href="#promosi-nasional"><img src="img/promo-nasional.jpg" alt="promosi" width="100%"></a>
       <hr box-align="center" size="2px" width="90%" color="black" />
 
+      <h2 style="font-size: 21px;">Promo Cabang Mobeng</h2>
       <div class="ui-field-contain">
-        <select id="promo-list" onchange="get_detail_promotion(this)"><!-- PROMOSI LIST -->
+        <!-- <select id="promo-list" onchange="get_detail_promotion(this)">PROMOSI LIST
           <option value="">Promosi Cabang Mobeng</option>
-        </select>
+        </select> -->
+        <ul id="all-promo" data-role="listview" data-filter="false">
+
+        </ul>
+      </div>
+      
+    </div>
+
+    <div data-role="page" id="promosi-nasional" data-theme="a">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
+        <h1>MOBENG</h1>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
+          <a href="#promosi" data-transition="slide" data-direction="reverse"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
+        </div>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+          <a href="#notification" data-transition="slideup" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a><span class="badge badge-notif"></span>
+          <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
+        </div>
+      </div>
+
+      <h2>Promosi - Promo Nasional</h2>
+
+      <div role="main" class="ui-content">
+        <div id="nasional-promosi"><!-- PROMOSI NASIONAL CONTENT --></div>
       </div>
       
     </div>
@@ -648,6 +672,76 @@
       <div role="main" class="ui-content">
         <div id="detail-notification"><!-- NOTIFICATION CONTENT --></div>
         
+      </div>
+
+    </div>
+
+    <div data-role="page" id="aboutus" data-theme="a">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
+        <h1>MOBENG</h1>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
+          <a href="#dashboard" data-transition="slide" data-direction="reverse"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
+        </div>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+          <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
+        </div>
+      </div>
+
+      <div role="main" class="ui-content">
+        <h2 style="font-size: 24px;">Company Profile</h2>
+        <div>
+          Bisnis Retail ini berawal pada tahun 2015, dengan nama Planet Ban R4 yang menjual ban mobil dengan 2 toko yang berlokasi di harapan indah bekasi dan pondok cabe tanggerang selatan, setahun berselang perusahaan mengembangkan konsep bisnisnya menjadi Toko Ganti Oli dengan konsep gratis perawatan, yang melayani penggantian oli kendaraan roda 4, penggantian ban, aki, filter-filter dll. Nama Planet Ban R4 juga berubah menjadi MOBENG, dengan toko pertama berlokasi di Harapan Indah Bekasi yang dibuka pada tgl 17 Juni 2016 hingga selanjutnya berkembang menjadi beberapa toko yang tersebar di daerah tanggerang dan surabaya, hingga 2018 Mobeng memiliki 10 toko yang beroperasi dari mulai jam 9 pagi hingga jam 9 malam setiap harinya.
+        </div>
+        <h2 style="font-size: 24px;">Visi</h2>
+        <div>
+          Mejadi Toko Ganti Oli Pilihan yang mengutamakan ketulusan serta edukasi dalam memberikan pelayanan dan perawatan kendaraan pelanggan. Didukung dengan peralatan kerja terbaik, serta tenaga kerja yang kompeten untuk memenuhi kebutuhan dan kepuasan pelanggan.
+        </div>
+        <h2 style="font-size: 24px;">Misi</h2>
+        <div>
+          <ol>
+            <li>Menciptakan Toko ganti oli yang bersih, rapih dan nyaman untuk pelanggan</li>
+            <li>Memberikan Pelayanan yang unggul berdasarkan nilai-nilai kejujuran, ketulusan dan kehati-hatian dalam menangani kendaraan pelanggan</li>
+            <li>Memberikan layanan yang cepat dan berkulaitas di dukung peralatan yang terbaik dan aman</li>
+            <li>Menjadikan Perawatan Gratis sebagai standar pelayanan untuk setiap perkerjaan ganti oli</li>
+            <li>Memberikan solusi yang tepat & cepat terhahdap kebutuhan oli bagi kendaraan pelanggan</li>
+            <li>Memenuhi ketentuan dan peraturan yang terkait dengan bisnis Bengkel</li>
+            <li>Menciptkan interaksi kerja yang saling mendukung & lingkungan kerja yang kondusif</li>
+            <li>Memberikan pelatihan yang terus menerus kepada seluruh Staff dalam rangka meningkatkan keahlian dan propesionalisme</li>
+            <li>Menyediakan Jenis layanan lain yang sesuai dengan konsep mobeng untuk memenuhi kebutuhan pelanggan dan meningkatkan volume penjualan</li>
+            <li>Ikut menjaga lingkungan dari limbah berbahaya</li>
+          </ol>
+        </div>
+        <h2 style="font-size: 24px;">Group</h2>
+        <div>Indogroup</div>
+        <br>
+        <hr>
+        <h2 style="font-size: 24px;">OUR PARTNER</h2>
+        <div class="partner-item">
+          <div class="partner-item-list"><img src="img/1.png"></div>
+          <div class="partner-item-list"><img src="img/2.png"></div>
+          <div class="partner-item-list"><img src="img/3.png"></div>
+          <div class="partner-item-list"><img src="img/4.png"></div>
+          <div class="partner-item-list"><img src="img/5.png"></div>
+          <div class="partner-item-list"><img src="img/6.png"></div>
+          <div class="partner-item-list"><img src="img/7.png"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div data-role="page" id="faq" data-theme="a">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
+        <h1>MOBENG</h1>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
+          <a href="#dashboard" data-transition="slide" data-direction="reverse"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
+        </div>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+          <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
+        </div>
+      </div>
+
+      <div role="main" class="ui-content">
+        <div id="faq-list">List FAQ</div>
       </div>
 
     </div>

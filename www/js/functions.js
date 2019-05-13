@@ -477,7 +477,8 @@ function get_detail_cabang(id) {
             html += '<div class="text-cabang-bold">Email    : '+data[0].email+'</div>';
             html += '<div class="text-cabang-bold">Call     : '+data[0].Call+'</div>';
             html += '<div class="text-cabang-bold">Phone    : '+data[0].Phone+'</div></div><br><br>';
-            html += '<a href="geo:'+data[0].lat+','+data[0].lang+'" class="ui-btn btn-blue">Petunjuk dengan Google Maps</a>';
+            html += '<div class="card">';
+            html += '<a href="geo:'+data[0].lat+','+data[0].lang+'" class="ui-btn btn-blue">Petunjuk dengan Google Maps</a></div>';
 
             $('#detail-cabang').html(html);
         },
@@ -505,7 +506,34 @@ function get_all_produk() {
                 html += element.name;
                 html += '</a></li>';
             });
-             html += '<li class="text-produk ui-listview ui-li-static"><a style="text-decoration:none; color: black;" href="#produk-detail" data-transition="slide"><a>Other</a></li>';
+             html += '<li class="text-produk ui-listview ui-li-static"><a style="text-decoration:none; color: black;" href="#produk" data-transition="slide" onclick="get_other_produk()">Other</a></li>';
+            $('#all-produk').html(html);
+        },
+        error: function( errorThrown ){
+            console.log(errorThrown);
+        }
+    });
+}
+
+function get_other_produk() {
+    $.ajax({
+        type: 'post',
+        url: urlOdoo + "api/get/product-type",
+        contentType: 'aplication/json',
+        dataType: 'json',
+        data: JSON.stringify({
+            "type" : "f",
+            "key_token" : "a53c6d8a114ebf02d0fb05782534c738bb8f1c8845"
+        }),
+        success: function( data ) {
+            var html = "";
+
+            data.forEach(element => {
+                html += '<li class="text-produk ui-listview ui-li-static"><a style="text-decoration:none; color: black;" href="#produk-detail" data-transition="slide" onclick="get_detail_produk(\''+element.name+'\')">';
+                html += element.name;
+                html += '</a></li>';
+            });
+             
             $('#all-produk').html(html);
         },
         error: function( errorThrown ){
@@ -584,13 +612,16 @@ function get_all_promotion() {
         contentType: 'aplication/json',
         dataType: 'json',
         success: function( data ) {
+            
             var html = "";
 
             data.forEach(element => {
-                html += '<option value="'+element.pk+'">'+element.fields.name+'</option>';
+                html += '<li class="text-produk ui-listview ui-li-static"><a style="text-decoration:none; color: black;" href="#promosi-detail" data-transition="slide" onclick="get_detail_promotion('+element.pk+')">';
+                html += element.fields.name;
+                html += '</a></li>';
             });
     
-            $('#promo-list').html(html);
+            $('#all-promo').html(html);
         },
         error: function( errorThrown ){
             console.log(errorThrown);
@@ -601,14 +632,14 @@ function get_all_promotion() {
 function get_detail_promotion(id) {
     $.ajax({
         type: 'get',
-        url: urlMobeng + "api/get/promote/"+id.value,
+        url: urlMobeng + "api/get/promote/"+id,
         contentType: 'aplication/json',
         dataType: 'json',
         success: function( data ) {
             var html = "";
 
             html += '<span class="text-promosi">Promo '+data[0].name[3]+'</span>';
-            html += '<hr box-align="center" size="1px" width="90%" color="black" />';
+            html += '<hr box-align="center" size="1px" width="100%" color="black" />';
             
             data.forEach(element => {
                 html += '<img class="promosi" src="'+mediaLocation+element.name[2]+'" alt="promosi">';
@@ -1099,17 +1130,20 @@ function get_all_notification() {
             var html = "";
             
             data.forEach(element => {
+                var str = element.fields.txt_message;
+                var sub = str.substring(0, 50);
+
                 if(element.fields.isRead == true) {
                     html += '<div class="card-notif-read">';
-                    html += '<div class="item" style="display:block;text-overflow: ellipsis;width: 200px;overflow: hidden; white-space: nowrap;"><strong>Pesan : </strong>'+element.fields.txt_message+'</div><br>';
+                    html += '<div class="item"><strong>Pesan : </strong>'+sub+'</div><br>';
                     html += '<div class="item"><strong>Tanggal : </strong>'+element.fields.created_dt+'</div>';
-                    html += '<a href="#notification-detail" onclick="get_detail_notification(\''+element.pk+'\')" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>';
+                    html += '<a href="#notification-detail" onclick="get_detail_notification(\''+element.pk+'\')" class="ui-btn btn-riwayat ui-corner-all">Detail</a>';
                     html += '</div>';
                 } else {
                     html += '<div class="card-notif">';
-                    html += '<div class="item" style="display:block;text-overflow: ellipsis;width: 200px;overflow: hidden; white-space: nowrap;">Pesan : '+element.fields.txt_message+'</div>';
+                    html += '<div class="item">Pesan : '+sub+'</div>';
                     html += '<div class="item">Tanggal : '+element.fields.created_dt+'</div>';
-                    html += '<a href="#notification-detail" onclick="get_detail_notification(\''+element.pk+'\')" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>';
+                    html += '<a href="#notification-detail" onclick="get_detail_notification(\''+element.pk+'\')" class="ui-btn btn-riwayat ui-corner-all">Detail</a>';
                     html += '</div>';
                 }
             });
