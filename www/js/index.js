@@ -23,30 +23,6 @@ var app = {
 
   receivedEvent: function(id) {
     checkSession();
-    $(".banner-item").slick({ 
-      // slidesToShow: 1, slidesToScroll: 1, 
-      // autoplay: true, autoplaySpeed: 5000,
-      // centerMode: true,
-      // arrows: false
-
-      dots: false,
-      infinite: true,
-      autoplay: true, 
-      autoplaySpeed: 5000,
-      slidesToShow: 1,
-      centerMode: true,
-      variableWidth: true
-    });
-
-    $('.aaaaaaa').slick({
-      dots: true,
-      infinite: true,
-      speed: 300,
-      slidesToShow: 1,
-      centerMode: true,
-      variableWidth: true,
-      arrows: false
-    });
     
     function hideSplash() {
       $.mobile.changePage("#login", "fade");
@@ -84,11 +60,14 @@ var app = {
   },
 
   receivedEvent: function(id) {
-    $(".banner-item").slick({ 
-      slidesToShow: 1, slidesToScroll: 1, 
-      autoplay: true, autoplaySpeed: 5000,
-      centerMode: true,
-      arrows: false
+    var mySwiper = new Swiper ('.swiper-container', {
+      direction: 'horizontal',
+      loop: true,
+      scrollbar: { el: '.swiper-scrollbar' },
+      autoplay: {
+          delay: 2000,
+          disableOnInteraction: false
+      }
     });
 
     $(function() {

@@ -428,7 +428,7 @@ function get_banner_mobile() {
 
             data.forEach(element => {
                 // html += '<div class="banner-item-list"><img src="'+mediaLocation+element.fields.img_path+'"></div>';
-                html += '<div class="swiper-slide"><img src="'+mediaLocation+element.fields.img_path+'"></div>';
+                html += '<div class="swiper-slide"><img src="'+mediaLocation+element.fields.img_path+'" alt="banner" style="height: 160px; border-radius: 25px; width: calc(100% - 35px);" /></div>';
             });
     
             $('#all-banner').html(html);
@@ -449,7 +449,7 @@ function get_banner_partner() {
         success: function( data ) {
             var html = "";
             data.forEach(element => {
-                html += '<div class="partner-item-list"><img src="'+mediaLocation+element.fields.img_path+'"></div>';
+                html += '<div class="swiper-slide"><img src="'+mediaLocation+element.fields.img_path+'" alt="partner" style="height: 25px;" /></div>';
             });
     
             $('#banner-partner').html(html);
