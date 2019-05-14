@@ -259,7 +259,9 @@
           <select id="serviceType" style="width:100%" placeholder="Jenis Service" disabled data-role="none"></select>
           <select id="productType" style="width:100%" placeholder="Tipe Produk Service" disabled data-role="none"></select>
           <div class="text-harga">HARGA : Rp. <span id="price">0</span></div>
-          <div class="card-body"><span id="detail">Detail Produk</span></div>
+          <div class="card-notif-read">
+            <span id="detail">Detail Produk</span>
+          </div>
           <div class="text-alert">Alat bantu ini hanya sebagai perkiraan. Kami sangat menyarankan Anda mengunjungi cabang kami terdekat, untuk merekomendasikan produk terbaik untuk kendaraan anda
           <br>Terima Kasih</div>
           <div data-role="footer" style="margin-bottom: 30px; display: none;" id="popupFooter">
@@ -396,7 +398,7 @@
 
       <h2>Promosi</h2>
 
-      <a href="#promosi-nasional"><img src="img/promo-nasional.jpg" alt="promosi" width="100%"></a>
+      <a href="#promosi-nasional" data-transition="slide" onclick="get_promo_nasional()"><img src="img/promo-nasional.jpg" alt="promosi" width="100%"></a>
       <hr box-align="center" size="2px" width="90%" color="black" />
 
       <h2 style="font-size: 21px;">Promo Cabang Mobeng</h2>
@@ -713,7 +715,7 @@
         <br>
         <hr>
         <h2 style="font-size: 24px;">OUR PARTNER</h2>
-        <div class="partner-item" id="banner-partner">
+        <div class="banner-item" id="banner-partner">
           <!-- content partner -->
         </div>
       </div>

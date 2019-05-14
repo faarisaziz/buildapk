@@ -8,6 +8,10 @@
   height: 160px;
 }
 
+.partner-item-list img {
+  height: 30px;
+}
+
 .ui-page .ui-header {
   background: #7dbf43 !important;
   height: 50px !important;

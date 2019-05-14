@@ -16,6 +16,7 @@ var productName = '';
 get_banner_mobile();
 get_count_badge();
 get_count_reminder();
+get_banner_partner();
 
 function checkSession() {
     if(window.localStorage.getItem("loggedIn") == 1) {
@@ -441,12 +442,11 @@ function get_banner_mobile() {
 function get_banner_partner() {
     $.ajax({
         type: 'get',
-        url: urlMobeng + "api/banner/mobile",
+        url: urlMobeng + "api/banner-op",
         contentType: 'aplication/json',
         dataType: 'json',
         success: function( data ) {
             var html = "";
-
             data.forEach(element => {
                 html += '<div class="partner-item-list"><img src="'+mediaLocation+element.fields.img_path+'"></div>';
             });
@@ -686,6 +686,31 @@ function get_detail_promotion(id) {
     });
 }
 
+function get_promo_nasional() {
+    $.ajax({
+        type: 'get',
+        url: urlMobeng + "api/promotes",
+        contentType: 'aplication/json',
+        dataType: 'json',
+        success: function( data ) {
+            var html = "";
+            for(var i=0; i<data.length; i++) {
+                if (data[i].fields.promot_type == 'International') {      
+                    html += '<img class="promosi" src="'+mediaLocation+data[i].fields.img_path+'" alt="promosi-nasional">';
+                } else if(data[i].fields.promot_type == 'Local') {
+                    $.mobile.toast({
+                        message: 'Promo tidak ditemukan'
+                    });
+                }
+            }
+            $('#nasional-promosi').html(html);
+        },
+        error: function( errorThrown ){
+            console.log(errorThrown);
+        }
+    });
+}
+
 function getOilPrice(type, term){
     $.ajax({
         type : 'POST',
@@ -907,29 +932,33 @@ function get_detail_reminder(invoice) {
             var html = "";
 
             html += '<div class="text-reminder-title">POS Order</div>';
-            html += '<div class="text-reminder">'+data[0].shop_cd+'</div>';
-            html += '<div class="text-reminder">Customer : '+data[0].customer+'</div>';
+            html += '<div class="text-reminder">'+data[0].nama_toko+'</div>';
+            html += '<div class="text-reminder">Customer : '+data[0].pelanggan+'</div>';
             html += '<div class="text-reminder">Lisence Number : '+data[0].nopol+'</div>';
             html += '<div class="text-reminder">Type Kendaraan : '+data[0].vehicle+'</div>';
             html += '<div class="text-reminder">Kilometer Saat Ini : '+data[0].km+'</div>';
-            html += '<div class="text-reminder">Jenis '+data[0].product+' : '+data[0].product_nm+'</div>';
+            html += '<div class="text-reminder">Jenis Oli Mesin : '+data[0].product+'</div>';
             html += '<div class="text-reminder">Tanggal : '+data[0].date_order+'</div>';
-            html += '<div class="text-reminder">Store : '+data[0].shop_nm+'</div>';
+            html += '<div class="text-reminder">Store : '+data[0].nama_toko+'</div>';
+            html += '<div class="text-reminder-title">Kembali Pada Tanggal</div>';
+            html += '<div class="text-reminder">Jenis Oli : '+data[0].nopol+'</div>';
+            html += '<div class="text-reminder">Tanggal Ganti Oli Berikutnya : '+data[0].next_date+'</div>';
             html += '<div class="text-reminder-title">Kondisi Yang Paling Sering Dijalani/Direncanakan</div>';
-            // html += '<div class="text-reminder">Pemakaian Kendaraan : </div>';
-            // html += '<div class="text-reminder">Perkiraan Jarak : </div>';
-            // html += '<div class="text-reminder">Jumlah Muatan : </div>';
-            // html += '<div class="text-reminder">Trek Jalan : </div>';
-            // html += '<div class="text-reminder">Kondisi lalu lintas : </div>';
-            // html += '<div class="text-reminder">Bahan Bakar : </div>';
-            html += '<div class="text-reminder-title">Hasil</div>';
+            html += '<div class="text-reminder">Pemakaian Kendaraan : '+data[0].pemakaian_kendaraan+'</div>';
+            html += '<div class="text-reminder">Perkiraan Jarak : '+data[0].perkiraan_jarak+'</div>';
+            html += '<div class="text-reminder">Jumlah Muatan : '+data[0].muatan+'</div>';
+            html += '<div class="text-reminder">Trek Jalan : '+data[0].trek+'</div>';
+            html += '<div class="text-reminder">Kondisi lalu lintas : '+data[0].lalulintas+'</div>';
+            html += '<div class="text-reminder">Bahan Bakar : '+data[0].bahan_bakar+'</div>';
+            html += '<div class="text-reminder-title">Disarankan Untuk Kembali Lagi</div>';
             // html += '<div class="text-reminder">Kondisi berkendara anda : </div>';
-            html += '<div class="text-reminder">Jenis : '+data[0].jenis+'</div>';
+            html += '<div class="text-reminder">KM : '+data[0].next_km+'</div>';
+            // html += '<div class="text-reminder">Jenis : '+data[0].jenis+'</div>';
             // html += '<div class="text-reminder">KM  Penggantian Berikutnya : </div>';
-            html += '<div class="text-reminder">Tanggal Ganti Oli Berikutnya : '+data[0].date_target+'</div>';
+            html += '<div class="text-reminder">Tanggal Ganti Oli Berikutnya : '+data[0].next_date+'</div>';
             // html += '<div class="text-reminder">Var KM : </div>';
             // html += '<div class="text-reminder">Var Hari : </div>';     
-            html += '<div class="text-reminder">Created By : </div>';     
+            html += '<div class="text-reminder-title">Created By : '+data[0].created_by+'</div>';     
 
             $('#detail-reminder').html(html);
         },
@@ -1235,4 +1264,26 @@ function showFooter() {
 
 function hideFooter() {
     $('#popupFooter').hide();
+}
+
+function get_faq() {
+    $.ajax({
+        type: 'get',
+        url: urlMobeng + "api/faq",
+        contentType: 'aplication/json',
+        dataType: 'json',
+        success: function( data ) {
+            var html = "";
+            data.forEach(element => {
+                html += '<div class="card-notif-read">';
+                html += '<div class="text-riwayat">'+element.fields.txt_title+'</div></div>';
+                html += '<div class="text-riwayat">'+element.fields.txt_content+'</div><br>';
+            });
+
+            $('#faq-list').html(html);
+        },
+        error: function( errorThrown ){
+            console.log(errorThrown);
+        }
+    });
 }

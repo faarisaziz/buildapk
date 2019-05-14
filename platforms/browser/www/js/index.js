@@ -24,13 +24,21 @@ var app = {
   receivedEvent: function(id) {
     checkSession();
     $(".banner-item").slick({ 
-      slidesToShow: 1, slidesToScroll: 1, 
-      autoplay: true, autoplaySpeed: 5000,
+      // slidesToShow: 1, slidesToScroll: 1, 
+      // autoplay: true, autoplaySpeed: 5000,
+      // centerMode: true,
+      // arrows: false
+
+      dots: false,
+      infinite: true,
+      autoplay: true, 
+      autoplaySpeed: 5000,
+      slidesToShow: 1,
       centerMode: true,
-      arrows: false
+      variableWidth: true
     });
 
-    $('.partner-item').slick({
+    $('.aaaaaaa').slick({
       dots: true,
       infinite: true,
       speed: 300,
