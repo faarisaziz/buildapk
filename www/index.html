@@ -15,7 +15,6 @@
 
   <title>Mobeng App</title>
 </head>
-
 <body>
   <div class="app">
     <div data-role="page" id="splash" data-theme="a">
@@ -27,8 +26,14 @@
         <img class="logo" src="img/logo-mobeng.png" alt="logo">
         <div class="card">
           <form>
-            <input type="text" name="" id="login-phone" data-wrapper-class="ui-custom" placeholder="No Telp">
-            <input type="password" name="" id="login-password" data-wrapper-class="ui-custom" placeholder="Password">
+            <div class="input-icon">
+              <span class="fa fa-envelope"></span>
+              <input type="text" name="" id="login-phone" data-wrapper-class="ui-custom" placeholder="No Telp">
+            </div>
+            <div class="input-icon">
+              <span class="fa fa-lock"></span>
+              <input type="password" name="" id="login-password" data-wrapper-class="ui-custom" placeholder="Password">
+            </div>
             <a href="#forgot" class="text-forgot" data-transition="slide">Forgot password ?</a>
             <br>
             <br>
@@ -45,15 +50,31 @@
         <div class="card">
           <form>
             <table>
-              <td><input type="number" name="" id="signup-phone" data-wrapper-class="input-phone" placeholder="No Telephone"></td>
+              <td>
+                <div class="input-icon">
+                  <span class="fa fa-phone"></span>
+                  <input type="text" name="" id="signup-phone" data-wrapper-class="input-phone" placeholder="No Telephone">
+                </div>
+              </td>
               <td><button class="ui-btn btn-blue btn-check" id="signup-check">Check</button></td>
             </table>
-            <input type="text" name="" id="signup-username" data-wrapper-class="ui-custom" placeholder="Username">
-            <input type="text" name="" id="signup-email" data-wrapper-class="ui-custom" placeholder="Email">
-            <input type="password" name="" id="signup-password" data-wrapper-class="ui-custom" placeholder="Password">
-            <label>
-              <input type="checkbox" id="signup-checkbox" data-mini="true">I'm not robot
-            </label>
+            <div class="input-icon">
+              <span class="fa fa-user"></span>
+              <input type="text" name="" id="signup-username" data-wrapper-class="ui-custom" placeholder="Username">
+            </div>
+            <div class="input-icon">
+              <span class="fa fa-envelope"></span>
+              <input type="text" name="" id="signup-email" data-wrapper-class="ui-custom" placeholder="Email">
+            </div>
+            <div class="input-icon">
+              <span class="fa fa-lock"></span>
+              <input type="password" name="" id="signup-password" data-wrapper-class="ui-custom" placeholder="Password">
+            </div>
+            <div style="padding-top:10px;padding-bottom:5px">
+              <label style="background-color:#fff">
+                <input type="checkbox" id="signup-checkbox" data-mini="true">I'm not robot
+              </label>
+            </div>
             <button type="submit" class="ui-btn btn-blue" id="signup-verify">Verify</button>
           </form>
         </div>
@@ -156,19 +177,34 @@
       <div role="main" class="ui-content">
         <img class="logo" src="img/logo-mobeng.png" alt="logo">
         <div class="card">
-          <input type="text" name="" id="profile-username" data-wrapper-class="ui-custom" placeholder="Username">
-          <input type="text" name="" id="profile-phone" data-wrapper-class="ui-custom" placeholder="No Telephone">
-          <input type="text" name="" id="profile-email" data-wrapper-class="ui-custom" placeholder="Email">
-          <input type="date" data-clear-btn="false" name="" id="profile-birth" value="" placeholder="birth">
+          <div class="input-icon">
+            <span class="fa fa-user"></span>
+            <input type="text" name="" id="profile-username" data-wrapper-class="ui-custom" placeholder="Username">
+          </div>
+          <div class="input-icon">
+            <span class="fa fa-phone"></span>
+            <input type="text" name="" id="profile-phone" data-wrapper-class="ui-custom" placeholder="No Telephone">
+          </div>
+          <div class="input-icon">
+            <span class="fa fa-envelope"></span>
+            <input type="text" name="" id="profile-email" data-wrapper-class="ui-custom" placeholder="Email">
+          </div>
+          <div class="input-icon">
+            <span class="fa fa-calendar"></span>
+            <input type="date" data-clear-btn="false" name="" id="profile-birth" data-wrapper-class="ui-custom" value="" placeholder="birth">
+          </div>
           <div class="ui-grid-a">
             <div class="ui-block-a">
-              <input type="radio" name="gender" id="gender-male" value="L" checked="checked"><label for="gender-male">Male</label>
+              <input type="radio" name="gender" id="gender-male" value="L" checked="checked"><label style="background-color:#fff" for="gender-male">Male</label>
             </div>
             <div class="ui-block-b">
-              <input type="radio" name="gender" id="gender-female" value="P"><label for="gender-female">Female</label>
+              <input type="radio" name="gender" id="gender-female" value="P"><label style="background-color:#fff" for="gender-female">Female</label>
             </div>
           </div>
-          <input type="text" name="" id="profile-vehicle" placeholder="Your Vehicle">
+          <div class="input-icon">
+            <span class="fa fa-car"></span>
+            <input type="text" name="" id="profile-vehicle" data-wrapper-class="ui-custom" placeholder="Your Vehicle">
+          </div>
           <br>
           <button type="submit" class="ui-btn btn-blue" id="profile-next">Next</button>
         </div>
