@@ -16,7 +16,7 @@ var productName = '';
 get_banner_mobile();
 get_count_badge();
 get_count_reminder();
-get_banner_partner();
+// get_banner_partner();
 
 function checkSession() {
     if(window.localStorage.getItem("loggedIn") == 1) {
@@ -427,7 +427,8 @@ function get_banner_mobile() {
             var html = "";
 
             data.forEach(element => {
-                html += '<div class="banner-item-list"><img src="'+mediaLocation+element.fields.img_path+'"></div>';
+                // html += '<div class="banner-item-list"><img src="'+mediaLocation+element.fields.img_path+'"></div>';
+                html += '<div class="swiper-slide"><img src="'+mediaLocation+element.fields.img_path+'"></div>';
             });
     
             $('#all-banner').html(html);
@@ -935,13 +936,13 @@ function get_detail_reminder(invoice) {
             html += '<div class="text-reminder">'+data[0].nama_toko+'</div>';
             html += '<div class="text-reminder">Customer : '+data[0].pelanggan+'</div>';
             html += '<div class="text-reminder">Lisence Number : '+data[0].nopol+'</div>';
-            html += '<div class="text-reminder">Type Kendaraan : '+data[0].vehicle+'</div>';
-            html += '<div class="text-reminder">Kilometer Saat Ini : '+data[0].km+'</div>';
-            html += '<div class="text-reminder">Jenis Oli Mesin : '+data[0].product+'</div>';
+            html += '<div class="text-reminder">Type Kendaraan : '+data[0].vehicle_model+'</div>';
+            html += '<div class="text-reminder">Kilometer Saat Ini : '+data[0].km_saat_ini+'</div>';
+            html += '<div class="text-reminder">Jenis Oli Mesin : '+data[0].oil_type+'</div>';
             html += '<div class="text-reminder">Tanggal : '+data[0].date_order+'</div>';
             html += '<div class="text-reminder">Store : '+data[0].nama_toko+'</div>';
             html += '<div class="text-reminder-title">Kembali Pada Tanggal</div>';
-            html += '<div class="text-reminder">Jenis Oli : '+data[0].nopol+'</div>';
+            html += '<div class="text-reminder">Jenis Oli : '+data[0].oil_type+'</div>';
             html += '<div class="text-reminder">Tanggal Ganti Oli Berikutnya : '+data[0].next_date+'</div>';
             html += '<div class="text-reminder-title">Kondisi Yang Paling Sering Dijalani/Direncanakan</div>';
             html += '<div class="text-reminder">Pemakaian Kendaraan : '+data[0].pemakaian_kendaraan+'</div>';
