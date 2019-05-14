@@ -438,6 +438,27 @@ function get_banner_mobile() {
     });
 }
 
+function get_banner_partner() {
+    $.ajax({
+        type: 'get',
+        url: urlMobeng + "api/banner/mobile",
+        contentType: 'aplication/json',
+        dataType: 'json',
+        success: function( data ) {
+            var html = "";
+
+            data.forEach(element => {
+                html += '<div class="partner-item-list"><img src="'+mediaLocation+element.fields.img_path+'"></div>';
+            });
+    
+            $('#banner-partner').html(html);
+        },
+        error: function( errorThrown ){
+            console.log(errorThrown);
+        }
+    });
+}
+
 function get_all_cabang() {
     $.ajax({
         type: 'get',
@@ -638,15 +659,26 @@ function get_detail_promotion(id) {
         success: function( data ) {
             var html = "";
 
-            html += '<span class="text-promosi">Promo '+data[0].name[3]+'</span>';
-            html += '<hr box-align="center" size="1px" width="100%" color="black" />';
-            
-            data.forEach(element => {
-                html += '<img class="promosi" src="'+mediaLocation+element.name[2]+'" alt="promosi">';
-            });
-
-            $('#detail-promosi').html(html);
-            window.location.href = "#promosi-detail";
+            if (data.length == 0) {
+                html += '<span class="text-promosi">Promo Tidak Ditemukan</span>';
+                html += '<hr box-align="center" size="1px" width="100%" color="black" />';
+                
+                data.forEach(element => {
+                    html += '<img class="promosi" src="" alt="promosi">';
+                });
+                $('#detail-promosi').html(html);
+                $.mobile.toast({
+                    message: 'Promo tidak ditemukan'
+                });
+            } else if (data.length != 0) {
+                html += '<span class="text-promosi">Promo '+data[0].name[3]+'</span>';
+                html += '<hr box-align="center" size="1px" width="100%" color="black" />';
+                
+                data.forEach(element => {
+                    html += '<img class="promosi" src="'+mediaLocation+element.name[2]+'" alt="promosi">';
+                });
+                $('#detail-promosi').html(html);
+            }
         },
         error: function( errorThrown ){
             console.log(errorThrown);

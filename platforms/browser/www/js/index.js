@@ -30,17 +30,15 @@ var app = {
       arrows: false
     });
 
-    // $(function() {
-    //   if(window.localStorage.getItem("loggedIn") == 1) {
-    //     $('#profil-user').text(window.localStorage.getItem('name'));
-    //     $.mobile.changePage("#dashboard");
-    //   }
-    //   else
-    //   {
-    //     setTimeout(hideSplash, 2000);
-    //   }
-      
-    // });
+    $('.partner-item').slick({
+      dots: true,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 1,
+      centerMode: true,
+      variableWidth: true,
+      arrows: false
+    });
     
     function hideSplash() {
       $.mobile.changePage("#login", "fade");
