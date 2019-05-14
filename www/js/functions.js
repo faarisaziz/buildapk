@@ -722,9 +722,9 @@ function getOilPrice(type, term){
         }),
         success : function(response) {
             $('#price').text(response[0].price)
-            var result = response[0].vehicle+'<br/>';
+            var result = response[0].capacity+'<br/>';
             if(response[0].price!="0"){
-                $('#detail').html(result);
+                $('#detail').html("Kapasitas oli "+response[0].vehicle+" = "+result+" Liter");
             }else{
                 $('#detail').html("Detail Produk");
             }
@@ -744,7 +744,7 @@ function getTirePrice(size, term){
             $('#price').text(response[0].price);
             var result = response[0].vehicle+'<br/>';
             if(response[0].price!="0"){
-                $('#detail').html(result);
+                $('#detail').html("Harga tertera adalah harga per 1 pcs.");
             }else{
                 $('#detail').html("Detail Produk");
             }
@@ -764,7 +764,7 @@ function getAccuPrice(term){
             $('#price').text(response[0].price);
             var result = response[0].vehicle+'<br/>';
             if(response[0].price!="0"){
-                $('#detail').html(result);
+                $('#detail').html("-");
             }else{
                 $('#detail').html("Detail Produk");
             }
