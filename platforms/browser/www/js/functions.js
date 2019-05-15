@@ -31,6 +31,16 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
+function checkNull(x) {
+    if(x === null) {
+        return '-';
+    } else if (x== null) {   
+        return '-';
+    } else {
+        return x;
+    }
+}
+
 $('#signup-check').click(function(e){
     $.ajax({
         type: 'post',
@@ -910,13 +920,13 @@ function get_all_reminder() {
                 var kilometer = element.km;
                 kilometer = numberWithCommas(kilometer);
                 html += '<div class="card-riwayat">';
-                html += '<div class="item">Servis : '+element.name+'</div>';
-                html += '<div class="item">Tanggal : '+element.trx_date+'</div>';
-                html += '<div class="item">Kendaraan : '+element.nopol+'</div>';
-                html += '<div class="item">KM : '+kilometer+'</div>';
-                html += '<div class="item">Oli : '+element.product+'</div>';
-                html += '<div class="item">Waktu : '+element.interval+'</div>';
-                html += '<div class="item">Notes : '+element.note+'</div>';
+                html += '<div class="item">Servis : '+checkNull(element.name)+'</div>';
+                html += '<div class="item">Tanggal : '+checkNull(element.trx_date)+'</div>';
+                html += '<div class="item">Kendaraan : '+checkNull(element.nopol)+'</div>';
+                html += '<div class="item">KM : '+checkNull(kilometer)+'</div>';
+                html += '<div class="item">Oli : '+checkNull(element.product)+'</div>';
+                html += '<div class="item">Waktu : '+checkNull(element.interval)+'</div>';
+                html += '<div class="item">Notes : '+checkNull(element.note)+'</div>';
                 html += '<a href="#reminder-detail" data-transition="pop" onclick="get_detail_reminder(\''+element.acc_invoice+'\')" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>';
                 html += '</div>';
             });
@@ -949,35 +959,35 @@ function get_detail_reminder(invoice) {
             } else if (jenisOli == 'ss') {
                 jenisOli = "Semi Sintetis"
             } else {
-                jenisOli = 'Tidak Diketahui'
+                jenisOli = '-'
             }
             var kilometersaatini = data[0].km_saat_ini;
             kilometersaatini = numberWithCommas(kilometersaatini);
             var kilometer = data[0].next_km;
             kilometer = numberWithCommas(kilometer);
             html += '<div class="text-reminder-title">POS Order</div>';
-            html += '<div class="text-reminder">'+data[0].nama_toko+'</div>';
-            html += '<div class="text-reminder">Customer : '+data[0].pelanggan+'</div>';
-            html += '<div class="text-reminder">Lisence Number : '+data[0].nopol+'</div>';
-            html += '<div class="text-reminder">Type Kendaraan : '+data[0].vehicle_model+'</div>';
-            html += '<div class="text-reminder">Kilometer Saat Ini : '+kilometersaatini+'</div>';
+            html += '<div class="text-reminder">'+checkNull(data[0].nama_toko)+'</div>';
+            html += '<div class="text-reminder">Customer : '+checkNull(data[0].pelanggan)+'</div>';
+            html += '<div class="text-reminder">Lisence Number : '+checkNull(data[0].nopol)+'</div>';
+            html += '<div class="text-reminder">Type Kendaraan : '+checkNull(data[0].vehicle_model)+'</div>';
+            html += '<div class="text-reminder">Kilometer Saat Ini : '+checkNull(kilometersaatini)+'</div>';
             html += '<div class="text-reminder">Jenis Oli Mesin : '+jenisOli+'</div>';
-            html += '<div class="text-reminder">Tanggal : '+data[0].date_order+'</div>';
-            html += '<div class="text-reminder">Store : '+data[0].nama_toko+'</div>';
+            html += '<div class="text-reminder">Tanggal : '+checkNull(data[0].date_order)+'</div>';
+            html += '<div class="text-reminder">Store : '+checkNull(data[0].nama_toko)+'</div>';
             html += '<div class="text-reminder-title">Kembali Pada Tanggal</div>';
             html += '<div class="text-reminder">Jenis Oli : '+jenisOli+'</div>';
-            html += '<div class="text-reminder">Tanggal Ganti Oli Berikutnya : '+data[0].next_date+'</div>';
+            html += '<div class="text-reminder">Tanggal Ganti Oli Berikutnya : '+checkNull(data[0].next_date)+'</div>';
             html += '<div class="text-reminder-title">Kondisi Yang Paling Sering Dijalani/Direncanakan</div>';
-            html += '<div class="text-reminder">Pemakaian Kendaraan : '+data[0].pemakaian_kendaraan+'</div>';
-            html += '<div class="text-reminder">Perkiraan Jarak : '+data[0].perkiraan_jarak+'</div>';
-            html += '<div class="text-reminder">Jumlah Muatan : '+data[0].muatan+'</div>';
-            html += '<div class="text-reminder">Trek Jalan : '+data[0].trek+'</div>';
-            html += '<div class="text-reminder">Kondisi lalu lintas : '+data[0].lalulintas+'</div>';
-            html += '<div class="text-reminder">Bahan Bakar : '+data[0].bahan_bakar+'</div>';
+            html += '<div class="text-reminder">Pemakaian Kendaraan : '+checkNull(data[0].pemakaian_kendaraan)+'</div>';
+            html += '<div class="text-reminder">Perkiraan Jarak : '+checkNull(data[0].perkiraan_jarak)+'</div>';
+            html += '<div class="text-reminder">Jumlah Muatan : '+checkNull(data[0].muatan)+'</div>';
+            html += '<div class="text-reminder">Trek Jalan : '+checkNull(data[0].trek)+'</div>';
+            html += '<div class="text-reminder">Kondisi lalu lintas : '+checkNull(data[0].lalulintas)+'</div>';
+            html += '<div class="text-reminder">Bahan Bakar : '+checkNull(data[0].bahan_bakar)+'</div>';
             html += '<div class="text-reminder-title">Disarankan Untuk Kembali Lagi</div>';
-            html += '<div class="text-reminder">KM : '+kilometer+'</div>';
-            html += '<div class="text-reminder">Tanggal Ganti Oli Berikutnya : '+data[0].next_date+'</div>'; 
-            html += '<div class="text-reminder-title">Created By : '+data[0].created_by+'</div>';     
+            html += '<div class="text-reminder">KM : '+checkNull(kilometer)+'</div>';
+            html += '<div class="text-reminder">Tanggal Ganti Oli Berikutnya : '+checkNull(data[0].back_date)+'</div>'; 
+            html += '<div class="text-reminder-title">Created By : '+checkNull(data[0].created_by)+'</div>';     
 
             $('#detail-reminder').html(html);
         },
@@ -1002,14 +1012,14 @@ function get_all_riwayat() {
                 var harga = data[i].harga;
                 harga = numberWithCommas(harga);
                 html += '<div class="card-riwayat">';
-                html += '<div class="item">No Invoice : '+data[i].invoice+'</div>';
-                html += '<div class="item">Tanggal : '+data[i].date+'</div>';
-                html += '<div class="item">Customer : '+data[i].customer+'</div>';
-                html += '<div class="item">No. Polis : '+data[i].nopol+'</div>';
-                html += '<div class="item">KM : '+data[i].km+'</div>';
-                html += '<div class="item">Type : '+data[i].vehicle_model+'</div>';
+                html += '<div class="item">No Invoice : '+checkNull(data[i].invoice)+'</div>';
+                html += '<div class="item">Tanggal : '+checkNull(data[i].date)+'</div>';
+                html += '<div class="item">Customer : '+checkNull(data[i].customer)+'</div>';
+                html += '<div class="item">No. Polis : '+checkNull(data[i].nopol)+'</div>';
+                html += '<div class="item">KM : '+checkNull(data[i].km)+'</div>';
+                html += '<div class="item">Type : '+checkNull(data[i].vehicle_model)+'</div>';
                 html += '<a href="#riwayat-detail" data-transition="pop" onclick="get_detail_riwayat(\''+data[i].invoice+'\')" class="ui-btn btn-riwayat ui-btn-inline ui-corner-all">Detail</a>';
-                html += '<div class="item float-right">Total Transaksi : <span class="price">Rp. '+harga+'</span></div>';
+                html += '<div class="item float-right">Total Transaksi : <span class="price">Rp. '+checkNull(harga)+'</span></div>';
                 html += '</div>';
 
                 $('#riwayat-list').html(html);
@@ -1034,12 +1044,12 @@ function get_detail_riwayat(invoice) {
         success: function( data ) {
             var html = "";
 
-            html += '<div class="text-riwayat">No Invoice : '+data[0].invoice_no+'</div>';
-            html += '<div class="text-riwayat">Tanggal : '+data[0].date+'</div>';
-            html += '<div class="text-riwayat">Customer : '+data[0].customer+'</div>';
-            html += '<div class="text-riwayat">No. Polis : '+data[0].nopol+'</div>';
-            html += '<div class="text-riwayat">Km : '+data[0].km+'</div>';
-            html += '<div class="text-riwayat">Type : '+data[0].vehicle_model+'</div>';
+            html += '<div class="text-riwayat">No Invoice : '+checkNull(data[0].invoice_no)+'</div>';
+            html += '<div class="text-riwayat">Tanggal : '+checkNull(data[0].date)+'</div>';
+            html += '<div class="text-riwayat">Customer : '+checkNull(data[0].customer)+'</div>';
+            html += '<div class="text-riwayat">No. Polis : '+checkNull(data[0].nopol)+'</div>';
+            html += '<div class="text-riwayat">Km : '+checkNull(data[0].km)+'</div>';
+            html += '<div class="text-riwayat">Type : '+checkNull(data[0].vehicle_model)+'</div>';
             html += '<hr box-align="center" size="2px" width="90%" color="black" />';
             html += '<table><thead><tr>';
             html += '<th data-priority="1" style="width:200px">Item</th>';
@@ -1054,17 +1064,17 @@ function get_detail_riwayat(invoice) {
                 var subtotal = data[0].detail_transaction[i].subtotal;
                 harga = numberWithCommas(harga);
                 subtotal = numberWithCommas(subtotal);
-                html += '<tr><td>'+data[0].detail_transaction[i].item+'</td>';
-                html += '<td>'+data[0].detail_transaction[i].qty+'</td>';
-                html += '<td>'+harga+'</td>';
-                html += '<td>'+data[0].detail_transaction[i].disc+'</td>';
-                html += '<td>'+subtotal+'</td></tr>';
+                html += '<tr><td>'+checkNull(data[0].detail_transaction[i].item)+'</td>';
+                html += '<td>'+checkNull(data[0].detail_transaction[i].qty)+'</td>';
+                html += '<td>'+checkNull(harga)+'</td>';
+                html += '<td>'+checkNull(data[0].detail_transaction[i].disc)+'</td>';
+                html += '<td>'+checkNull(subtotal)+'</td></tr>';
 
             }
             var totalharga = data[0].total_harga;
             totalharga = numberWithCommas(totalharga);
             html += '</tbody></table>';
-            html += '<span class="text-total">Total Transaksi : <span class="text-total-rp">Rp. '+totalharga+'</span></span><br>';
+            html += '<span class="text-total">Total Transaksi : <span class="text-total-rp">Rp. '+checkNull(totalharga)+'</span></span><br>';
             html += '<span class="text-ppn">*Harga sudah termasuk PPN</span>';
 
             $('#detail-riwayat').html(html);
