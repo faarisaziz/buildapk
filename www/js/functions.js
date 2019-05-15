@@ -723,7 +723,7 @@ function getOilPrice(type, term){
         }),
         success : function(response) {
             $('#price').text(response[0].price)
-            var result = response[0].capacity+'<br/>';
+            var result = response[0].capacity;
             if(response[0].price!="0"){
                 $('#detail').html("Kapasitas oli "+response[0].vehicle+" = "+result+" Liter");
             }else{
@@ -942,7 +942,15 @@ function get_detail_reminder(invoice) {
             html += '<div class="text-reminder">Tanggal : '+data[0].date_order+'</div>';
             html += '<div class="text-reminder">Store : '+data[0].nama_toko+'</div>';
             html += '<div class="text-reminder-title">Kembali Pada Tanggal</div>';
-            html += '<div class="text-reminder">Jenis Oli : '+data[0].oil_type+'</div>';
+            var jenisOli = data[0].oil_type;
+            if (jenisOli == 'FS') {
+                jenisOli = "Full Sintetis"
+            } else if (jenisOli == 'SS') {
+                jenisOli = "Semi Sintetis"
+            } else {
+                jenisOli = 'Tidak Diketahui'
+            }
+            html += '<div class="text-reminder">Jenis Oli : '+jenisOli+'</div>';
             html += '<div class="text-reminder">Tanggal Ganti Oli Berikutnya : '+data[0].next_date+'</div>';
             html += '<div class="text-reminder-title">Kondisi Yang Paling Sering Dijalani/Direncanakan</div>';
             html += '<div class="text-reminder">Pemakaian Kendaraan : '+data[0].pemakaian_kendaraan+'</div>';
