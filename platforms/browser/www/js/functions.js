@@ -16,7 +16,6 @@ var productName = '';
 get_banner_mobile();
 get_count_badge();
 get_count_reminder();
-// get_banner_partner();
 
 function checkSession() {
     if(window.localStorage.getItem("loggedIn") == 1) {
@@ -211,8 +210,10 @@ $('#forgot-btn').click(function(e){
                 });
             }
         },
-        error: function( errorThrown ){
-            console.log(errorThrown);
+        error: function(){
+            $.mobile.toast({
+                message: 'Nomor tidak tersedia'
+            });
         }
     });
     e.preventDefault();
@@ -318,8 +319,6 @@ $('#update-btn').click(function(e){
             message: 'Password Tidak Boleh Kosong'
         });
     }
-
-    
     e.preventDefault();
 })
 
@@ -442,7 +441,7 @@ function get_banner_mobile() {
 
             data.forEach(element => {
                 // html += '<div class="banner-item-list"><img src="'+mediaLocation+element.fields.img_path+'"></div>';
-                html += '<div class="swiper-slide"><img src="'+mediaLocation+element.fields.img_path+'" alt="banner" style="height: 160px; border-radius: 25px; width: calc(100% - 35px);" /></div>';
+                html += '<div class="swiper-slide"><img src="'+mediaLocation+element.fields.img_path+'" alt="banner" style="display: block; margin-left: auto; margin-right: auto; height: 160px; border-radius: 25px; width: 80%;" /></div>';
             });
     
             $('#all-banner').html(html);
@@ -485,7 +484,7 @@ function get_all_cabang() {
 
             data.forEach(element => {
                 html += '<div class="container-cabang">';
-                html += '<a href="#cabang-detail" data-transition="slide" onclick="get_detail_cabang('+element.pk+')"><img src="'+mediaLocation+element.fields.img_path+'"width="100%" height="150px" class="cabang-img"></a>';
+                html += '<a href="#cabang-detail" data-transition="slide" onclick="get_detail_cabang('+element.pk+')"><img src="'+mediaLocation+element.fields.img_path+'"width="100%" height="200px" class="cabang-img"></a>';
                 html += '<div class="text-cabang">'+element.fields.name+'</div>';
                 html += '</div>';
             });
@@ -505,8 +504,10 @@ function get_detail_cabang(id) {
         contentType: 'aplication/json',
         dataType: 'json',
         success: function( data ) {
+            console.log(data);
             var html = "";
 
+            html += '<h2>Cabang - Detail</h2>';
             html += '<iframe width="100%" height="200" frameborder="0" style="border:0" ';
             html += 'src="https://www.google.com/maps/embed/v1/place?q='+data[0].lat+','+data[0].lang+'&amp;key=AIzaSyACMR6xDxS1kbYtcgN8IMGH_oRu1VF-6Po"></iframe>';
             html += '<div role="main" class="ui-content" id="map-canvas"><div class="text-cabang-normal">'+data[0].address+'</div>';
@@ -539,10 +540,15 @@ function get_all_produk() {
 
             data.forEach(element => {
                 html += '<li class="text-produk ui-listview ui-li-static"><a style="text-decoration:none; color: black;" href="#produk-detail" data-transition="slide" onclick="get_detail_produk(\''+element.name+'\')">';
+                if (element.name == 'Tire') {
+                    element.name = 'Ban'
+                } else if (element.name == 'Oil') {
+                    element.name = 'Oli'
+                }
                 html += element.name;
                 html += '</a></li>';
             });
-             html += '<li class="text-produk ui-listview ui-li-static"><a style="text-decoration:none; color: black;" href="#produk" data-transition="slide" onclick="get_other_produk()">Other</a></li>';
+             html += '<li class="text-produk ui-listview ui-li-static"><a style="text-decoration:none; color: black;" href="#produk" data-transition="slide" onclick="get_other_produk()">Lain-lain</a></li>';
             $('#all-produk').html(html);
         },
         error: function( errorThrown ){
@@ -592,6 +598,11 @@ function get_detail_produk(name) {
             var header = "";
             var html = "";
             productName = name;
+            if (name == 'Tire') {
+                name = 'Ban'
+            } else if (name == 'Oil') {
+                name = 'Oli'
+            }
 
             header += '<h2>Produk - '+name+'</h2>';
 
@@ -624,7 +635,11 @@ function get_detail_brand(brand) {
         success: function( data ) {
             var header = "";
             var html = "";
-            
+            if (productName == 'Tire') {
+                productName = 'Ban'
+            } else if (productName == 'Oil') {
+                productName = 'Oli'
+            }
 
             header += '<h2>Produk - '+productName+' - '+brand+'</h2>';
 
@@ -1100,7 +1115,7 @@ function get_all_blog() {
                 var sub = str.substring(0, 200);
 
                 html += '<div class="card-blog">';
-                html += '<table><td><img src="'+mediaLocation+element.fields.img_path+'" width="80px"></td>';
+                html += '<table><td><img src="'+mediaLocation+element.fields.img_path+'" width="80px" height="75px"></td>';
                 html += '<td><span class="item-text-date">'+element.fields.created_dt+'</span><br>';
                 html += '<span class="item-text-judul">'+element.fields.title+'</span><br>';
                 html += '<span class="item-text">'+sub+'</span><br>';
@@ -1304,16 +1319,33 @@ function get_faq() {
         dataType: 'json',
         success: function( data ) {
             var html = "";
-            data.forEach(element => {
-                html += '<div class="card-notif-read">';
-                html += '<div class="text-riwayat">'+element.fields.txt_title+'</div></div>';
-                html += '<div class="text-riwayat">'+element.fields.txt_content+'</div><br>';
-            });
+
+            for (var i = 0; i < data.length; i++) {
+                html += '<button class="faq-collapsible">'+data[i].fields.txt_title+'</button>';
+                html += '<div class="faq-content">';
+                html += data[i].fields.txt_content;
+                html += '</div>';
+            }
 
             $('#faq-list').html(html);
+        },
+        complete: function() {
+            var coll = document.getElementsByClassName("faq-collapsible");
+            for (var i = 0; i < coll.length; i++) {
+              coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                  content.style.display = "none";
+                } else {
+                  content.style.display = "block";
+                }
+              });
+            }
         },
         error: function( errorThrown ){
             console.log(errorThrown);
         }
     });
+    
 }
