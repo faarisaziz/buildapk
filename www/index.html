@@ -210,6 +210,36 @@
       </div>
     </div>
 
+    <div data-role="page" id="profile-edit" class="bgGreen" data-theme="a">
+      <div role="main" class="ui-content">
+        <img class="logo" src="img/logo-mobeng.png" alt="logo">
+        <div class="card">
+          <div class="input-icon">
+            <span class="fa fa-user"></span>
+            <input type="text" name="" id="edit-username" data-wrapper-class="ui-custom" disabled="disabled">
+          </div>
+          <div class="input-icon">
+            <span class="fa fa-phone"></span>
+            <input type="text" name="" id="edit-phone" data-wrapper-class="ui-custom" placeholder="No Telephone" disabled="disabled">
+          </div>
+          <div class="input-icon">
+            <span class="fa fa-envelope"></span>
+            <input type="text" name="" id="edit-email" data-wrapper-class="ui-custom" placeholder="Email" disabled="disabled">
+          </div>
+          <div class="input-icon">
+            <span class="fa fa-key"></span>
+            <input type="text" name="" id="edit-password" data-wrapper-class="ui-custom" placeholder="Password">
+          </div>
+          <div class="input-icon">
+            <span class="fa fa-car"></span>
+            <input type="text" name="" id="edit-vehicle" data-wrapper-class="ui-custom" placeholder="Your Vehicle" disabled="disabled">
+          </div>
+          <br>
+          <button type="submit" class="ui-btn btn-blue" id="edit-next">Simpan</button>
+        </div>
+      </div>
+    </div>
+
     <div data-role="page" class="jqm-demos" id="dashboard" data-title="MOBENG">
       <div data-role="header" data-position="fixed" data-tap-toggle="false">
         <img src="img/header.png" style="display: block; height: 75%; margin-left: auto; margin-right: auto;" />
@@ -292,7 +322,7 @@
 
       <div data-role="popup" id="popupEstimasiServis" data-theme="a" class="ui-corner-all" data-dismissible="false">
         <div style="padding: 25px 25px;">
-          <h3>Estimasi Servis</h3>
+          <h3 class="font-gotham">Estimasi Servis</h3>
 
           <select id="vehicle" class="custom-1" style="width:100%;" data-role="none"></select>
           <select id="serviceType" style="width:100%" placeholder="Jenis Service" disabled data-role="none"></select>
@@ -726,32 +756,7 @@
       </div>
 
       <div role="main" class="ui-content">
-        <h2 class="font-gotham-bold" style="font-size: 24px;">Company Profile</h2>
-        <div align="justify" class="font-gotham">
-          Bisnis Retail ini berawal pada tahun 2015, dengan nama Planet Ban R4 yang menjual ban mobil dengan 2 toko yang berlokasi di harapan indah bekasi dan pondok cabe tanggerang selatan, setahun berselang perusahaan mengembangkan konsep bisnisnya menjadi Toko Ganti Oli dengan konsep gratis perawatan, yang melayani penggantian oli kendaraan roda 4, penggantian ban, aki, filter-filter dll. Nama Planet Ban R4 juga berubah menjadi MOBENG, dengan toko pertama berlokasi di Harapan Indah Bekasi yang dibuka pada tgl 17 Juni 2016 hingga selanjutnya berkembang menjadi beberapa toko yang tersebar di daerah tanggerang dan surabaya, hingga 2018 Mobeng memiliki 10 toko yang beroperasi dari mulai jam 9 pagi hingga jam 9 malam setiap harinya.
-        </div>
-        <h2 class="font-gotham-bold" style="font-size: 24px;">Visi</h2>
-        <div align="justify" class="font-gotham">
-          Mejadi Toko Ganti Oli Pilihan yang mengutamakan ketulusan serta edukasi dalam memberikan pelayanan dan perawatan kendaraan pelanggan. Didukung dengan peralatan kerja terbaik, serta tenaga kerja yang kompeten untuk memenuhi kebutuhan dan kepuasan pelanggan.
-        </div>
-        <h2 class="font-gotham-bold" style="font-size: 24px;">Misi</h2>
-        <div class="font-gotham" align="justify">
-          <ol>
-            <li>Menciptakan Toko ganti oli yang bersih, rapih dan nyaman untuk pelanggan</li>
-            <li>Memberikan Pelayanan yang unggul berdasarkan nilai-nilai kejujuran, ketulusan dan kehati-hatian dalam menangani kendaraan pelanggan</li>
-            <li>Memberikan layanan yang cepat dan berkulaitas di dukung peralatan yang terbaik dan aman</li>
-            <li>Menjadikan Perawatan Gratis sebagai standar pelayanan untuk setiap perkerjaan ganti oli</li>
-            <li>Memberikan solusi yang tepat & cepat terhahdap kebutuhan oli bagi kendaraan pelanggan</li>
-            <li>Memenuhi ketentuan dan peraturan yang terkait dengan bisnis Bengkel</li>
-            <li>Menciptkan interaksi kerja yang saling mendukung & lingkungan kerja yang kondusif</li>
-            <li>Memberikan pelatihan yang terus menerus kepada seluruh Staff dalam rangka meningkatkan keahlian dan propesionalisme</li>
-            <li>Menyediakan Jenis layanan lain yang sesuai dengan konsep mobeng untuk memenuhi kebutuhan pelanggan dan meningkatkan volume penjualan</li>
-            <li>Ikut menjaga lingkungan dari limbah berbahaya</li>
-          </ol>
-        </div>
-        <h2 class="font-gotham-bold" style="font-size: 24px;">Group</h2>
-        <div class="font-gotham">Indogroup</div>
-        <br>
+        <div id="about-list"></div>
         <hr>
         <h2 class="font-gotham-bold" style="font-size: 24px;">OUR PARTNER</h2>
         <div class="swiper-container">

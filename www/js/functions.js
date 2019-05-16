@@ -379,6 +379,8 @@ $('#login-btn').click(function(e){
                 if(data.status == 'true'){
                     window.localStorage.setItem('name', username);
                     window.localStorage.setItem('userid', userid);
+                    window.localStorage.setItem('phonenumber', $('#login-phone').val());
+                    window.localStorage.setItem('pass', $('#login-password').val());
                     window.localStorage.setItem('loggedIn', 1);
                     $('#profil-user').text(window.localStorage.getItem('name'));
                     $.mobile.changePage("#dashboard", {transition: "pop"});
@@ -430,6 +432,9 @@ function logout() {
     $('#signup-password').val('');
 }
 
+$('#profile-edit').click(function(e){
+})
+
 function get_banner_mobile() {
     $.ajax({
         type: 'get',
@@ -441,7 +446,7 @@ function get_banner_mobile() {
 
             data.forEach(element => {
                 // html += '<div class="banner-item-list"><img src="'+mediaLocation+element.fields.img_path+'"></div>';
-                html += '<div class="swiper-slide"><img src="'+mediaLocation+element.fields.img_path+'" alt="banner" style="display: block; margin-left: auto; margin-right: auto; height: 160px; border-radius: 25px; width: 80%;" /></div>';
+                html += '<div class="swiper-slide"><img src="'+mediaLocation+element.fields.img_path+'" alt="banner" style="display: block; margin-left: auto; margin-right: auto; height: 160px; border-radius: 25px; width: 90%;" /></div>';
             });
     
             $('#all-banner').html(html);
@@ -504,10 +509,9 @@ function get_detail_cabang(id) {
         contentType: 'aplication/json',
         dataType: 'json',
         success: function( data ) {
-            console.log(data);
             var html = "";
 
-            html += '<h2>Cabang - Detail</h2>';
+            html += '<h2>Cabang - '+data[0].name+' - Detail</h2>';
             html += '<iframe width="100%" height="200" frameborder="0" style="border:0" ';
             html += 'src="https://www.google.com/maps/embed/v1/place?q='+data[0].lat+','+data[0].lang+'&amp;key=AIzaSyACMR6xDxS1kbYtcgN8IMGH_oRu1VF-6Po"></iframe>';
             html += '<div role="main" class="ui-content" id="map-canvas"><div class="text-cabang-normal">'+data[0].address+'</div>';
@@ -1114,13 +1118,13 @@ function get_all_blog() {
                 var str = element.fields.content;
                 var sub = str.substring(0, 200);
 
-                html += '<div class="card-blog">';
-                html += '<table><td><img src="'+mediaLocation+element.fields.img_path+'" width="80px" height="75px"></td>';
-                html += '<td><span class="item-text-date">'+element.fields.created_dt+'</span><br>';
-                html += '<span class="item-text-judul">'+element.fields.title+'</span><br>';
-                html += '<span class="item-text">'+sub+'</span><br>';
-                html += '<span class="item-text"><a href="#blog-detail" onclick="get_detail_blog('+element.pk+')">Baca Selengkapnya ...</a></span>';
-                html += '</td></table></div>';
+                html += '<div class="card-blog"><a href="#blog-detail" onclick="get_detail_blog('+element.pk+')" style="text-decoration: none;">';
+                html += '<table><td><img src="'+mediaLocation+element.fields.img_path+'" width="90px" height="90px" style="padding-right: 7px;"></td>';
+                html += '<td><div class="item-text-date">'+element.fields.created_dt+'</div>';
+                html += '<div class="item-text-judul">'+element.fields.title+'</div>';
+                html += '<div class="item-text">'+sub+'</div>';
+                html += '<div class="item-text" style="color: blue;">Baca Selengkapnya ...</div>';
+                html += '</td></table></a></div>';
             });
     
             $('#all-blog').html(html);
@@ -1144,7 +1148,7 @@ function get_detail_blog(id) {
             header += '<h2>'+data[0].title+'</h2>';
 
             html += '<img src="'+mediaLocation+data[0].Images+'" alt="blog" width="100%" height="200px">';
-            html += '<div role="main" class="ui-content">'+data[0].created_dt+'<br>'+data[0].Conten+'</div>';
+            html += '<div role="main" class="ui-content font-gotham">'+data[0].created_dt+'<br>'+data[0].Conten+'</div>';
 
             $('#blog-header').html(header);
             $('#detail-blog').html(html);
@@ -1347,5 +1351,26 @@ function get_faq() {
             console.log(errorThrown);
         }
     });
-    
+}
+
+function get_about() {
+    $.ajax({
+        type: 'get',
+        url: urlMobeng + "api/company/profile",
+        contentType: 'aplication/json',
+        dataType: 'json',
+        success: function( data ) {
+            var html = "";
+
+            for (var i = 0; i < data.length; i++) {
+                html += '<h2 class="font-gotham-bold" style="font-size: 24px;">'+data[i].fields.txt_title+'</h2>';
+                html += '<div align="justify" class="font-gotham">'+data[i].fields.txt_content+'</div>';
+            }
+
+            $('#about-list').html(html);
+        },
+        error: function( errorThrown ){
+            console.log(errorThrown);
+        }
+    });
 }
