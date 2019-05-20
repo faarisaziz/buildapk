@@ -13,6 +13,19 @@
   <link rel="stylesheet" type="text/css" href="css/select2.css">
 
   <title>Mobeng App</title>
+  <style>
+    /* Always set the map height explicitly to define the size of the div
+     * element that contains the map. */
+    #map {
+      height: 100%;
+    }
+    /* Optional: Makes the sample page fill the window. */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
 </head>
 <body>
   <div class="app">
@@ -384,7 +397,6 @@
       </div>
 
       <div id="detail-cabang"><!-- CABANG CONTENT --></div>
-
     </div>
 
     <div data-role="page" id="produk" data-theme="a">
@@ -823,6 +835,7 @@
   <script type="text/javascript" src="js/initializers.js"></script>
   <script type="text/javascript" src="js/functions.js"></script>
   <script type="text/javascript" src="js/integrations.js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyACMR6xDxS1kbYtcgN8IMGH_oRu1VF-6Po"></script>
   <script type="text/javascript">
     app.initialize();
   </script>
