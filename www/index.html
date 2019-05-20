@@ -228,7 +228,19 @@
           </div>
           <div class="input-icon">
             <span class="fa fa-key"></span>
-            <input type="text" name="" id="edit-password" data-wrapper-class="ui-custom" placeholder="Password">
+            <input type="text" name="" id="edit-password-1" data-wrapper-class="ui-custom" placeholder="Password">
+          </div>
+          <div class="input-icon">
+            <span class="fa fa-key"></span>
+            <input type="text" name="" id="edit-password-2" data-wrapper-class="ui-custom" placeholder="Password">
+          </div>
+          <div class="ui-grid-a">
+            <div class="ui-block-a">
+              <input type="radio" name="edit-gender" id="edit-gender-male" value="L"><label style="background-color:#fff" for="edit-gender-male">Male</label>
+            </div>
+            <div class="ui-block-b">
+              <input type="radio" name="edit-gender" id="edit-gender-female" value="P"><label style="background-color:#fff" for="edit-gender-female">Female</label>
+            </div>
           </div>
           <div class="input-icon">
             <span class="fa fa-car"></span>
@@ -393,10 +405,14 @@
         <form class="ui-filterable">
           <input id="cari-mobeng" data-type="search" placeholder="Cari di Mobeng">
         </form>
-
         <ul id="all-produk" data-role="listview" data-filter="true" data-input="#cari-mobeng">
 
         </ul>
+        <div class="pageLoader" style="position: fixed; margin: -20% 40%; display: none;">
+          <div>
+             <img src="img/ajax-loader.gif" />
+          </div>
+        </div>
       </div> 
 
     </div>
@@ -423,6 +439,11 @@
         <ul id="detail-produk" data-role="listview" data-filter="true" data-input="#cari-detail">
 
         </ul>
+        <div class="pageLoader" style="position: fixed; margin: -20% 40%; display: none;">
+          <div>
+             <img src="img/ajax-loader.gif" />
+          </div>
+        </div>
       </div> 
     </div>
 
@@ -448,6 +469,11 @@
         <ul id="detail-produk-brand" data-role="listview" data-filter="true" data-input="#cari-detail-brand">
 
         </ul>
+        <div class="pageLoader" style="position: fixed; margin: -20% 40%; display: none;">
+          <div>
+             <img src="img/ajax-loader.gif" />
+          </div>
+        </div>
       </div> 
     </div>
 
@@ -688,8 +714,8 @@
         <br>
         <table>
           <tr>
-            <td><a href="https://whatsapp.com/send?phone=08887778989"><img class="sosial" src="img/wa.png" alt="whatsapp" style="width: 45px;"></a></td>
-            <td><a href="https://whatsapp.com/send?phone=08887778989" style="text-decoration: none; color: black; font-weight: 100;"><div class="font-gotham" style="font-size: 10px;">WhatsApp Chat</div><div class="font-gotham" style="font-size: 12px; text-decoration: none;">08887778989</div></a></td>
+            <td><a href="https://wa.me/628887778989?text=Hai"><img class="sosial" src="img/wa.png" alt="whatsapp" style="width: 45px;"></a></td>
+            <td><a href="https://wa.me/628887778989?text=Hai" style="text-decoration: none; color: black; font-weight: 100;"><div class="font-gotham" style="font-size: 10px;">WhatsApp Chat</div><div class="font-gotham" style="font-size: 12px; text-decoration: none;">08887778989</div></a></td>
           </tr>
           <tr>
             <td><a href="https://m.instagram.com/mobengindonesia"><img class="sosial" src="img/ig.png" alt="instagram" style="width: 45px;"></a></td>

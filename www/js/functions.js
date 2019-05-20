@@ -359,6 +359,31 @@ $('#profile-next').click(function(){
     }
 })
 
+$('#profile-edit').click(function(e){
+    $.ajax({
+        type: 'post',
+        url: urlMobeng + "api/get/telp",
+        contentType: 'aplication/json',
+        dataType: 'json',
+        data: JSON.stringify({
+            "telp" : $('#signup-phone').val()
+        }),
+        success: function( data ) {
+            $('#edit-username').val(data.name);
+            $('#edit-phone').val(data.name);
+            $('#edit-email').val(data.email);
+            $('#edit-password-1').val(data.password);
+            $('#edit-password-2').val(data.password);
+            $("input[name='edit-gender']:checked").val();
+            $('#edit-vehicle').val(data.email);
+        },
+        error: function( errorThrown ){
+            console.log(errorThrown);
+        }
+    });
+    e.preventDefault();
+})
+
 $('#login-btn').click(function(e){
     var un = $('#login-phone').val();
     var pw = $('#login-password').val();
@@ -539,6 +564,9 @@ function get_all_produk() {
             "type" : "t",
             "key_token" : "a53c6d8a114ebf02d0fb05782534c738bb8f1c8845"
         }),
+        beforeSend: function() {
+            $(".pageLoader").show();
+        },
         success: function( data ) {
             var html = "";
 
@@ -554,6 +582,9 @@ function get_all_produk() {
             });
              html += '<li class="text-produk ui-listview ui-li-static"><a style="text-decoration:none; color: black;" href="#produk" data-transition="slide" onclick="get_other_produk()">Lain-lain</a></li>';
             $('#all-produk').html(html);
+        },
+        complete: function() {
+            $(".pageLoader").hide();
         },
         error: function( errorThrown ){
             console.log(errorThrown);
@@ -571,6 +602,9 @@ function get_other_produk() {
             "type" : "f",
             "key_token" : "a53c6d8a114ebf02d0fb05782534c738bb8f1c8845"
         }),
+        beforeSend: function() {
+            $(".pageLoader").show();
+        },
         success: function( data ) {
             var html = "";
 
@@ -581,6 +615,9 @@ function get_other_produk() {
             });
              
             $('#all-produk').html(html);
+        },
+        complete: function() {
+            $(".pageLoader").hide();
         },
         error: function( errorThrown ){
             console.log(errorThrown);
@@ -598,6 +635,9 @@ function get_detail_produk(name) {
             "key_token" : "a53c6d8a114ebf02d0fb05782534c738bb8f1c8845",
             "type" : name
         }),
+        beforeSend: function() {
+            $(".pageLoader").show();
+        },
         success: function( data ) {
             var header = "";
             var html = "";
@@ -619,6 +659,9 @@ function get_detail_produk(name) {
             $('#produk-header').html(header);
             $('#detail-produk').html(html);
         },
+        complete: function() {
+            $(".pageLoader").hide();
+        },
         error: function( errorThrown ){
             console.log(errorThrown);
         }
@@ -636,6 +679,9 @@ function get_detail_brand(brand) {
             "type" : productName,
             "brand" : brand
         }),
+        beforeSend: function() {
+            $(".pageLoader").show();
+        },
         success: function( data ) {
             var header = "";
             var html = "";
@@ -653,6 +699,9 @@ function get_detail_brand(brand) {
 
             $('#produk-header-brand').html(header);
             $('#detail-produk-brand').html(html);
+        },
+        complete: function() {
+            $(".pageLoader").hide();
         },
         error: function( errorThrown ){
             console.log(errorThrown);
