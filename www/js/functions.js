@@ -359,32 +359,73 @@ $('#profile-next').click(function(){
     }
 })
 
-$('#profile-edit-btn').click(function(e){
+function getProfile() {
     var noHp = window.localStorage.getItem('phonenumber');
     $.ajax({
         type: 'post',
-        url: urlMobeng + "api/get/telp",
+        url: urlMobeng + "api/profile-user",
         contentType: 'aplication/json',
         dataType: 'json',
         data: JSON.stringify({
             "telp" : noHp
         }),
         success: function( data ) {
-            console.log(data);
-            $('#edit-username').val(data.name);
-            $('#edit-phone').val(data.name);
+            $('#edit-username').val(data.fullname);
+            $('#edit-phone').val(data.phone_number);
             $('#edit-email').val(data.email);
-            $('#edit-password-1').val(data.password);
-            $('#edit-password-2').val(data.password);
-            $("input[name='edit-gender']:checked").val();
-            $('#edit-vehicle').val(data.email);
+            // $('#edit-password-1').val(data.password);
+            // $('#edit-password-2').val(data.password);
+            if (data.gender == 'L') {
+                $('#edit-gender').val('Jenis kelamin : Laki-Laki');
+            } else if (data.gender == 'P') {   
+                $('#edit-gender').val('Jenis kelamin : Perempuan');
+            }
+            $('#edit-vehicle').val(data.vehicle);
         },
         error: function( errorThrown ){
             console.log(errorThrown);
         }
     });
-    e.preventDefault();
-})
+}
+
+function updateProfile() {
+    var noHp = window.localStorage.getItem('phonenumber');
+    var pass1 = $('#edit-password-1').val();
+    var pass2 = $('#edit-password-2').val();
+    if ((pass1 == pass2) && (pass1.length>=5)) {
+        $.ajax({
+            type: 'post',
+            url: urlMobeng + "api/profile-edit",
+            contentType: 'aplication/json',
+            dataType: 'json',
+            data: JSON.stringify({
+                "telp" : noHp,
+                "txt_password" : pass1
+            }),
+            success: function( data ) {
+                $.mobile.changePage("#dashboard", {transition: "slide"});
+            },
+            complete: function() {
+                $('#edit-password-1').val('');
+                $('#edit-password-2').val('');
+                $.mobile.toast({
+                    message: 'Password Berhasil Diubah'
+                });
+            },
+            error: function( errorThrown ){
+                console.log(errorThrown);
+            }
+        });
+    } else if (pass1 != pass2) {
+        $.mobile.toast({
+            message: 'Password Tidak Sama'
+        });
+    } else if (pass1.length<5) {
+        $.mobile.toast({
+            message: 'Password Tidak Boleh Kurang Dari 5 Digit'
+        });
+    }
+}
 
 $('#login-btn').click(function(e){
     var un = $('#login-phone').val();
@@ -513,8 +554,8 @@ function get_all_cabang() {
 
             data.forEach(element => {
                 html += '<div class="container-cabang">';
-                html += '<a href="#cabang-detail" data-transition="slide" onclick="get_detail_cabang('+element.pk+')"><img src="'+mediaLocation+element.fields.img_path+'"width="100%" height="200px" class="cabang-img"></a>';
-                html += '<div class="text-cabang">'+element.fields.name+'</div>';
+                html += '<a href="#cabang-detail" data-transition="slide" style="text-decoration: none; color: white;" onclick="get_detail_cabang('+element.pk+')"><img src="'+mediaLocation+element.fields.img_path+'"width="100%" height="200px" class="cabang-img">';
+                html += '<div class="text-cabang">'+element.fields.name+'</div></a>';
                 html += '</div>';
             });
 

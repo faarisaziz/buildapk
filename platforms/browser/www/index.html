@@ -13,19 +13,7 @@
   <link rel="stylesheet" type="text/css" href="css/select2.css">
 
   <title>Mobeng App</title>
-  <style>
-    /* Always set the map height explicitly to define the size of the div
-     * element that contains the map. */
-    #map {
-      height: 100%;
-    }
-    /* Optional: Makes the sample page fill the window. */
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-  </style>
+
 </head>
 <body>
   <div class="app">
@@ -247,20 +235,15 @@
             <span class="fa fa-key"></span>
             <input type="password" name="" id="edit-password-2" data-wrapper-class="ui-custom" placeholder="Konfirmasi Password">
           </div>
-          <div class="ui-grid-a">
-            <div class="ui-block-a">
-              <input type="radio" name="edit-gender" id="edit-gender-male" value="L"><label style="background-color:#fff" for="edit-gender-male">Male</label>
-            </div>
-            <div class="ui-block-b">
-              <input type="radio" name="edit-gender" id="edit-gender-female" value="P"><label style="background-color:#fff" for="edit-gender-female">Female</label>
-            </div>
+          <div>
+            <input type="text" name="" id="edit-gender" data-wrapper-class="ui-custom" disabled="disabled">
           </div>
           <div class="input-icon">
             <span class="fa fa-car"></span>
             <input type="text" name="" id="edit-vehicle" data-wrapper-class="ui-custom" disabled="disabled">
           </div>
           <br>
-          <button type="submit" class="ui-btn btn-blue" id="edit-profile-save">Simpan</button>
+          <button type="submit" class="ui-btn btn-blue" id="edit-profile-save" onclick="updateProfile()">Simpan</button>
         </div>
       </div>
     </div>
