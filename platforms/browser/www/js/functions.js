@@ -359,16 +359,18 @@ $('#profile-next').click(function(){
     }
 })
 
-$('#profile-edit').click(function(e){
+$('#profile-edit-btn').click(function(e){
+    var noHp = window.localStorage.getItem('phonenumber');
     $.ajax({
         type: 'post',
         url: urlMobeng + "api/get/telp",
         contentType: 'aplication/json',
         dataType: 'json',
         data: JSON.stringify({
-            "telp" : $('#signup-phone').val()
+            "telp" : noHp
         }),
         success: function( data ) {
+            console.log(data);
             $('#edit-username').val(data.name);
             $('#edit-phone').val(data.name);
             $('#edit-email').val(data.email);
@@ -456,9 +458,6 @@ function logout() {
     $('#signup-phone').val('');
     $('#signup-password').val('');
 }
-
-$('#profile-edit').click(function(e){
-})
 
 function get_banner_mobile() {
     $.ajax({
