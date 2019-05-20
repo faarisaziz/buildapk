@@ -1011,7 +1011,7 @@ function clearEstimate(){
 function get_count_reminder() {
     $.ajax({
         type: 'post',
-        url: urlOdoo + "api/get/count/reminder",
+        url: urlOdoo + "api/get/product-reminder",
         contentType: 'aplication/json',
         dataType: 'json',
         data: JSON.stringify({
@@ -1020,7 +1020,7 @@ function get_count_reminder() {
         }),
         success: function( data ) {
             var html = "";
-            if(data.count > 0) {
+            if(data.length > 0) {
                 html = data.count;
                 $('#badge-reminder').html(html).show();
             } else  {
