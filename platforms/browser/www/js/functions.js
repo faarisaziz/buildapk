@@ -607,7 +607,6 @@ function get_detail_cabang(id) {
             html += '<a href="geo:'+parseFloat(data[0].lat)+','+parseFloat(data[0].lang)+'" class="ui-btn btn-blue">Petunjuk dengan Google Maps</a></div>';
 
             $('#detail-cabang').html(html);
-            console.log(data[0].lat+" , "+data[0].lang);
             google.maps.event.addDomListener(window, "load", initMap(parseFloat(data[0].lat), parseFloat(data[0].lang)));
         },
         error: function( errorThrown ){
@@ -1021,7 +1020,7 @@ function get_count_reminder() {
         success: function( data ) {
             var html = "";
             if(data.length > 0) {
-                html = data.count;
+                html = data.length;
                 $('#badge-reminder').html(html).show();
             } else  {
                 $('.badge-reminder').hide();
