@@ -584,8 +584,7 @@ function initMap(latitude, longitude) {
 
     var marker = new google.maps.Marker({
       position: myLatLng,
-      map: map,
-      title: 'Hello World!'
+      map: map
     });
 }
 
@@ -605,10 +604,11 @@ function get_detail_cabang(id) {
             html += '<div class="text-cabang-bold">Call     : '+data[0].Call+'</div>';
             html += '<div class="text-cabang-bold">Phone    : '+data[0].Phone+'</div></div><br><br>';
             html += '<div class="card">';
-            html += '<a href="geo:'+data[0].lat+','+data[0].lang+'" class="ui-btn btn-blue">Petunjuk dengan Google Maps</a></div>';
+            html += '<a href="geo:'+parseFloat(data[0].lat)+','+parseFloat(data[0].lang)+'" class="ui-btn btn-blue">Petunjuk dengan Google Maps</a></div>';
 
             $('#detail-cabang').html(html);
-            initMap(parseInt(data[0].lat), parseInt(data[0].lang));
+            console.log(data[0].lat+" , "+data[0].lang);
+            google.maps.event.addDomListener(window, "load", initMap(parseFloat(data[0].lat), parseFloat(data[0].lang)));
         },
         error: function( errorThrown ){
             console.log(errorThrown);
