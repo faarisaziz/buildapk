@@ -526,6 +526,28 @@ function get_all_cabang() {
     });
 }
 
+function initMap(latitude, longitude) {
+    var myLatLng = {lat: latitude, lng: longitude};
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 16,
+      center: myLatLng,
+      zoomControl: true,
+      mapTypeControl: false,
+      scaleControl: false,
+      streetViewControl: false,
+      rotateControl: false,
+      fullscreenControl: false
+
+    });
+
+    var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: 'Hello World!'
+    });
+}
+
 function get_detail_cabang(id) {
     $.ajax({
         type: 'get',
@@ -536,8 +558,7 @@ function get_detail_cabang(id) {
             var html = "";
 
             html += '<h2>Cabang - '+data[0].name+' - Detail</h2>';
-            html += '<iframe width="100%" height="200" frameborder="0" style="border:0" ';
-            html += 'src="https://www.google.com/maps/embed/v1/place?q='+data[0].lat+','+data[0].lang+'&amp;key=AIzaSyACMR6xDxS1kbYtcgN8IMGH_oRu1VF-6Po"></iframe>';
+            html += '<div id="map" style="margin-top:10px;width:100%;height:250px;display: block;"></div>';
             html += '<div role="main" class="ui-content" id="map-canvas"><div class="text-cabang-normal">'+data[0].address+'</div>';
             html += '<div class="text-cabang-bold">Email    : '+data[0].email+'</div>';
             html += '<div class="text-cabang-bold">Call     : '+data[0].Call+'</div>';
@@ -546,6 +567,7 @@ function get_detail_cabang(id) {
             html += '<a href="geo:'+data[0].lat+','+data[0].lang+'" class="ui-btn btn-blue">Petunjuk dengan Google Maps</a></div>';
 
             $('#detail-cabang').html(html);
+            initMap(parseInt(data[0].lat), parseInt(data[0].lang));
         },
         error: function( errorThrown ){
             console.log(errorThrown);
