@@ -625,9 +625,9 @@ function get_all_produk() {
             "type" : "t",
             "key_token" : "a53c6d8a114ebf02d0fb05782534c738bb8f1c8845"
         }),
-        beforeSend: function() {
-            $(".pageLoader").show();
-        },
+        // beforeSend: function() {
+        //     $(".pageLoader").show();
+        // },
         success: function( data ) {
             var html = "";
 
@@ -644,9 +644,9 @@ function get_all_produk() {
              html += '<li class="text-produk ui-listview ui-li-static"><a style="text-decoration:none; color: black;" href="#produk" data-transition="slide" onclick="get_other_produk()">Lain-lain</a></li>';
             $('#all-produk').html(html);
         },
-        complete: function() {
-            $(".pageLoader").hide();
-        },
+        // complete: function() {
+        //     $(".pageLoader").hide();
+        // },
         error: function( errorThrown ){
             console.log(errorThrown);
         }
@@ -663,9 +663,9 @@ function get_other_produk() {
             "type" : "f",
             "key_token" : "a53c6d8a114ebf02d0fb05782534c738bb8f1c8845"
         }),
-        beforeSend: function() {
-            $(".pageLoader").show();
-        },
+        // beforeSend: function() {
+        //     $(".pageLoader").show();
+        // },
         success: function( data ) {
             var html = "";
 
@@ -677,9 +677,9 @@ function get_other_produk() {
              
             $('#all-produk').html(html);
         },
-        complete: function() {
-            $(".pageLoader").hide();
-        },
+        // complete: function() {
+        //     $(".pageLoader").hide();
+        // },
         error: function( errorThrown ){
             console.log(errorThrown);
         }
@@ -696,9 +696,9 @@ function get_detail_produk(name) {
             "key_token" : "a53c6d8a114ebf02d0fb05782534c738bb8f1c8845",
             "type" : name
         }),
-        beforeSend: function() {
-            $(".pageLoader").show();
-        },
+        // beforeSend: function() {
+        //     $(".pageLoader").show();
+        // },
         success: function( data ) {
             var header = "";
             var html = "";
@@ -720,9 +720,9 @@ function get_detail_produk(name) {
             $('#produk-header').html(header);
             $('#detail-produk').html(html);
         },
-        complete: function() {
-            $(".pageLoader").hide();
-        },
+        // complete: function() {
+        //     $(".pageLoader").hide();
+        // },
         error: function( errorThrown ){
             console.log(errorThrown);
         }
@@ -740,9 +740,9 @@ function get_detail_brand(brand) {
             "type" : productName,
             "brand" : brand
         }),
-        beforeSend: function() {
-            $(".pageLoader").show();
-        },
+        // beforeSend: function() {
+        //     $(".pageLoader").show();
+        // },
         success: function( data ) {
             var header = "";
             var html = "";
@@ -761,9 +761,9 @@ function get_detail_brand(brand) {
             $('#produk-header-brand').html(header);
             $('#detail-produk-brand').html(html);
         },
-        complete: function() {
-            $(".pageLoader").hide();
-        },
+        // complete: function() {
+        //     $(".pageLoader").hide();
+        // },
         error: function( errorThrown ){
             console.log(errorThrown);
         }
