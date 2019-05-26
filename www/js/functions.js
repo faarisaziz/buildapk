@@ -597,7 +597,7 @@ function get_detail_cabang(id) {
             var html = "";
 
             html += '<h2>Cabang - '+data[0].name+' - Detail</h2>';
-            html += '<div id="map" style="margin-top:10px;width:100%;display: block;"></div>';
+            html += '<div id="map" style="margin-top:10px;width:100%;height:250px;display: block;"></div>';
             html += '<div role="main" class="ui-content" id="map-canvas"><div class="text-cabang-normal">'+data[0].address+'</div>';
             html += '<div class="text-cabang-bold">Email    : '+data[0].email+'</div>';
             html += '<div class="text-cabang-bold">Call     : '+data[0].Call+'</div>';
