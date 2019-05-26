@@ -511,7 +511,7 @@ function get_banner_mobile() {
 
             data.forEach(element => {
                 // html += '<div class="banner-item-list"><img src="'+mediaLocation+element.fields.img_path+'"></div>';
-                html += '<div class="swiper-slide"><img src="'+mediaLocation+element.fields.img_path+'" alt="banner" style="display: block; margin-left: auto; margin-right: auto; height: 160px; border-radius: 25px; width: 90%;" /></div>';
+                html += '<div class="swiper-slide"><img src="'+mediaLocation+element.fields.img_path+'" alt="banner" style="display: block; margin-left: auto; margin-right: auto; border-radius: 25px; width: 90%;" /></div>';
             });
     
             $('#all-banner').html(html);
@@ -554,7 +554,7 @@ function get_all_cabang() {
 
             data.forEach(element => {
                 html += '<div class="container-cabang">';
-                html += '<a href="#cabang-detail" data-transition="slide" style="text-decoration: none; color: white;" onclick="get_detail_cabang('+element.pk+')"><img src="'+mediaLocation+element.fields.img_path+'"width="100%" height="200px" class="cabang-img">';
+                html += '<a href="#cabang-detail" data-transition="slide" style="text-decoration: none; color: white;" onclick="get_detail_cabang('+element.pk+')"><img src="'+mediaLocation+element.fields.img_path+'" width="100%" class="cabang-img">';
                 html += '<div class="text-cabang">'+element.fields.name+'</div></a>';
                 html += '</div>';
             });
@@ -598,7 +598,7 @@ function get_detail_cabang(id) {
             var html = "";
 
             html += '<h2>Cabang - '+data[0].name+' - Detail</h2>';
-            html += '<div id="map" style="margin-top:10px;width:100%;height:250px;display: block;"></div>';
+            html += '<div id="map" style="margin-top:10px;width:100%;display: block;"></div>';
             html += '<div role="main" class="ui-content" id="map-canvas"><div class="text-cabang-normal">'+data[0].address+'</div>';
             html += '<div class="text-cabang-bold">Email    : '+data[0].email+'</div>';
             html += '<div class="text-cabang-bold">Call     : '+data[0].Call+'</div>';
@@ -625,9 +625,6 @@ function get_all_produk() {
             "type" : "t",
             "key_token" : "a53c6d8a114ebf02d0fb05782534c738bb8f1c8845"
         }),
-        // beforeSend: function() {
-        //     $(".pageLoader").show();
-        // },
         success: function( data ) {
             var html = "";
 
@@ -644,9 +641,6 @@ function get_all_produk() {
              html += '<li class="text-produk ui-listview ui-li-static"><a style="text-decoration:none; color: black;" href="#produk" data-transition="slide" onclick="get_other_produk()">Lain-lain</a></li>';
             $('#all-produk').html(html);
         },
-        // complete: function() {
-        //     $(".pageLoader").hide();
-        // },
         error: function( errorThrown ){
             console.log(errorThrown);
         }
@@ -663,9 +657,6 @@ function get_other_produk() {
             "type" : "f",
             "key_token" : "a53c6d8a114ebf02d0fb05782534c738bb8f1c8845"
         }),
-        // beforeSend: function() {
-        //     $(".pageLoader").show();
-        // },
         success: function( data ) {
             var html = "";
 
@@ -677,9 +668,6 @@ function get_other_produk() {
              
             $('#all-produk').html(html);
         },
-        // complete: function() {
-        //     $(".pageLoader").hide();
-        // },
         error: function( errorThrown ){
             console.log(errorThrown);
         }
@@ -696,9 +684,6 @@ function get_detail_produk(name) {
             "key_token" : "a53c6d8a114ebf02d0fb05782534c738bb8f1c8845",
             "type" : name
         }),
-        // beforeSend: function() {
-        //     $(".pageLoader").show();
-        // },
         success: function( data ) {
             var header = "";
             var html = "";
@@ -720,9 +705,6 @@ function get_detail_produk(name) {
             $('#produk-header').html(header);
             $('#detail-produk').html(html);
         },
-        // complete: function() {
-        //     $(".pageLoader").hide();
-        // },
         error: function( errorThrown ){
             console.log(errorThrown);
         }
@@ -740,9 +722,6 @@ function get_detail_brand(brand) {
             "type" : productName,
             "brand" : brand
         }),
-        // beforeSend: function() {
-        //     $(".pageLoader").show();
-        // },
         success: function( data ) {
             var header = "";
             var html = "";
@@ -761,9 +740,6 @@ function get_detail_brand(brand) {
             $('#produk-header-brand').html(header);
             $('#detail-produk-brand').html(html);
         },
-        // complete: function() {
-        //     $(".pageLoader").hide();
-        // },
         error: function( errorThrown ){
             console.log(errorThrown);
         }
@@ -1229,7 +1205,7 @@ function get_all_blog() {
                 var sub = str.substring(0, 200);
 
                 html += '<div class="card-blog"><a href="#blog-detail" onclick="get_detail_blog('+element.pk+')" style="text-decoration: none;">';
-                html += '<table><td><img src="'+mediaLocation+element.fields.img_path+'" width="90px" height="90px" style="padding-right: 7px;"></td>';
+                html += '<table><td><img src="'+mediaLocation+element.fields.img_path+'" width="90px" style="padding-right: 7px;"></td>';
                 html += '<td><div class="item-text-date">'+element.fields.created_dt+'</div>';
                 html += '<div class="item-text-judul">'+element.fields.title+'</div>';
                 html += '<div class="item-text">'+sub+'</div>';
@@ -1255,9 +1231,9 @@ function get_detail_blog(id) {
             var html = "";
             var header = '';
 
-            header += '<h2>'+data[0].title+'</h2>';
+            header += '<h2 style="padding-left: 8px; padding-right: 8px;">'+data[0].title+'</h2>';
 
-            html += '<img src="'+mediaLocation+data[0].Images+'" alt="blog" width="100%" height="200px">';
+            html += '<img src="'+mediaLocation+data[0].Images+'" alt="blog" width="100%">';
             html += '<div role="main" class="ui-content font-gotham">'+data[0].created_dt+'<br>'+data[0].Conten+'</div>';
 
             $('#blog-header').html(header);

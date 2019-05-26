@@ -41,6 +41,14 @@ img.menu {
   text-shadow: none !important;
 }
 
+.ui-body-a, .ui-page-theme-a .ui-body-inherit, html .ui-bar-a .ui-body-inherit, html .ui-body-a .ui-body-inherit, html body .ui-group-theme-a .ui-body-inherit, html .ui-panel-page-container-a {
+  text-shadow: none !important;
+}
+
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+  text-shadow: none !important; 
+}
+
 .btn-blue {
   font-family: gotham !important;
   border-radius: 20px;
@@ -475,8 +483,8 @@ h2 {
 .badge-reminder {
   padding: 3px 5px 2px;
   position: absolute;
-  top: 358px;
-  right: 85px;
+  top: 385px;
+  right: 97px;
   display: inline-block;
   min-width: 10px;
   font-size: 14px;
