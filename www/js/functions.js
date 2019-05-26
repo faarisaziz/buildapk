@@ -1294,11 +1294,11 @@ function get_detail_riwayat(invoice) {
                 var subtotal = data[0].detail_transaction[i].subtotal;
                 harga = numberWithCommas(harga);
                 subtotal = numberWithCommas(subtotal);
-                html += '<tr><td>'+checkNull(data[0].detail_transaction[i].item)+'</td>';
-                html += '<td>'+checkNull(data[0].detail_transaction[i].qty)+'</td>';
-                html += '<td>'+checkNull(harga)+'</td>';
-                html += '<td>'+checkNull(data[0].detail_transaction[i].disc)+'</td>';
-                html += '<td>'+checkNull(subtotal)+'</td></tr>';
+                html += '<tr><td style="text-align: center;">'+checkNull(data[0].detail_transaction[i].item)+'</td>';
+                html += '<td style="text-align: center;">'+checkNull(data[0].detail_transaction[i].qty)+'</td>';
+                html += '<td style="text-align: center;">'+checkNull(harga)+'</td>';
+                html += '<td style="text-align: center;">'+checkNull(data[0].detail_transaction[i].disc)+'</td>';
+                html += '<td style="text-align: center;">'+checkNull(subtotal)+'</td></tr>';
 
             }
             var totalharga = data[0].total_harga;
