@@ -510,7 +510,6 @@ function get_banner_mobile() {
             var html = "";
 
             data.forEach(element => {
-                // html += '<div class="banner-item-list"><img src="'+mediaLocation+element.fields.img_path+'"></div>';
                 html += '<div class="swiper-slide"><img src="'+mediaLocation+element.fields.img_path+'" alt="banner" style="display: block; margin-left: auto; margin-right: auto; border-radius: 25px; width: 90%;" /></div>';
             });
     
@@ -615,6 +614,126 @@ function get_detail_cabang(id) {
     });
 }
 
+$('.cari-mobeng1').click(function(e){
+    var keyword = $('.cari-produk1').val();
+    if(keyword != '') {
+        $.ajax({
+            type: 'post',
+            url: urlOdoo + "api/get/product-search",
+            contentType: 'aplication/json',
+            dataType: 'json',
+            data: JSON.stringify({
+                "key_token" : "a53c6d8a114ebf02d0fb05782534c738bb8f1c8845",
+                "term" : keyword
+            }),
+            success: function(data) {
+                $.mobile.changePage("#produk-cari", {transition: "slide"});
+
+                var header = "";
+                var html = "";
+                header += '<h2>Produk - Hasil Pencarian</h2>';
+
+                for(var i=0; i<data.length; i++) {
+                    html += '<div class="text-produk">';
+                    html += '<table><td><img src="'+mediaLocation+data[i].img+'" style="padding-right: 20px; height: 90px" /></td>';
+                    html += '<td><div style="font-weight: 600; margin-bottom: 5px; text-align: left">'+data[i].name+'</div><div style="font-weight: 200; text-align: left">Harga : '+data[i].price+'</div></td></table></div>';
+                }
+
+                $('#produk-cari-brand').html(header);
+                $('#detail-cari-brand').html(html);
+            },
+            error: function( errorThrown ){
+                console.log(errorThrown);
+            }
+        });
+    } else {
+        $.mobile.toast({
+            message: 'Isi kata yang akan dicari'
+        });
+    }
+    e.preventDefault();
+})
+
+$('.cari-mobeng2').click(function(e){
+    var keyword = $('.cari-produk2').val();
+    if(keyword != '') {
+        $.ajax({
+            type: 'post',
+            url: urlOdoo + "api/get/product-search",
+            contentType: 'aplication/json',
+            dataType: 'json',
+            data: JSON.stringify({
+                "key_token" : "a53c6d8a114ebf02d0fb05782534c738bb8f1c8845",
+                "term" : keyword
+            }),
+            success: function(data) {
+                $.mobile.changePage("#produk-cari", {transition: "slide"});
+                var header = "";
+                var html = "";
+
+                header += '<h2>Produk - Hasil Pencarian</h2>';
+
+                for(var i=0; i<data.length; i++) {
+                    html += '<div class="text-produk">';
+                    html += '<table><td><img src="'+mediaLocation+data[i].img+'" style="padding-right: 20px; height: 90px" /></td>';
+                    html += '<td><div style="font-weight: 600; margin-bottom: 5px; text-align: left">'+data[i].name+'</div><div style="font-weight: 200; text-align: left">Harga : '+data[i].price+'</div></td></table></div>';
+                }
+
+                $('#produk-cari-brand').html(header);
+                $('#detail-cari-brand').html(html);
+            },
+            error: function( errorThrown ){
+                console.log(errorThrown);
+            }
+        });
+    } else {
+        $.mobile.toast({
+            message: 'Isi kata yang akan dicari'
+        });
+    }
+    e.preventDefault();
+})
+
+$('.cari-mobeng3').click(function(e){
+    var keyword = $('.cari-produk3').val();
+    if(keyword != '') {
+        $.ajax({
+            type: 'post',
+            url: urlOdoo + "api/get/product-search",
+            contentType: 'aplication/json',
+            dataType: 'json',
+            data: JSON.stringify({
+                "key_token" : "a53c6d8a114ebf02d0fb05782534c738bb8f1c8845",
+                "term" : keyword
+            }),
+            success: function(data) {
+                $.mobile.changePage("#produk-cari", {transition: "slide"});
+                var header = "";
+                var html = "";
+
+                header += '<h2>Produk - Hasil Pencarian</h2>';
+
+                for(var i=0; i<data.length; i++) {
+                    html += '<div class="text-produk">';
+                    html += '<table><td><img src="'+mediaLocation+data[i].img+'" style="padding-right: 20px; height: 90px" /></td>';
+                    html += '<td><div style="font-weight: 600; margin-bottom: 5px; text-align: left">'+data[i].name+'</div><div style="font-weight: 200; text-align: left">Harga : '+data[i].price+'</div></td></table></div>';
+                }
+
+                $('#produk-cari-brand').html(header);
+                $('#detail-cari-brand').html(html);
+            },
+            error: function( errorThrown ){
+                console.log(errorThrown);
+            }
+        });
+    } else {
+        $.mobile.toast({
+            message: 'Isi kata yang akan dicari'
+        });
+    }
+    e.preventDefault();
+})
+
 function get_all_produk() {
     $.ajax({
         type: 'post',
@@ -629,16 +748,16 @@ function get_all_produk() {
             var html = "";
 
             data.forEach(element => {
-                html += '<li class="text-produk ui-listview ui-li-static"><a style="text-decoration:none; color: black;" href="#produk-detail" data-transition="slide" onclick="get_detail_produk(\''+element.name+'\')">';
+                html += '<div class="text-produk"><a style="text-decoration:none; color: black;" href="#produk-detail" data-transition="slide" onclick="get_detail_produk(\''+element.name+'\')">';
                 if (element.name == 'Tire') {
                     element.name = 'Ban'
                 } else if (element.name == 'Oil') {
                     element.name = 'Oli'
                 }
                 html += element.name;
-                html += '</a></li>';
+                html += '</a></div>';
             });
-             html += '<li class="text-produk ui-listview ui-li-static"><a style="text-decoration:none; color: black;" href="#produk" data-transition="slide" onclick="get_other_produk()">Lain-lain</a></li>';
+             html += '<div class="text-produk"><a style="text-decoration:none; color: black;" href="#produk" data-transition="slide" onclick="get_other_produk()">Lain-lain</a></div>';
             $('#all-produk').html(html);
         },
         error: function( errorThrown ){
@@ -661,9 +780,9 @@ function get_other_produk() {
             var html = "";
 
             data.forEach(element => {
-                html += '<li class="text-produk ui-listview ui-li-static"><a style="text-decoration:none; color: black;" href="#produk-detail" data-transition="slide" onclick="get_detail_produk(\''+element.name+'\')">';
+                html += '<div class="text-produk"><a style="text-decoration:none; color: black;" href="#produk-detail" data-transition="slide" onclick="get_detail_produk(\''+element.name+'\')">';
                 html += element.name;
-                html += '</a></li>';
+                html += '</a></div>';
             });
              
             $('#all-produk').html(html);
@@ -697,9 +816,9 @@ function get_detail_produk(name) {
             header += '<h2>Produk - '+name+'</h2>';
 
             for(var i=0; i<data.length; i++) {
-                html += '<li class="text-produk ui-listview ui-li-static"><a style="text-decoration:none; color: black;" href="#produk-detail-brand" data-transition="slide" onclick="get_detail_brand(\''+data[i].brand+'\')">';
+                html += '<div class="text-produk"><a style="text-decoration:none; color: black;" href="#produk-detail-brand" data-transition="slide" onclick="get_detail_brand(\''+data[i].brand+'\')">';
                 html += data[i].brand;
-                html += '</a></li>';
+                html += '</a></div>';
             }
 
             $('#produk-header').html(header);
@@ -734,7 +853,9 @@ function get_detail_brand(brand) {
             header += '<h2>Produk - '+productName+' - '+brand+'</h2>';
 
             for(var i=0; i<data.length; i++) {
-                html += '<li class="text-produk ui-listview ui-li-static">'+data[i].name+'<br> Harga : '+data[i].price+'</li>';
+                html += '<div class="text-produk">';
+                html += '<table><td><img src="'+mediaLocation+data[i].img+'" style="padding-right: 20px; height: 90px" /></td>';
+                html += '<td><div style="font-weight: 600; margin-bottom: 5px; text-align: left">'+data[i].name+'</div><div style="font-weight: 200; text-align: left">Harga : '+data[i].price+'</div></td></table></div>';
             }
 
             $('#produk-header-brand').html(header);
@@ -995,11 +1116,15 @@ function get_count_reminder() {
         }),
         success: function( data ) {
             var html = "";
-            if(data.length > 0) {
-                html = data.length;
-                $('#badge-reminder').html(html).show();
-            } else  {
-                $('.badge-reminder').hide();
+            if (data) {
+                if(data.length > 0) {
+                    html = data.length;
+                    $('#badge-reminder').html(html).show();
+                } else  {
+                    $('.badge-reminder').hide();
+                }
+            } else {
+                 $('.badge-reminder').hide();
             }
         },
         error: function( errorThrown ){

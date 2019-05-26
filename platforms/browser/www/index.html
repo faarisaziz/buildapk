@@ -397,12 +397,16 @@
       <h2>Produk</h2>
 
       <div role="main" class="ui-content">
-        <form class="ui-filterable">
-          <input id="cari-mobeng" data-type="search" placeholder="Cari di Mobeng">
+        <form>
+          <div class="ui-block">
+            <div class="ui-bar ui-bar-a ui-cari-mobeng">
+              <input type="search" class="cari-produk1" placeholder="Cari di Mobeng"><a href="#" data-transition="slide" class="cari-mobeng1 ui-btn-right">Cari</a>
+            </div>
+          </div>
         </form>
-        <ul id="all-produk" data-role="listview" data-filter="true" data-input="#cari-mobeng">
-
-        </ul>
+        <div id="all-produk" class="list-produk">
+          <!-- list produk -->
+        </div>
       </div> 
 
     </div>
@@ -422,13 +426,17 @@
       <span id="produk-header"></span>
 
       <div role="main" class="ui-content">
-        <form class="ui-filterable">
-          <input id="cari-detail" data-type="search" placeholder="Cari di Mobeng">
+        <form>
+            <div class="ui-block">
+              <div class="ui-bar ui-bar-a ui-cari-mobeng">
+                <input type="search" class="cari-produk2" placeholder="Cari di Mobeng"><a href="#" data-transition="slide" class="cari-mobeng2 ui-btn-right">Cari</a>
+              </div>
+            </div>
         </form>
-
-        <ul id="detail-produk" data-role="listview" data-filter="true" data-input="#cari-detail">
-
-        </ul>
+        <div id="detail-produk" class="list-produk">
+          <!-- list produk -->
+        </div>
+        
       </div> 
     </div>
 
@@ -447,13 +455,39 @@
       <span id="produk-header-brand"></span>
 
       <div role="main" class="ui-content">
-        <form class="ui-filterable">
-          <input id="cari-detail-brand" data-type="search" placeholder="Cari di Mobeng">
+        <form>
+            <div class="ui-block">
+              <div class="ui-bar ui-bar-a ui-cari-mobeng">
+                <input type="search" class="cari-produk3" placeholder="Cari di Mobeng"><a href="#" data-transition="slide" class="cari-mobeng3 ui-btn-right">Cari</a>
+              </div>
+            </div>
         </form>
+        <div id="detail-produk-brand" class="list-produk">
+          <!-- list produk -->
+        </div>
+        
+      </div> 
+    </div>
 
-        <ul id="detail-produk-brand" data-role="listview" data-filter="true" data-input="#cari-detail-brand">
+    <div data-role="page" id="produk-cari" data-theme="a">
+      <div data-role="header" data-position="fixed" data-tap-toggle="false">
+        <img src="img/header.png" style="display: block; height: 60%; margin-left: auto; margin-right: auto; margin-top: 5px;" />
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-left">
+          <a href="#produk" data-transition="slide" data-direction="reverse"><i class="fas fa-caret-left fa-2x" style="color:white"></i></a>  
+        </div>
+        <div data-role="controlgroup" data-type="horizontal" class="ui-btn-right">
+          <a href="#notification" data-transition="slideup" onclick="get_all_notification()"><i class="fas fa-bell fa-2x" style="color:white"></i></a><span class="badge badge-notif"></span>
+          <a href="#add-form"><i class="fas fa-bars fa-2x" style="color:white"></i></a>  
+        </div>
+      </div>
+      
+      <span id="produk-cari-brand"></span>
 
-        </ul>
+      <div role="main" class="ui-content">
+        <div id="detail-cari-brand" class="list-produk">
+          <!-- list produk -->
+        </div>
+        
       </div> 
     </div>
 
