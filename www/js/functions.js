@@ -26,6 +26,17 @@ function checkSession() {
     }
 }
 
+$('#dashboard').on("pagecontainerload",function(event) {
+    var mySwiper = new Swiper ('.swiper-container', {
+      direction: 'horizontal',
+      loop: true,
+      autoplay: {
+          delay: 2000,
+          disableOnInteraction: false
+      }
+    });
+});
+
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
@@ -1456,15 +1467,27 @@ function get_all_notification() {
 
                 if(element.fields.isRead == true) {
                     html += '<div class="card-notif-read">';
+                    html += '<table>';
+                    html += '<tr><td>';
+                    html += '<img src="'+mediaLocation+element.fields.img_path+'" style="width: 90%;">';
+                    html += '</td><td>';
                     html += '<div class="item"><strong>Pesan : </strong>'+sub+'</div><br>';
                     html += '<div class="item"><strong>Tanggal : </strong>'+element.fields.created_dt+'</div>';
                     html += '<a href="#notification-detail" onclick="get_detail_notification(\''+element.pk+'\')" class="ui-btn btn-riwayat ui-corner-all">Detail</a>';
+                    html += '</td></tr>';
+                    html += '</table>';
                     html += '</div>';
                 } else {
                     html += '<div class="card-notif">';
-                    html += '<div class="item">Pesan : '+sub+'</div>';
-                    html += '<div class="item">Tanggal : '+element.fields.created_dt+'</div>';
+                    html += '<table>';
+                    html += '<tr><td>';
+                    html += '<img src="'+mediaLocation+element.fields.img_path+'" style="width: 90%;">';
+                    html += '</td><td>';
+                    html += '<div class="item"><strong>Pesan : </strong>'+sub+'</div>';
+                    html += '<div class="item"><strong>Tanggal : </strong>'+element.fields.created_dt+'</div>';
                     html += '<a href="#notification-detail" onclick="get_detail_notification(\''+element.pk+'\')" class="ui-btn btn-riwayat ui-corner-all">Detail</a>';
+                    html += '</td></tr>';
+                    html += '</table>';
                     html += '</div>';
                 }
             });
@@ -1487,8 +1510,10 @@ function get_detail_notification(id) {
         success: function( data ) {
             var html = "";
 
+            html += '<div class="item"><img src="'+mediaLocation+data.img_path+'" style="width: 100%;"></div>';
             html += '<div class="text-riwayat"><strong>Pesan : </strong>'+data.txt_message+'</div>';
             html += '<div class="text-riwayat"><strong>Tanggal : </strong>'+data.created_date+'</div>';
+            html += '<div class="text-riwayat"><strong>Dibuat Oleh : </strong>'+data.created_by+'</div>';
 
             $('#detail-notification').html(html);
         },

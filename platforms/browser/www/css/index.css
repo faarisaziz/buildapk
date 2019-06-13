@@ -355,24 +355,30 @@ h2 {
 
 .card-notif {
   background-color: #cecece;
-  padding: 20px 20px 10px;
   border: 1px solid black;
-  color: #fff;
   text-shadow: none;
-  margin-bottom: 10px;
   font-family: gotham;
+  margin-left: -5px;
+  margin-bottom: 10px;
+}
+
+.card-notif .item {
+  text-shadow: none;
+  width: 220px;
 }
 
 .card-notif-read {
   background-color: #fff;
-  padding: 20px 20px 10px;
-  border: 1px solid black;
-  border-style: solid;
-  color: black;
-  font-weight: 50 !important;
-  text-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  margin-left: -5px;
   margin-bottom: 10px;
+  text-shadow: none;
   font-family: gotham;
+}
+
+.card-notif-read .item {
+  text-shadow: none;
+  width: 220px;
 }
 
 .card-estimasi {

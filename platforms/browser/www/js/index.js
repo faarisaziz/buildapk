@@ -86,7 +86,6 @@ var app = {
     var mySwiper = new Swiper ('.swiper-container', {
       direction: 'horizontal',
       loop: true,
-      scrollbar: { el: '.swiper-scrollbar' },
       autoplay: {
           delay: 2000,
           disableOnInteraction: false
