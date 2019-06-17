@@ -422,18 +422,18 @@ h2 {
 }
 
 .card-blog .item-text-judul {
-  font-size: 11px;
+  font-size: 14px;
   font-family: gotham-bold;
   color: black;
 }
 
 .card-blog .item-text-date {
-  font-size: 8px;
+  font-size: 11px;
   color: black;
 }
 
 .card-blog .item-text {
-  font-size: 8px;
+  font-size: 12px;
   color: black;
   text-align: justify;
 }
@@ -588,4 +588,9 @@ h2 {
     border-width: 0px !important;
     border-style: none !important;
     background-color: #fff;
+  }
+
+  .custom-blog-text {}
+  .custom-blog-text > p{
+    margin: 2px;
   }

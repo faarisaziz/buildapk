@@ -1,6 +1,6 @@
-var urlMobeng = "http://mobeng.dcsys.id/";
-var mediaLocation = "http://mobeng.dcsys.id/media/";
-var urlOdoo = "http://mobeng-api.dcsys.id/";
+var urlMobeng = "http://mobeng.id/";
+var mediaLocation = "http://mobeng.id/media/";
+var urlOdoo = "http://api.mobeng.id/";
 
 var verify = false;
 var phonenumber = '';
@@ -1338,13 +1338,13 @@ function get_all_blog() {
 
             data.forEach(element => {
                 var str = element.fields.content;
-                var sub = str.substring(0, 200);
+                var sub = str.substring(0, 100);
 
                 html += '<div class="card-blog"><a href="#blog-detail" onclick="get_detail_blog('+element.pk+')" style="text-decoration: none;">';
-                html += '<table><td><img src="'+mediaLocation+element.fields.img_path+'" width="90px" style="padding-right: 7px;"></td>';
-                html += '<td><div class="item-text-date">'+element.fields.created_dt+'</div>';
+                html += '<table><td><img src="'+mediaLocation+element.fields.img_path+'" width="120px" style="padding-right: 7px;"></td>';
+                html += '<td style="vertical-align: text-top !important;"><div class="item-text-date">'+element.fields.created_dt+'</div>';
                 html += '<div class="item-text-judul">'+element.fields.title+'</div>';
-                html += '<div class="item-text">'+sub+'</div>';
+                html += '<div class="item-text custom-blog-text">'+sub+'</div>';
                 html += '<div class="item-text" style="color: blue;">Baca Selengkapnya ...</div>';
                 html += '</td></table></a></div>';
             });
