@@ -83,13 +83,17 @@ var app = {
       }
     }
     
+
+    setTimeout(function() {
     var mySwiper = new Swiper ('.swiper-container', {
-      direction: 'horizontal',
+      centeredSlides: true,
       loop: true,
       autoplay: {
           delay: 2000,
           disableOnInteraction: false
       }
     });
+      // mySwiper();
+    }, 500);
   }
 };
