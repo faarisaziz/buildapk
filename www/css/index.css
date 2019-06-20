@@ -463,7 +463,8 @@ h2 {
 
 .ui-mobile, .ui-mobile body {
   /*background-color: #7dbf43 !important;*/
-  height: auto !important;
+  /*height: auto !important;*/
+  height: 100vh;
 }
 
 .badge-notif {
