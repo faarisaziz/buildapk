@@ -8,6 +8,15 @@ var app = {
   },
 
   onDeviceReady: function() {
+   var notificationOpenedCallback = function(jsonData) {
+      alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+    };
+
+    window.plugins.OneSignal
+      .startInit("1d15307d-d743-4ac8-bdf0-87cbf13c0461")
+      .handleNotificationOpened(notificationOpenedCallback)
+      .endInit();
+      
     document.addEventListener("backbutton", function(e){
        if($.mobile.activePage.is('#dashboard') || $.mobile.activePage.is('#login')){
            e.preventDefault();
@@ -16,14 +25,6 @@ var app = {
        else {
            navigator.app.backHistory();
        }
-       var notificationOpenedCallback = function(jsonData) {
-          alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-        };
-
-        window.plugins.OneSignal
-          .startInit("1d15307d-d743-4ac8-bdf0-87cbf13c0461")
-          .handleNotificationOpened(notificationOpenedCallback)
-          .endInit();
     }, false);
 
     app.receivedEvent('deviceready');
