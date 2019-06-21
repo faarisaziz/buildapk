@@ -1,3 +1,4 @@
+var notification = false;
 var app = {
   initialize: function() {
     this.bindEvents();
@@ -5,12 +6,14 @@ var app = {
 
   bindEvents: function() {
     document.addEventListener('deviceready', this.onDeviceReady, false);
+    var notification = false;
   },
 
   onDeviceReady: function() {
    var notificationOpenedCallback = function(jsonData) {
       // alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-      $.mobile.changePage("#notification");
+      // $.mobile.changePage("#notification");
+      notification = true;
     };
 
     window.plugins.OneSignal
@@ -37,7 +40,11 @@ var app = {
     $(function() {
       if(window.localStorage.getItem("loggedIn") == 1) {
         $('#profil-user').text(window.localStorage.getItem('name'));
-        $.mobile.changePage("#dashboard");
+        if (notification) {
+           $.mobile.changePage("#notification");
+        } else {
+          $.mobile.changePage("#dashboard");
+        }
       }
       else
       {
