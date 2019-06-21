@@ -11,13 +11,11 @@ var app = {
 
   onDeviceReady: function() {
    var notificationOpenedCallback = function(jsonData) {
-      // alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-      // $.mobile.changePage("#notification");
       notification = true;
     };
 
     window.plugins.OneSignal
-      .startInit("1d15307d-d743-4ac8-bdf0-87cbf13c0461")
+      .startInit("c7418b6a-ac8b-4a9f-bc42-457b2bec0c52")
       .handleNotificationOpened(notificationOpenedCallback)
       .endInit();
 
