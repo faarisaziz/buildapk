@@ -649,7 +649,7 @@ $('.cari-mobeng1').click(function(e){
 
                 for(var i=0; i<data.length; i++) {
                     html += '<div class="text-produk">';
-                    html += '<table><td><img src="'+mediaLocation+data[i].img+'" style="padding-right: 20px; height: 90px" /></td>';
+                    html += '<table><td><img src="'+data[i].img+'" style="padding-right: 5px; width: 85px;" /></td>';
                     html += '<td><div style="font-weight: 600; margin-bottom: 5px; text-align: left">'+data[i].name+'</div><div style="font-weight: 200; text-align: left">Harga : '+data[i].price+'</div></td></table></div>';
                 }
 
@@ -689,7 +689,7 @@ $('.cari-mobeng2').click(function(e){
 
                 for(var i=0; i<data.length; i++) {
                     html += '<div class="text-produk">';
-                    html += '<table><td><img src="'+mediaLocation+data[i].img+'" style="padding-right: 20px; height: 90px" /></td>';
+                    html += '<table><td><img src="'+data[i].img+'" style="padding-right: 5px; width: 85px;" /></td>';
                     html += '<td><div style="font-weight: 600; margin-bottom: 5px; text-align: left">'+data[i].name+'</div><div style="font-weight: 200; text-align: left">Harga : '+data[i].price+'</div></td></table></div>';
                 }
 
@@ -729,7 +729,7 @@ $('.cari-mobeng3').click(function(e){
 
                 for(var i=0; i<data.length; i++) {
                     html += '<div class="text-produk">';
-                    html += '<table><td><img src="'+mediaLocation+data[i].img+'" style="padding-right: 20px; height: 90px" /></td>';
+                    html += '<table><td><img src="'+data[i].img+'" style="padding-right: 5px; width: 85px;" /></td>';
                     html += '<td><div style="font-weight: 600; margin-bottom: 5px; text-align: left">'+data[i].name+'</div><div style="font-weight: 200; text-align: left">Harga : '+data[i].price+'</div></td></table></div>';
                 }
 
@@ -868,7 +868,7 @@ function get_detail_brand(brand) {
 
             for(var i=0; i<data.length; i++) {
                 html += '<div class="text-produk">';
-                html += '<table><td><img src="'+mediaLocation+data[i].img+'" style="padding-right: 20px; height: 90px" /></td>';
+                html += '<table><td><img src="'+data[i].img+'" style="padding-right: 5px; width: 85px;" /></td>';
                 html += '<td><div style="font-weight: 600; margin-bottom: 5px; text-align: left">'+data[i].name+'</div><div style="font-weight: 200; text-align: left">Harga : '+data[i].price+'</div></td></table></div>';
             }
 
