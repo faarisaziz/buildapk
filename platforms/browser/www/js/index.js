@@ -16,6 +16,14 @@ var app = {
        else {
            navigator.app.backHistory();
        }
+       var notificationOpenedCallback = function(jsonData) {
+          alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+        };
+
+        window.plugins.OneSignal
+          .startInit("1d15307d-d743-4ac8-bdf0-87cbf13c0461")
+          .handleNotificationOpened(notificationOpenedCallback)
+          .endInit();
     }, false);
 
     app.receivedEvent('deviceready');
@@ -23,43 +31,6 @@ var app = {
 
   receivedEvent: function(id) {
     checkSession();
-    
-    function hideSplash() {
-      $.mobile.changePage("#login", "fade");
-    }
-
-    moveOnMax =function (field, nextFieldID) {
-      if (field.value.length == 1) {
-          document.getElementById(nextFieldID).focus();
-      }
-    }
-    
-  }
-};
-var app = {
-  initialize: function() {
-    this.bindEvents();
-  },
-
-  bindEvents: function() {
-    document.addEventListener('deviceready', this.onDeviceReady, false);
-  },
-
-  onDeviceReady: function() {
-    document.addEventListener("backbutton", function(e){
-       if($.mobile.activePage.is('#dashboard') || $.mobile.activePage.is('#login')){
-           e.preventDefault();
-           navigator.app.exitApp();
-       }
-       else {
-           navigator.app.backHistory();
-       }
-    }, false);
-
-    app.receivedEvent('deviceready');
-  },
-
-  receivedEvent: function(id) {
 
     $(function() {
       if(window.localStorage.getItem("loggedIn") == 1) {
@@ -82,7 +53,6 @@ var app = {
           document.getElementById(nextFieldID).focus();
       }
     }
-    
 
     setTimeout(function() {
     var mySwiper = new Swiper ('.swiper-container', {
@@ -93,7 +63,6 @@ var app = {
           disableOnInteraction: false
       }
     });
-      // mySwiper();
-    }, 500);
+    }, 1000);
   }
 };

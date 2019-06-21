@@ -39,6 +39,9 @@
     },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.mobeng.app"
+    },
+    "onesignal-cordova-plugin": {
+      "PACKAGE_NAME": "com.mobeng.app"
     }
   },
   "dependent_plugins": {
