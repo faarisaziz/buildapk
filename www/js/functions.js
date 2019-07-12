@@ -618,7 +618,6 @@ function get_detail_cabang(id) {
             html += '<div class="text-cabang-bold">Phone    : '+data[0].Phone+'</div></div><br><br>';
             html += '<div class="card">';
             html += '<a href="geo:'+parseFloat(data[0].lat)+','+parseFloat(data[0].lang)+'?q='+parseFloat(data[0].lat)+','+parseFloat(data[0].lang)+'" class="ui-btn btn-blue">Petunjuk dengan Google Maps</a></div>';
-            // html += '<a href="#" onclick="openGmaps(\''+parseFloat(data[0].lat)+','+parseFloat(data[0].lang)+'\')" class="ui-btn btn-blue">Petunjuk dengan Google Maps</a></div>';
 
             $('#detail-cabang').html(html);
             google.maps.event.addDomListener(window, "load", initMap(parseFloat(data[0].lat), parseFloat(data[0].lang)));
@@ -628,10 +627,6 @@ function get_detail_cabang(id) {
         }
     });
 }
-
-// function openGmaps(lat, long) {
-//     window.open("geo:"+ lat,long);
-// };
 
 $('.cari-mobeng1').click(function(e){
     var keyword = $('.cari-produk1').val();
