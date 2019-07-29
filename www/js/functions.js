@@ -3,7 +3,7 @@ var urlMobeng = "http://mobeng.dcsys.id/"; // staging
 // var mediaLocation = "http://mobeng.id/media/";
 var mediaLocation = "http://mobeng.dcsys.id/media/"; // staging
 // var urlOdoo = "http://api.mobeng.id/";
-var urlOdoo = "http://mobeng-api.dcsys.id/"; // staging
+var urlOdoo = "http://localhost:8000/"; // staging
 
 var verify = false;
 var phonenumber = '';
@@ -41,7 +41,11 @@ $('#dashboard').on("pagecontainerload",function(event) {
 });
 
 function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    if(x){
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }else{
+        return '';
+    }
 }
 
 function checkNull(x) {
@@ -617,7 +621,7 @@ function get_detail_cabang(id) {
             html += '<div class="text-cabang-bold">Call     : '+data[0].Call+'</div>';
             html += '<div class="text-cabang-bold">Phone    : '+data[0].Phone+'</div></div><br><br>';
             html += '<div class="card">';
-            html += '<a href="geo:'+parseFloat(data[0].lat)+','+parseFloat(data[0].lang)+'?q='+parseFloat(data[0].lat)+','+parseFloat(data[0].lang)+'" class="ui-btn btn-blue">Petunjuk dengan Google Maps</a></div>';
+            html += '<a href="geo:'+parseFloat(data[0].lat)+','+parseFloat(data[0].lang)+'" class="ui-btn btn-blue">Petunjuk dengan Google Maps</a></div>';
 
             $('#detail-cabang').html(html);
             google.maps.event.addDomListener(window, "load", initMap(parseFloat(data[0].lat), parseFloat(data[0].lang)));
