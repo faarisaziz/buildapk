@@ -3,7 +3,7 @@ var urlMobeng = "http://mobeng.dcsys.id/"; // staging
 // var mediaLocation = "http://mobeng.id/media/";
 var mediaLocation = "http://mobeng.dcsys.id/media/"; // staging
 // var urlOdoo = "http://api.mobeng.id/";
-var urlOdoo = "http://localhost:8000/"; // staging
+var urlOdoo = "http://mobeng-api.dcsys.id/"; // staging
 
 var verify = false;
 var phonenumber = '';
