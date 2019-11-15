@@ -1,9 +1,9 @@
 // var urlMobeng = "http://mobeng.id/";
-var urlMobeng = "http://mobeng.dcsys.id/"; // staging
+var urlMobeng = "http://104.250.105.221:8000/"; // staging
 // var mediaLocation = "http://mobeng.id/media/";
-var mediaLocation = "http://mobeng.dcsys.id/media/"; // staging
+var mediaLocation = "http://104.250.105.221:8000/media/"; // staging
 // var urlOdoo = "http://api.mobeng.id/";
-var urlOdoo = "http://mobeng-api.dcsys.id/"; // staging
+var urlOdoo = "http://104.250.105.221/"; // staging
 
 var verify = false;
 var phonenumber = '';
